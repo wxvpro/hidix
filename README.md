@@ -1,2 +1,1 @@
-# hidix
-HIDIX - Молниеносный VPN 
+# gh-pages|
