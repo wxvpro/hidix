@@ -3,7 +3,7 @@
     <title>HIDIX</title>
     <link href="https://hidix.ru/feed.xml" rel="self" />
     <link href="https://hidix.ru" />
-    <updated>2025-09-28T00:39:14+03:00</updated>
+    <updated>2025-10-11T21:47:04+03:00</updated>
     <author>
         <name>alex dde</name>
     </author>
@@ -48,7 +48,7 @@
 <ul>
 <li>В браузере вводим <code>192.168.1.1 или 192.168.10.1</code></li>
 <li>Вводим логин root без пароля (если не устанавливали)</li>
-<li><span style="color: #02192b;"><strong>Службы &gt; Podkop &gt; </strong>Основные настройки</span></li>
+<li><strong>Службы &gt; Podkop &gt; </strong>Основные настройки</li>
 <li>URL конфигурация Proxy - вставляем конфигурацию в поле, полученную на прошлом шаге от бота VPN</li>
 </ul>
 <figure class="post__image">
