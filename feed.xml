@@ -3,12 +3,279 @@
     <title>HIDIX</title>
     <link href="https://hidix.ru/feed.xml" rel="self" />
     <link href="https://hidix.ru" />
-    <updated>2025-10-11T21:47:04+03:00</updated>
+    <updated>2025-10-19T12:19:03+03:00</updated>
     <author>
         <name>alex dde</name>
     </author>
     <id>https://hidix.ru</id>
 
+    <entry>
+        <title>Телеграм бот для выдачи VLESS ключей для 3x-ui с веб панелью и широким функционалом</title>
+        <author>
+            <name>alex dde</name>
+        </author>
+        <link href="https://hidix.ru/post/chat-bot-dlya-3x-ui/"/>
+        <id>https://hidix.ru/post/chat-bot-dlya-3x-ui/</id>
+            <category term="Инструкции"/>
+
+        <updated>2025-10-19T11:21:42+03:00</updated>
+            <summary>
+                <![CDATA[
+                    Обзор функционала веб панели и телеграм бота Функции веб панели, широчайший функционал: Модерация пользователей Реферальная программа Возможность добавить несколько серверов (Нод) и тарифов к ним&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <section data-anchor="YYjY"></section>
+<h3>Обзор функционала веб панели и телеграм бота</h3>
+<figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/31/Untitled-151.png" alt="" width="2618" height="1654" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/31/responsive/Untitled-151-xs.webp 300w ,https://hidix.ru/media/posts/31/responsive/Untitled-151-sm.webp 480w ,https://hidix.ru/media/posts/31/responsive/Untitled-151-md.webp 768w"></figure>
+<h6 data-anchor="ZevT">Функции веб панели, широчайший функционал:</h6>
+<ul>
+<li data-anchor="ZevT">Модерация пользователей</li>
+<li data-anchor="ZevT">Реферальная программа</li>
+<li>Возможность добавить несколько серверов (Нод) и тарифов к ним</li>
+<li data-anchor="ZevT">Тарифы (Демо тарифы / Пробные тарифы / Промо тарифы)</li>
+<li data-anchor="ZevT">Платежи (через <strong>ЮКасса</strong> и <strong>Crypto Bot, </strong>история платежей)</li>
+<li data-anchor="ZevT">Коды оплаты, Промокоды</li>
+<li data-anchor="ZevT">Промокоды / Коды оплаты</li>
+<li data-anchor="ZevT">Настройка платежей </li>
+<li data-anchor="ZevT">Настройка оповещений в админ-телеграм боте</li>
+</ul>
+<h6 data-anchor="ZevT"> Функции телеграм бота:</h6>
+<ul>
+<li>Личный кабинет (Подписки / Платежи / Баланс / Инструкции / Помощь)</li>
+<li>Пробный период (выдача VLESS ключей бесплатно на демо период, если это разрешено и настроено в веб панели)</li>
+<li>Тарифы (список тарифов, указаннный в веб панели)</li>
+<li>Техподдержка (написать админу одной кнопкой через чат-бота)</li>
+<li>Реферальная программа (возможность получать бонусы на свой баланс за привлеченных пользователей)</li>
+<li data-anchor="ZevT">Выдача ключей через бота телеграм</li>
+<li data-anchor="ZevT">Новости / Контакты (произвольная ссылка на ваш канал / профиль)</li>
+</ul>
+<p data-anchor="ZevT"><strong>Пример бота</strong>: <a href="https://hidix_bot" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">@hidix_bot</a> </p>
+<p data-anchor="ZevT"><strong>Стоимость файлов бота и админ панели</strong>: 35.000р (установка не входит в стоимость), торг аргументированный возможен</p>
+<p data-anchor="ZevT">По вопросам приобретения <strong>пишите в телеграм</strong> <a href="https://t.me/alex_dde" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">@ALEX_DDE</a></p>
+<hr>
+<h3 data-anchor="ZevT">Настройка веб-панели и телеграм бота</h3>
+<p>Подготовка:</p>
+<ul>
+<li data-anchor="h8yr">Арендуем сервер <strong>VPS</strong> на базе <strong>UBUNTU</strong>, делаем на отдельном серваке</li>
+<li data-anchor="zoOo">Получаем токен у <strong>BotFather</strong> и свой <strong>ID</strong> - будет id админа бота</li>
+</ul>
+<p data-anchor="zoOo">Подключаемся к серверу по <strong>ssh</strong>, выполняем команды</p>
+<pre class="language-bash"><code>apt-get update -y
+
+apt-get upgrade -y
+
+sudo apt install -y software-properties-common
+
+sudo add-apt-repository ppa:deadsnakes/ppa
+
+sudo apt update
+
+sudo apt install -y python3.12
+
+apt install python3.12-venv</code></pre>
+<p data-anchor="WRvN">Открываем <a href="https://sqlitebrowser.org/dl/"  target="_blank"  class="extlink extlink-icon-4" title="Скачать DB Browser" rel="nofollow noopener noreferrer"><strong>DB Browser (SQLite)</strong></a> и открываем базу данных которая находится на сервере в <strong>bot/instance</strong>, во вкладке <strong>Browse Data</strong> в <strong>Table</strong> выбираем <strong>bot_settings</strong>, вносим телеграм <strong>токен бота</strong> и <strong>admin_id</strong> и сохраняем (<strong>apply</strong>, <strong>write changes</strong>)</p>
+<figure class="w-figure m_column"  data-anchor="3z2B">
+<div class="w-figure_wrap"><figure class="w-figure_image"><img loading="lazy"  src="https://img2.teletype.in/files/13/5d/135d413c-c548-47cf-8d02-8730f7efce88.png" width="" data-is-external-image="true"></figure>
+<div class="w-figure_loading"> </div>
+</div>
+</figure>
+<p data-anchor="OUgO">заливаем папку <strong><span class="bold">bot</span></strong> на сервер в папку <span class="bold"><strong>root</strong> (PS: с мака на винду не соблюдает пути)</span></p>
+<pre class="language-bash"><code>cd bot
+
+python3 -m venv venv
+
+source venv/bin/activate
+
+pip install -r requirements.txt</code></pre>
+<ul>
+<li data-anchor="Sbqc">Запускаем бота <code><strong><span class="code">python3 main.py</span></strong></code></li>
+<li data-anchor="ULvx">Останавливаем бота (Ctrl+C)</li>
+</ul>
+<p data-anchor="zt9K">Запуск настройки рефералов <span class="code"><code><strong>python support.py</strong></code> для редактирования в базе данных, при первом входе сделать:</span></p>
+<p data-anchor="Uwd9"><strong>Пользователи</strong> -&gt; <strong>Общая статистика</strong> -&gt;  <strong>Заполнить реф. коды</strong></p>
+<p data-anchor="UrFz">Выходим, после <code><strong><span class="code">python update_db.py</span></strong></code></p>
+<h4 data-anchor="53RT">Создаем автозапускаемый сервис бота:</h4>
+<section data-anchor="YrTB">
+<pre class="language-bash"><code>sudo nano /etc/systemd/system/3xui-bot.service</code></pre>
+<p data-anchor="Q6YX">Вставить в него скорректировав пути к файлам:</p>
+<pre class="language-bash"><code>[Unit]
+Description=3xui Telegram Bot
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/bot
+Environment=PATH=/root/bot/venv/bin
+ExecStart=/root/bot/venv/bin/python
+/root/bot/main.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+</section>
+<pre class="language-bash"><code>sudo systemctl enable 3xui-bot.service
+sudo systemctl start 3xui-bot.service
+sudo systemctl status 3xui-bot.service
+sudo systemctl stop 3xui-bot.service
+# - останавливаем временно</code></pre>
+<h4 data-anchor="KLfQ">Создаем API</h4>
+<pre class="language-bash"><code>python api_key_manager.py</code></pre>
+<p data-anchor="rEEU">выбрать пункт 1, после перезапустить и выбрать пункт 2, <strong>имя ключа и ключ сохранить</strong></p>
+<p data-anchor="9ytn">Запуск бота: (Ps: делается в venv, не забыть) <strong><span class="code">sudo systemctl start 3xui-bot</span></strong></p>
+<p data-anchor="lRZc">Проверить работу API модуля: <strong><span class="code">python -m api.start_api</span></strong></p>
+<p data-anchor="YqtC">Если запустился и выдал "<code><span class="link">http://0.0.0.0:8000</span></code>" - останавливаем CTRL+C останавливаем бота <code><span class="code">sudo systemctl stop 3xui-bot.service</span></code></p>
+<p data-anchor="I30M">Обновляем БД: </p>
+<pre class="language-bash"><code>python update_db.py</code></pre>
+<p data-anchor="VKCA">Создаем сервис для API модуля:</p>
+<pre class="language-bash"><code>sudo nano /etc/systemd/system/tgbot-api.service</code></pre>
+<p data-anchor="UDhM">Вставить в него скорректировав пути к файлам:</p>
+<section data-anchor="DpaU">
+<pre class="language-bash"><code>[Unit]
+Description=tgbot-api
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/bot
+Environment=PATH=/root/bot/venv/bin
+ExecStart=/root/bot/venv/bin/python -m api.start_api
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+</section>
+<pre class="language-bash"><code>sudo systemctl enable tgbot-api.service
+sudo systemctl start tgbot-api.service
+sudo systemctl status tgbot-api.service
+sudo systemctl stop tgbot-api.service</code></pre>
+<section data-anchor="3cVo">
+<p data-anchor="Ggqh">Если не запустилось ( такое случается после проверки ) - перезагружаем сервер. (venv) root@localhost:~/bot# <strong>reboot</strong></p>
+</section>
+<p data-anchor="ruY1">После перезагрузки (или сразу) проверяем работу сервисов:</p>
+<pre class="language-bash"><code>sudo systemctl status 3xui-bot.service
+sudo systemctl status tgbot-api.service</code></pre>
+<p data-anchor="eTpU">Ссылка для доков по API: <code>http://0.0.0.0:8000/docs</code></p>
+<p data-anchor="TDPU">Если запущены, то останавливаем их:</p>
+<pre class="language-bash"><code>sudo systemctl stop 3xui-bot.service
+sudo systemctl stop tgbot-api.service</code></pre>
+<p data-anchor="tVNe">Перейти в папку с модулем (наименование папки)</p>
+<pre class="language-bash"><code>cd /bot/module
+python3 -m venv venv
+source venv/bin/activate
+pip install -r /root/bot/module/requirements.txt</code></pre>
+<p data-anchor="sjtx">Проверяем работу модуля:</p>
+<pre class="language-bash"><code>python app.py</code></pre>
+<p data-anchor="S3gG">Выведутся ссылки, <span class="bold">сохранить, </span>там будет ссылка на<span class="bold"> веб панель</span></p>
+<section data-anchor="kY8D">
+<p data-anchor="cSDC">Создать файл сервиса:</p>
+<pre class="language-bash"><code>sudo nano /etc/systemd/system/3xui-module.service</code></pre>
+<pre class="language-bash"><code>[Unit]
+Description=3xui Telegram Bot
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/bot/module
+Environment=PATH=/root/bot/module/venv/bin
+ExecStart=/root/bot/module/venv/bin/python /root/bot/module/app.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+</section>
+<pre class="language-bash"><code>sudo systemctl enable 3xui-module.service
+sudo systemctl start 3xui-module.service
+sudo systemctl enable 3xui-bot.service
+sudo systemctl start 3xui-bot.service
+sudo systemctl enable tgbot-api.service
+sudo systemctl start tgbot-api.service</code></pre>
+<p data-anchor="WFNL">Чат и веб-панель должны заработать</p>
+<section data-anchor="u7MV">
+<p data-anchor="VudR">Ссылка для подключения API в модуле: <code><span class="code link">http://ip</span><span class="code"> сервера:8000/api/v1</span></code></p>
+</section>
+<p data-anchor="vsJ6">Идем в <span class="bold">веб панель</span> ЧатБота<br>Настройки, API - заполняем данные полученные на предыдущих шагах</p>
+<h4 data-anchor="AMwS">Настройка HTTPS для панели</h4>
+<ul>
+<li data-anchor="Z6b2">Ставим панель 3x ui</li>
+<li data-anchor="GF9B"><span class="code">Выполняем команду: x-ui</span></li>
+<li data-anchor="UwCZ"><span class="code">Генерим сертификаты: 19 &gt; 1, запоминаем пути к сертификатам</span></li>
+<li data-anchor="rOiq">далее <span class="code">x-ui &gt;</span>удаляем x-ui</li>
+</ul>
+<p data-anchor="K92c"><span class="bold"><strong>Модифицируем файлы</strong><br><span style="color: var(--text-primary-color); font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);">В файле на сервере </span><code style="font-weight: var(--font-weight-normal);">root/bot/module/app.py</code><span style="color: var(--text-primary-color); font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);"> последние строчки делаем так (прописываем пути к сертификатам из полученных данных выше) </span><br></span></p>
+<section data-anchor="o8gq">
+<pre class="language-bash"><code>if __name__ == '__main__':
+    create_tables()
+    app.run(
+    host='0.0.0.0',
+    port=443,
+    ssl_context=(
+        '/root/cert/домен_панели/fullchain.pem',
+        '/root/cert/домен_панели/privkey.pem'
+    )
+)</code></pre>
+</section>
+<p data-anchor="wEZT"><span style="color: var(--text-primary-color); font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);">В файле на сервере </span><code style="font-weight: var(--font-weight-normal);">root/bot/api/start_api.py</code><span style="color: var(--text-primary-color); font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);"> добавить путь к сертификатам</span></p>
+<section data-anchor="LCwz">
+<pre class="language-apacheconf"><code>if __name__ == "__main__":
+    os.makedirs('logs', exist_ok=True)
+    logger.add("logs/api.log", rotation="1 day", compression="zip", 
+               encoding="utf-8", format="{time} | {level} | {message}",
+               level="INFO")
+    
+    try:
+        logger.info("Запуск API сервера...")
+        port = int(os.environ.get("API_PORT", 8000))
+        host = os.environ.get("API_HOST", "0.0.0.0")
+        
+        # Без лишней запятой
+        certfile = '/root/cert/домен_панели/fullchain.pem'
+        keyfile = '/root/cert/домен_панели.duckdns.org/privkey.pem'
+        
+        logger.info(f"Запуск API на https://{host}:{port}")
+        uvicorn.run(app, host=host, port=port, ssl_certfile=certfile, ssl_keyfile=keyfile)
+
+    except Exception as e:
+        logger.error(f"Ошибка при запуске API сервера: {e}")</code></pre>
+<p data-anchor="lOZG"><span style="color: var(--text-primary-color); font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);">По хорошему сменить порт и отключить пинг на домене для бота</span></p>
+<p data-anchor="lOZG">Проверка. Все должно работать</p>
+<h3 data-anchor="lOZG">Список дополнительных быстрых команд</h3>
+</section>
+<p data-anchor="xW1E"><span style="color: var(--text-primary-color); font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);">Остановка всех служб</span></p>
+<section data-anchor="uzPZ"></section>
+<section data-anchor="bsYN">
+<pre class="language-bash"><code>sudo systemctl stop 3xui-bot.service
+sudo systemctl stop tgbot-api.service
+sudo systemctl stop 3xui-module.service</code></pre>
+<p data-anchor="GmO4"><span class="bold">Старт всех служб</span></p>
+<pre class="language-bash"><code>sudo systemctl start 3xui-module.service
+sudo systemctl start 3xui-bot.service
+sudo systemctl start tgbot-api.service</code></pre>
+<p data-anchor="M6T0"><span style="color: var(--text-primary-color); font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);">Рестарт всех служб</span></p>
+</section>
+<section data-anchor="hgKU">
+<pre class="language-bash"><code>sudo systemctl restart 3xui-bot.service
+sudo systemctl restart tgbot-api.service
+sudo systemctl restart 3xui-module.service</code></pre>
+</section>
+<section data-anchor="uPaW">
+<p data-anchor="2FF8"><span class="bold">Статус всех служб</span></p>
+<pre class="language-bash"><code>sudo systemctl status 3xui-bot.service
+sudo systemctl status tgbot-api.service
+sudo systemctl status 3xui-module.service</code></pre>
+<p data-anchor="FJHu"><span class="link">Установка панели 3x ui и защита есть в ролике по <a href="https://www.youtube.com/watch?v=zt4oxHeUbdk&amp;t=2946s" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">ссылке</a></span></p>
+<p data-anchor="6bTz"> </p>
+</section>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Быстрые настройки при покупке роутера у нас (конфиг 2)</title>
         <author>
@@ -651,44 +918,6 @@ bootm 0x46000000</code></pre>
 <li><strong>Готово</strong></li>
 </ul>
 <p> </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Импорт конфигурации V2RayA (встроенного VPN) </title>
-        <author>
-            <name>alex dde</name>
-        </author>
-        <link href="https://hidix.ru/post/nastroyka-routera/"/>
-        <id>https://hidix.ru/post/nastroyka-routera/</id>
-
-        <updated>2025-06-10T23:41:42+03:00</updated>
-            <summary>
-                <![CDATA[
-                    Инструкции по поключению и настройке роутера В наших роутерах маршрутизация уже прописана, остается только добавить ключ Подключаемся к роутеру по Wi-Fi или кабелем (если кабелем,&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <p>Инструкции по поключению и настройке роутера</p>
-<h2>Настройка встроенного VPN</h2>
-<p>В наших роутерах маршрутизация уже прописана, остается только добавить ключ</p>
-<ul>
-<li>Подключаемся к роутеру по Wi-Fi  или кабелем (если кабелем, то кабель должен быть воткнут во второй или третий порт, интернет кабель должен быть воткнут в первый порт около разьема питания)</li>
-<li>В браузере вводим <code>192.168.1.1:2017 или 192.168.10.1:2017</code></li>
-<li>Вводим логин пароль (если покупали роутер у нас и не меняли, логин <strong>root</strong>  и <strong>без</strong> <strong>пароля</strong>)</li>
-<li><strong>Импортировать, </strong>в<span style="font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);">ставляем </span><strong style="font-family: var(--editor-font-family); font-size: inherit;">ключ</strong><span style="font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);"> VLESS конфигурации, что получили в нашем <a href="https://hidix.ru/post/hidix-vpn-molnienosnyy-vpn-servis/" target="_blank" rel="noopener noreferrer">VPN-боте</a>, <strong>подтвердить</strong></span></li>
-</ul>
-<figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/11/11.png" alt="" width="1802" height="782" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/11/responsive/11-xs.webp 300w ,https://hidix.ru/media/posts/11/responsive/11-sm.webp 480w ,https://hidix.ru/media/posts/11/responsive/11-md.webp 768w"></figure>
-<figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/11/222.png" alt="" width="1758" height="1018" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/11/responsive/222-xs.webp 300w ,https://hidix.ru/media/posts/11/responsive/222-sm.webp 480w ,https://hidix.ru/media/posts/11/responsive/222-md.webp 768w"></figure>
-<ul>
-<li>Далее вкладка <strong>SERVER</strong> &gt; <strong>Подключиться</strong></li>
-</ul>
-<figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/11/333.png" alt="" width="1822" height="880" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/11/responsive/333-xs.webp 300w ,https://hidix.ru/media/posts/11/responsive/333-sm.webp 480w ,https://hidix.ru/media/posts/11/responsive/333-md.webp 768w"></figure>
-<ul>
-<li>Сверху в левом верхнем углу нажимаем "<strong>пуск</strong>"</li>
-<li><strong>Готово</strong></li>
-</ul>
             ]]>
         </content>
     </entry>
