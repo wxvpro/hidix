@@ -3,7 +3,7 @@
     <title>HIDIX</title>
     <link href="https://hidix.ru/feed.xml" rel="self" />
     <link href="https://hidix.ru" />
-    <updated>2025-10-19T12:19:03+03:00</updated>
+    <updated>2025-10-19T12:20:05+03:00</updated>
     <author>
         <name>alex dde</name>
     </author>
@@ -699,6 +699,7 @@ bootm 0x46000000</code></pre>
         </author>
         <link href="https://hidix.ru/post/nastroyka-prilozheniya-lampa/"/>
         <id>https://hidix.ru/post/nastroyka-prilozheniya-lampa/</id>
+            <category term="Инструкции"/>
 
         <updated>2025-06-14T00:27:32+03:00</updated>
             <summary>
