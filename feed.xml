@@ -3,12 +3,58 @@
     <title>HIDIX</title>
     <link href="https://hidix.ru/feed.xml" rel="self" />
     <link href="https://hidix.ru" />
-    <updated>2025-10-26T22:27:53+03:00</updated>
+    <updated>2025-11-05T18:55:22+03:00</updated>
     <author>
         <name>alex dde</name>
     </author>
     <id>https://hidix.ru</id>
 
+    <entry>
+        <title>Подключение датчика температуры к термостату Sonoff через SprutHub</title>
+        <author>
+            <name>alex dde</name>
+        </author>
+        <link href="https://hidix.ru/post/podklyuchenie-datchika-temperatury-k-termostatu-sonoff-cherez-spruthub/"/>
+        <id>https://hidix.ru/post/podklyuchenie-datchika-temperatury-k-termostatu-sonoff-cherez-spruthub/</id>
+            <category term="Умный дом"/>
+
+        <updated>2025-11-05T18:33:05+03:00</updated>
+            <summary>
+                <![CDATA[
+                    Поддерживаемые устройства Aqara E1 (SRTS-A01) - ID: lumi.airrtc.agl001 SONOFF TRVZB - ID: TRVZB Danfoss 014G2463 - ID: eTRV0101 Логический сценарий Настраивает термостат и привязывает к&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <div class="markdown-heading" dir="auto">
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Поддерживаемые устройства</h3>
+<ul>
+<li class="heading-element" dir="auto" tabindex="-1"><strong style="font-family: var(--editor-font-family); font-size: inherit;">Aqara E1 (SRTS-A01)</strong><span style="color: var(--text-primary-color); font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);"> - ID: lumi.airrtc.agl001</span></li>
+<li dir="auto" tabindex="-1"><strong>SONOFF TRVZB</strong> - ID: TRVZB</li>
+<li dir="auto" tabindex="-1"><strong>Danfoss 014G2463</strong> - ID: eTRV0101</li>
+</ul>
+</div>
+</div>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Логический сценарий</h3>
+<p><span style="color: var(--text-primary-color); font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);">Настраивает термостат и привязывает к нему внешний датчик температуры. Больше нет необходимости искать и включать переключатель внешнего датчика температуры, разбираться и настраивать связи - просто импортируйте этот сценарий, укажите датчик и активируйте логику для термостата.</span></p>
+<p> </p>
+</div>
+<div class="markdown-heading" dir="auto"><span style="color: var(--headings-color); font-family: var(--font-base); font-size: 1.60181em; font-weight: var(--font-weight-bold); letter-spacing: var(--letter-spacing);">Использование</span></div>
+<div class="markdown-heading" dir="auto"><span style="color: #e67e23;"><strong>Внимательно соблюдайте порядок</strong></span></div>
+<ol>
+<li class="markdown-heading" dir="auto"><span style="color: var(--text-primary-color); font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);">Cкачать файл </span><a href="https://hidix.ru/ExternalTempSensor.json">ExternalTempSensor.json</a></li>
+<li>Импортировать сценарий (<strong>SprutHub</strong> &gt; <strong>Сценарии,</strong> нажать "<strong>+</strong>" &gt; "<strong>Импортировать шаблон</strong>"), готово</li>
+<li>Зажать <strong>плитку</strong> термостата от термоголовки &gt; <strong>Настройки</strong> (шестерёнка) &gt; <strong>Логика</strong> &gt; <strong>Термостат</strong> &gt; Внешний датчик температуры для термоголовки Aqara E1, SONOFF TRVZB, Danfoss 014G2463</li>
+<li>В <strong>выпадающем списке снизу</strong> выбрать датчик,<strong> </strong>который необходимо привязать к термоголовке</li>
+<li>Только<strong> после выбора датчика </strong>переключаем тумблер в положение "<strong>Активно</strong>"</li>
+<li>При успешном запуске появится сообщение "Подключен внешний датчик"</li>
+</ol>
+<p>Статья взята с <a href="https://github.com/KirillAshikhmin/Sprut.Hub_Tools/tree/main/ExternalTempSensor" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">ГитХаб</a></p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Русификация телевизоров Xiaomi Redmi из Китая (CN-версия) программой Xiaomi Flasher </title>
         <author>
@@ -17,7 +63,6 @@
         <link href="https://hidix.ru/post/rusifikaciya-televizorov-xiaomi-redmi-iz-kitaya-cn-versiya-programmoy-xiaomi-flasher/"/>
         <id>https://hidix.ru/post/rusifikaciya-televizorov-xiaomi-redmi-iz-kitaya-cn-versiya-programmoy-xiaomi-flasher/</id>
             <category term="Телевизоры Xiaomi"/>
-            <category term="Инструкции"/>
 
         <updated>2025-10-22T22:29:47+03:00</updated>
             <summary>
@@ -46,7 +91,9 @@
 <h5><strong>Этап 1. Полный сброс:</strong></h5>
 <p><strong>В моделях до 2025 года:</strong><br>Настройки (шестеренка)  &gt; ‌Settings &gt; General Settings &gt; Reset<br>‌Выберите &gt; <strong>Reset</strong> (или Delete) &gt; <strong>Confirm (Reset)</strong><br>‌<br>‌<strong>В новых моделях (HyperOS):</strong><br>‌Настройки (шестеренка) &gt; ‌Settings &gt; General Settings &gt; Restore<br>‌Выберите <strong>Don't Retain</strong> &gt; Restore Now &gt; <strong>Confirm (Restore)</strong></p>
 <!-- Контейнер 720×405 -->
-<div id="rtb-4a05" style="margin-top: 1.1rem; width: 720px; height: 405px; position: relative; overflow: hidden; border-radius: 12px; background: #000;"><!-- Локальный постер --> <figure class="rtb-poster"><img loading="lazy"  style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; display: block;" src="https://hidix.ru/media/posts/32/poln_sbros-2.png" alt="Обложка видео" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/32/responsive/poln_sbros-2-xs.webp 300w ,https://hidix.ru/media/posts/32/responsive/poln_sbros-2-sm.webp 480w ,https://hidix.ru/media/posts/32/responsive/poln_sbros-2-md.webp 768w"></figure> <!-- Кнопка поверх постера --> <button class="rtb-play" style="position: absolute; z-index: 3; left: 16px; bottom: 16px; padding: 10px 18px; font: 600 15px system-ui; cursor: pointer; background: rgba(0,0,0,.95); color: #fff; border: 1px solid #fff; border-radius: 999px;" type="button"> ▶ Смотреть </button></div>
+<div id="rtb-4a05" style="margin-top: 1.1rem; max-width: 100%; height: 405px; position: relative; overflow: hidden; border-radius: 12px; background: #000;"><!-- Локальный постер -->
+<figure class="post__image"><figure class="is-loaded"><img  style="position: absolute; inset: 0; max-width: 100%; height: auto; object-fit: cover; z-index: 2; display: block;" src="https://hidix.ru/media/posts/32/poln_sbros-2.png" alt="Обложка видео" loading="lazy" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/32/responsive/poln_sbros-2-xs.webp 300w ,https://hidix.ru/media/posts/32/responsive/poln_sbros-2-sm.webp 480w ,https://hidix.ru/media/posts/32/responsive/poln_sbros-2-md.webp 768w"></figure> <!-- Кнопка поверх постера --> <button class="rtb-play" style="position: absolute; z-index: 3; left: 16px; bottom: 16px; padding: 10px 18px; font: 600 15px system-ui; cursor: pointer; background: rgba(0,0,0,.95); color: #fff; border: 1px solid #fff; border-radius: 999px; max-width: 150px;" type="button"> ▶ Смотреть </button></figure>
+</div>
 <p>
 <script>
 		(() => {
@@ -89,7 +136,7 @@
 <li>После выполнения всех условия выходим на рабочий стол ТВ кнопкой <strong>HOME</strong></li>
 </ul>
 <!--------------- ----- !-->
-<div class="rtb-wrap" style="margin-top: 1.1rem; width: 720px; height: 405px; position: relative; overflow: hidden; border-radius: 12px; background: #000;" data-src="https://rutube.ru/play/embed/b5ca0aed06d4f65310c39e015ccea494/?autoplay=1"><!-- Постер: используем корневой путь Publii --> <figure class="post__image"><img loading="lazy"  style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; display: block;" src="https://hidix.ru/media/posts/32/podg2.png" alt="Превью видео" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/32/responsive/podg2-xs.webp 300w ,https://hidix.ru/media/posts/32/responsive/podg2-sm.webp 480w ,https://hidix.ru/media/posts/32/responsive/podg2-md.webp 768w"></figure> <!-- Кнопка поверх постера --> <button class="rtb-play" style="position: absolute; z-index: 3; bottom: 16px; left: 16px; padding: 10px 18px; font: 600 15px system-ui; cursor: pointer; background: rgba(0,0,0,.9); color: #fff; border: 1px solid #fff; border-radius: 999px;" type="button" aria-label="Смотреть видео"> ▶ Смотреть </button></div>
+<div class="rtb-wrap" style="margin-top: 1.1rem; max-width: 100%; height: 405px; position: relative; overflow: hidden; border-radius: 12px; background: #000;" data-src="https://rutube.ru/play/embed/b5ca0aed06d4f65310c39e015ccea494/?autoplay=1"><!-- Постер: используем корневой путь Publii --> <figure class="post__image"><img loading="lazy"  style="position: absolute; inset: 0; width: 100%; height: auto; object-fit: cover; z-index: 2; display: block;" src="https://hidix.ru/media/posts/32/podg2.png" alt="Превью видео" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/32/responsive/podg2-xs.webp 300w ,https://hidix.ru/media/posts/32/responsive/podg2-sm.webp 480w ,https://hidix.ru/media/posts/32/responsive/podg2-md.webp 768w"></figure> <!-- Кнопка поверх постера --> <button class="rtb-play" style="position: absolute; z-index: 3; bottom: 16px; left: 16px; padding: 10px 18px; font: 600 15px system-ui; cursor: pointer; background: rgba(0,0,0,.9); color: #fff; border: 1px solid #fff; border-radius: 999px; max-width: 150px;" type="button" aria-label="Смотреть видео"> ▶ Смотреть </button></div>
 <p>
 <script>
 		document.addEventListener('click', function(e) {
@@ -136,7 +183,7 @@
 <li>Копируем <strong>серийный номер</strong> кнопкой и отправляем <strong>мне</strong> (разработчику), я выдаю вам <strong>лицензионный код</strong>, вставляем в соответствующее поле <strong>кнопкой</strong> и нажимаем "<strong>Проверить</strong>". Если код верный, все функции разблокируются.</li>
 </ul>
 <!-- Контейнер 720×405 -->
-<div id="rtb-box" style="margin-top: 1.1rem; width: 720px; height: 405px; position: relative; overflow: hidden; border-radius: 12px; background: #000;"><!-- Локальный постер --> <figure class="post__image"><img loading="lazy"  style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; display: block;" src="https://hidix.ru/media/posts/32/zapusk_pr.png" alt="Обложка видео" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/32/responsive/zapusk_pr-xs.webp 300w ,https://hidix.ru/media/posts/32/responsive/zapusk_pr-sm.webp 480w ,https://hidix.ru/media/posts/32/responsive/zapusk_pr-md.webp 768w"></figure> <!-- Чёрная кнопка поверх --> <button id="rtb-play" style="position: absolute; z-index: 3; left: 16px; bottom: 16px; padding: 10px 18px; font: 600 15px system-ui; cursor: pointer; background: rgba(0,0,0,.95); color: #fff; border: 1px solid #fff; border-radius: 999px;" type="button"> ▶ Смотреть </button></div>
+<div id="rtb-box" style="margin-top: 1.1rem; max-width: 100%; height: 405px; position: relative; overflow: hidden; border-radius: 12px; background: #000;"><!-- Локальный постер --> <figure class="post__image"><img loading="lazy"  style="position: absolute; inset: 0; width: 100%; height: auto; object-fit: cover; z-index: 2; display: block;" src="https://hidix.ru/media/posts/32/zapusk_pr.png" alt="Обложка видео" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/32/responsive/zapusk_pr-xs.webp 300w ,https://hidix.ru/media/posts/32/responsive/zapusk_pr-sm.webp 480w ,https://hidix.ru/media/posts/32/responsive/zapusk_pr-md.webp 768w"></figure> <!-- Чёрная кнопка поверх --> <button id="rtb-play" style="position: absolute; z-index: 3; left: 16px; bottom: 16px; padding: 10px 18px; font: 600 15px system-ui; cursor: pointer; background: rgba(0,0,0,.95); color: #fff; border: 1px solid #fff; border-radius: 999px; max-width: 150px;" type="button"> ▶ Смотреть </button></div>
 <p>
 <script>
 		(() => {
@@ -275,7 +322,8 @@
         </author>
         <link href="https://hidix.ru/post/chat-bot-dlya-3x-ui/"/>
         <id>https://hidix.ru/post/chat-bot-dlya-3x-ui/</id>
-            <category term="Инструкции"/>
+            <category term="Платный софт"/>
+            <category term="VPN сервис"/>
 
         <updated>2025-10-19T11:21:42+03:00</updated>
             <summary>
@@ -542,6 +590,7 @@ sudo systemctl status 3xui-module.service</code></pre>
         </author>
         <link href="https://hidix.ru/post/bystrye-nastroyki-pri-pokupke-routera-u-nas-2/"/>
         <id>https://hidix.ru/post/bystrye-nastroyki-pri-pokupke-routera-u-nas-2/</id>
+            <category term="Роутеры и настройки"/>
 
         <updated>2025-09-17T14:27:46+03:00</updated>
             <summary>
@@ -601,6 +650,7 @@ sudo systemctl status 3xui-module.service</code></pre>
         </author>
         <link href="https://hidix.ru/post/razgon-asika-bitmain-antminer-l7-do-112gh-proshivka-pitbit-luchshiy-pul-posleduyushchaya-nastroyka/"/>
         <id>https://hidix.ru/post/razgon-asika-bitmain-antminer-l7-do-112gh-proshivka-pitbit-luchshiy-pul-posleduyushchaya-nastroyka/</id>
+            <category term="Майнинг"/>
 
         <updated>2025-07-22T14:40:32+03:00</updated>
             <summary>
@@ -760,6 +810,7 @@ sudo systemctl status 3xui-module.service</code></pre>
         </author>
         <link href="https://hidix.ru/post/bystrye-nastroyki-pri-pokupke-routera-u-nas/"/>
         <id>https://hidix.ru/post/bystrye-nastroyki-pri-pokupke-routera-u-nas/</id>
+            <category term="Роутеры и настройки"/>
 
         <updated>2025-06-20T18:23:27+03:00</updated>
             <summary>
@@ -817,6 +868,7 @@ sudo systemctl status 3xui-module.service</code></pre>
         </author>
         <link href="https://hidix.ru/post/sbros-reset-televizora-xiaomi/"/>
         <id>https://hidix.ru/post/sbros-reset-televizora-xiaomi/</id>
+            <category term="Телевизоры Xiaomi"/>
 
         <updated>2025-06-18T05:08:20+03:00</updated>
             <summary>
@@ -864,6 +916,7 @@ sudo systemctl status 3xui-module.service</code></pre>
         </author>
         <link href="https://hidix.ru/post/vosstanovlenie-routera-xiaomi-ax3000t-na-foresee-programmatorom-ch340/"/>
         <id>https://hidix.ru/post/vosstanovlenie-routera-xiaomi-ax3000t-na-foresee-programmatorom-ch340/</id>
+            <category term="Роутеры и настройки"/>
 
         <updated>2025-06-18T02:15:36+03:00</updated>
             <summary>
@@ -1009,6 +1062,7 @@ bootm 0x46000000</code></pre>
         </author>
         <link href="https://hidix.ru/post/kak-nastroit/"/>
         <id>https://hidix.ru/post/kak-nastroit/</id>
+            <category term="Роутеры и настройки"/>
 
         <updated>2025-06-13T19:17:35+03:00</updated>
             <summary>
@@ -1072,74 +1126,6 @@ bootm 0x46000000</code></pre>
 <blockquote>
 <p>Внимание: Теперь, чтобы зайти в веб морду роутера, необходимо будет вводить ваш измененный IP адрес (по инструкции 192.168.2.1), все остальные ссылки с веб-панели так же примут новый адрес.</p>
 </blockquote>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Русификация телевизоров Xiaomi из Китая</title>
-        <author>
-            <name>alex dde</name>
-        </author>
-        <link href="https://hidix.ru/post/rusifikaciya-televizorov-xiaomi/"/>
-        <id>https://hidix.ru/post/rusifikaciya-televizorov-xiaomi/</id>
-
-        <updated>2025-06-13T19:00:26+03:00</updated>
-            <summary>
-                <![CDATA[
-                    Русификация телевизоров Xiaomi для китайского рынка Русификация китайских телевизоров Xiaomi становится всё более востребованной процедурой среди пользователей, стремящихся получить полноценный интерфейс на телевизоре Xiaomi из&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <h3>Русификация телевизоров Xiaomi для китайского рынка</h3>
-<p>Русификация китайских телевизоров <strong>Xiaomi</strong> становится всё более востребованной процедурой среди пользователей, стремящихся получить полноценный интерфейс на телевизоре Xiaomi из Китая . Для успешной процедуры достаточно скачать утилиту <strong>Xiaomi Flasher</strong> и установить модификацию с установкой русского интерфейса. Популярные запросы «Русификация Xiaomi TV» и «прошивка китайских телевизоров Xiaomi» чаще всего приводят к инструкциям с утилитой <strong>Xiaomi Flasher</strong> и подробным пошаговым гайдам. Ввиду того, что утилита написана мной (<a href="https://t.me/alex_dde" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">@ALEX_dde</a>), я решил указать все данные в этой статье. Обзор программы по <a href="https://hidix.ru/post/rusifikaciya-televizorov-xiaomi-redmi-iz-kitaya-cn-versiya-programmoy-xiaomi-flasher/" title="Русификация Китайских телевизоров Xiaomi Redmiиз Китая" target="_blank" rel="noopener noreferrer">этой ссылке</a>.</p>
-<p data-start="203" data-end="467"><a href="https://t.me/alex_dde" target="_blank"   class="btn btn--green extlink extlink-icon-4"  rel="noopener noreferrer">Приобрести / Задать вопрос</a></p>
-<h3>Что мы получаем?</h3>
-<p>После русификации, телевизор будет загружаться сразу в <strong>русский</strong> интерфейс, все приложения будут так же на русском. В меню настроек вы сможете изменить фон, сможете настроить категории и размер иконок под себя. Голосовой ассистент будет работать с главного экрана, а так же в большинстве приложений.</p>
-<p>Зачастую, неумелые пользователи пытаются сами установить различные моды, что приводит к черному экрану. При русификации телевизоров Xiaomi черный экран возникает тогда, когда лаунчер не может стартануть. Все мануалы и инструкции, что есть в сети, давно устарели и не работают с новыми моделями.</p>
-<p>Утилита <strong>Xiaomi Flasher</strong> автоматически за 3 минуты русифицирует телевизор без танцев с бубном. В процессе русификации утилита <strong>дополнительно</strong> отключит все китайские сервисы (телевизор не будет пытаться стучаться в Китай и скачивать какую либо рекламу), удалит все китайские приложения и установит русские. По итогу мы получаем <strong>полноценный</strong> телевизор на <strong>русском</strong> языке. Исключение составляет пункт основных настроек телевизора, они останутся на английском языке, технически их русифицировать невозможно. Но как часто вы туда заходите? Один раз настроил и забыл. Видео готового результата вы сможете посмотреть на видео ниже</p>
-<div class="post__iframe"><iframe loading="lazy" width="720" height="405" src="https://rutube.ru/play/embed/bffc2a7e3eb076503260f8e97ce620bf" frameborder="0" allow="clipboard-write;" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe></div>
-<p><strong style="font-family: var(--editor-font-family); font-size: inherit;">Процедура русификации включает в себя:</strong></p>
-<div class="blocks-section s-16670396-2 has-s s-14756636 is-transparent  has-next-s is-next-transparent">
-<div>
-<div class="page-container">
-<div class="section-main">
-<div>
-<div>
-<div class="block-item block-text is-textable b-b0b29a114d6c">
-<div>
-<div class="block-text has-rtl">— русификация интерфейса<br>— избавление от китайских иероглифов<br>— отключение китайских сервисов (ваш тв больше не посылает в Китай никакие данные)<br>— удаление китайских программ и сервисов (высвобождается оперативная память)<br>— установка голосового поиска<br>— установка пакета популярных приложений и сервисов (огромное количество фильмов, сериалов 4К бесплатно)</div>
-<div> </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="blocks-section s-16670396-3 is-transparent">
-<div class="page-container">
-<div class="section-main">
-<div class="block-item block-text is-first is-textable b-b7fd464ee6b5">
-<div>
-<div class="block-text has-rtl"><strong>Что необходимо?</strong><br>У вас должен быть ноутбук/компьютер на <strong>Windows 10 или 11, </strong>другие операционные системы<strong> <span style="color: #c92a2a;">НЕ ПОДДЕРЖИВАЮТСЯ!</span></strong></div>
-<div> </div>
-</div>
-</div>
-<div class="block-item block-text is-textable b-bac68f41b016">
-<div>
-<div class="block-text has-rtl"><strong>Как все происходит?</strong><br>‌Я передаю вам программу и инструкцию + видео инструкцию, вы делаете самостоятельно по инструкции, в случае чего я обязательно помогаю. Никакие кабели не нужны, программа работает по Wi-Fi. Программа достаточно <strong>легкая</strong>, большинство пользователей проделывают эту процедуру за <strong>10−15</strong> минут.</div>
-</div>
-</div>
-<div class="block-item block-html b-79648580">
-<div>Телеграм: <a href="https://t.me/alex_dde" target="_blank"  class="extlink extlink-icon-4"  rel="noopener">@ALEX_dde</a></div>
-<div> </div>
-<div>Для всех желающих прошиться через мой софт я предлагаю к приобретению всемогущий роутер и даю промокод на скидку. Благодаря этому роутеру вы сможете смотреть видео сервисы в высоком качестве без тормозов и ограничений. Роутер умеет открывать любые сайты и большинство без VPN. Описание роутера по этой <a href="https://hidix.ru/post/router-so-vstroennym-vpn-i-obhodom/">ссылке</a></div>
-</div>
-</div>
-</div>
-</div>
             ]]>
         </content>
     </entry>
