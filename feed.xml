@@ -3,7 +3,7 @@
     <title>HIDIX</title>
     <link href="https://hidix.ru/feed.xml" rel="self" />
     <link href="https://hidix.ru" />
-    <updated>2025-11-05T23:19:52+03:00</updated>
+    <updated>2025-11-05T23:29:14+03:00</updated>
     <author>
         <name>alex dde</name>
     </author>
@@ -126,6 +126,21 @@
 <li>Подсказки и уведомления</li>
 </ul>
 <p>Программа очень легка в использовании, любой сможет справиться по инструкции, весть процесс занимает 10-15 минут и максимально автоматизирован.</p>
+<h3>FAQ</h3>
+<div class="faq">
+<div class="faq-item">
+<div class="faq-question"><span class="faq-arrow">▼</span> Можно ли сломать телевизор?</div>
+<div class="faq-answer">Нет, процесс безопасный. Он не затрагивает системные разделы и не нарушает гарантию</div>
+</div>
+<div class="faq-item">
+<div class="faq-question"><span class="faq-arrow">▼</span> Что необходимо? Нужен ли кабель?</div>
+<div class="faq-answer">Подключение по Wi-Fi, кабели не нужны, необходим лишь ноутбук или ПК на Windows 10 или Windows 11, другие ОС не поддерживаются</div>
+</div>
+<div class="faq-item">
+<div class="faq-question"><span class="faq-arrow">▼</span> Можно ли вернуть все обратно?</div>
+<div class="faq-answer">Да, в телевизорах <strong>Xiaomi</strong> есть встроенная система восстановления. В любой момент можно сделать <a href="https://hidix.ru/post/sbros-reset-televizora-xiaomi/" target="_blank" rel="noopener noreferrer">полный сброс</a> и вернуть телевизор в исходное состояние</div>
+</div>
+<hr>
 <h3>Начало работы с программой</h3>
 <h5><strong>Этап 1. Полный сброс:</strong></h5>
 <p><strong>В моделях до 2025 года:</strong><br>Настройки (шестеренка)  &gt; ‌Settings &gt; General Settings &gt; Reset<br>‌Выберите &gt; <strong>Reset</strong> (или Delete) &gt; <strong>Confirm (Reset)</strong><br>‌<br>‌<strong>В новых моделях (HyperOS):</strong><br>‌Настройки (шестеренка) &gt; ‌Settings &gt; General Settings &gt; Restore<br>‌Выберите <strong>Don't Retain</strong> &gt; Restore Now &gt; <strong>Confirm (Restore)</strong></p>
@@ -239,6 +254,7 @@
 <!-- script end -->
 <p>Программа платная, оплачивая программу вы поддерживаете развитие проекта и помогаете многим людям</p>
 <p data-start="203" data-end="467"><a href="https://t.me/alex_dde" target="_blank"   class="btn btn--green extlink extlink-icon-4"  rel="noopener noreferrer">Приобрести / Задать вопрос</a></p>
+</div>
 </div>
 </div>
             ]]>
