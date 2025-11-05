@@ -3,7 +3,7 @@
     <title>HIDIX</title>
     <link href="https://hidix.ru/feed.xml" rel="self" />
     <link href="https://hidix.ru" />
-    <updated>2025-11-05T23:04:06+03:00</updated>
+    <updated>2025-11-05T23:19:52+03:00</updated>
     <author>
         <name>alex dde</name>
     </author>
@@ -520,6 +520,7 @@ sudo systemctl status 3xui-module.service</code></pre>
         <link href="https://hidix.ru/post/bystrye-nastroyki-pri-pokupke-routera-u-nas-2/"/>
         <id>https://hidix.ru/post/bystrye-nastroyki-pri-pokupke-routera-u-nas-2/</id>
             <category term="Роутеры и настройки"/>
+            <category term="Роутер Xiaomi AX3000T"/>
 
         <updated>2025-09-17T14:27:46+03:00</updated>
             <summary>
@@ -740,6 +741,7 @@ sudo systemctl status 3xui-module.service</code></pre>
         <link href="https://hidix.ru/post/bystrye-nastroyki-pri-pokupke-routera-u-nas/"/>
         <id>https://hidix.ru/post/bystrye-nastroyki-pri-pokupke-routera-u-nas/</id>
             <category term="Роутеры и настройки"/>
+            <category term="Роутер Xiaomi AX3000T"/>
 
         <updated>2025-06-20T18:23:27+03:00</updated>
             <summary>
@@ -846,6 +848,7 @@ sudo systemctl status 3xui-module.service</code></pre>
         <link href="https://hidix.ru/post/vosstanovlenie-routera-xiaomi-ax3000t-na-foresee-programmatorom-ch340/"/>
         <id>https://hidix.ru/post/vosstanovlenie-routera-xiaomi-ax3000t-na-foresee-programmatorom-ch340/</id>
             <category term="Роутеры и настройки"/>
+            <category term="Роутер Xiaomi AX3000T"/>
 
         <updated>2025-06-18T02:15:36+03:00</updated>
             <summary>
@@ -940,6 +943,7 @@ bootm 0x46000000</code></pre>
         </author>
         <link href="https://hidix.ru/post/nastroyka-prilozheniya-lampa/"/>
         <id>https://hidix.ru/post/nastroyka-prilozheniya-lampa/</id>
+            <category term="Телевизоры Xiaomi"/>
             <category term="Инструкции"/>
 
         <updated>2025-06-14T00:27:32+03:00</updated>
@@ -992,6 +996,7 @@ bootm 0x46000000</code></pre>
         <link href="https://hidix.ru/post/kak-nastroit/"/>
         <id>https://hidix.ru/post/kak-nastroit/</id>
             <category term="Роутеры и настройки"/>
+            <category term="Роутер Xiaomi AX3000T"/>
 
         <updated>2025-06-13T19:17:35+03:00</updated>
             <summary>
