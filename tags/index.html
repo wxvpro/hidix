@@ -16,7 +16,70 @@
                     this.classList.add('is-loaded');
                 }, false);
             }
-        }</script><script>window.publiiStaticSearchConfig = { 
+        }</script><script>document.addEventListener('DOMContentLoaded', function () {
+  const NAMESPACE = 'hidixviewcount-site2025'; // замени на уникальное имя
+  const TTL_MS = 60 * 60 * 1000; // 1 час
+
+  const el = document.getElementById('pv-num');
+  if (!el) return;
+
+  // нормализуем ключ
+  let path = location.pathname || '/';
+  if (path.length > 1 && path.endsWith('/')) path = path.slice(0, -1);
+  const KEY = (path.replace(/\//g,'_') || 'home');
+
+  el.textContent = '0'; // не показываем «—»
+
+  const base = 'https://api.countapi.xyz';
+  const urlGet    = `${base}/get/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(KEY)}`;
+  const urlCreate = `${base}/create/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(KEY)}`;
+  const urlHit    = `${base}/hit/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(KEY)}`;
+
+  const lsKey = 'pv_hit_' + KEY;
+  const lastHit = Number(localStorage.getItem(lsKey) || 0);
+  const now = Date.now();
+
+  const render = v => { if (Number.isFinite(v)) el.textContent = String(v); };
+
+  const getVal = () =>
+    fetch(urlGet, {cache:'no-store'}).then(r=>r.json()).then(j=>render(j?.value)).catch(()=>{});
+
+  // Гарантируем существование ключа
+  function ensureExists() {
+    return fetch(urlGet, {cache:'no-store'}).then(async r => {
+      if (r.ok) return r.json();
+      // если нет — создаём со значением 0
+      const c = await fetch(urlCreate, {cache:'no-store'}).then(r2=>r2.json());
+      return c;
+    }).then(j => { if (j && typeof j.value !== 'undefined') render(j.value); });
+  }
+
+  function doHit() {
+    return fetch(urlHit, {cache:'no-store'})
+      .then(r=>r.json())
+      .then(j => {
+        if (typeof j?.value !== 'undefined') {
+          render(j.value);
+          localStorage.setItem(lsKey, String(now));
+        } else {
+          return getVal();
+        }
+      })
+      .catch(getVal);
+  }
+
+  (async () => {
+    await ensureExists();
+    // Если 0 — форсируем первый hit сразу (даже если TTL недавно был)
+    if (el.textContent === '0') {
+      await doHit();
+      return;
+    }
+    // иначе уважаем TTL
+    if (!lastHit || (now - lastHit) > TTL_MS) await doHit();
+    else await getVal();
+  })();
+});</script><script>window.publiiStaticSearchConfig = { 
 					baseURL: 'https://hidix.ru',
 					minCharCount: 3,
 					maxResultsCount: 20,
