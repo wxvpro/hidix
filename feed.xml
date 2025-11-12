@@ -3,12 +3,269 @@
     <title>HIDIX</title>
     <link href="https://hidix.ru/feed.xml" rel="self" />
     <link href="https://hidix.ru" />
-    <updated>2025-11-05T23:29:14+03:00</updated>
+    <updated>2025-11-12T04:46:07+03:00</updated>
     <author>
         <name>alex dde</name>
     </author>
     <id>https://hidix.ru</id>
 
+    <entry>
+        <title>Плагин скрытия контента Publii</title>
+        <author>
+            <name>alex dde</name>
+        </author>
+        <link href="https://hidix.ru/post/plagin-skrytiya-kontenta-publii/"/>
+        <id>https://hidix.ru/post/plagin-skrytiya-kontenta-publii/</id>
+            <category term="Платный софт"/>
+
+        <updated>2025-11-12T04:15:42+03:00</updated>
+            <summary>
+                <![CDATA[
+                    Уникальный вариант для Publii, нигде нет ничего подобного, решил написать сам Можно ставить несколько блоков с разными паролями, попробуйте открыть следующий блок с паролем 123&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p class="msg msg--success">Уникальный вариант для Publii, нигде нет ничего подобного, решил написать сам</p>
+<h2>Скрытие контента в Publii по паролю</h2>
+<p>Можно ставить несколько блоков с разными паролями, попробуйте открыть следующий блок с паролем <strong><code>123</code></strong></p>
+<p>{{#lock pw="123"}}</p>
+<p><code><strong>СКРЫТЫЙ КОНТЕНТ</strong></code></p>
+<p>{{/lock}}</p>
+<hr>
+<h3>Инструкция (платный контент)</h3>
+<p>{{#lock pw="172533"}}</p>
+<p>Создаем файл по пути Publii &gt; sites &gt; ваш_сайт &gt; input &gt; themes &gt; ваша_тема &gt; helpers.js</p>
+<pre class="language-bash"><code>const fs = require('fs');
+const path = require('path');
+const vm = require('vm');
+const nodeCrypto = require('crypto'); // &lt;— добавили
+
+// грузим CryptoJS из темы
+const cryptoPath = path.join(__dirname, 'assets', 'js', 'crypto-js.min.js');
+const src = fs.readFileSync(cryptoPath, 'utf8');
+
+// создаём sandbox и даём ему crypto.getRandomValues
+const sandbox = {};
+vm.createContext(sandbox);
+
+// надёжный RNG через nodeCrypto.randomBytes, с запасным Math.random
+sandbox.crypto = {
+  getRandomValues(typedArray) {
+    try {
+      const buf = nodeCrypto.randomBytes(typedArray.length);
+      typedArray.set(buf);
+    } catch (e) {
+      for (let i = 0; i &lt; typedArray.length; i++) {
+        typedArray[i] = Math.floor(Math.random() * 256);
+      }
+    }
+    return typedArray;
+  }
+};
+
+vm.runInContext(src, sandbox);
+const CryptoJS = sandbox.CryptoJS;
+
+module.exports = {
+  // {{{ parseLocks text }}}
+  parseLocks(input) {
+    if (!input || typeof input !== 'string') return input;
+
+    const re = /{{#lock\s+pw="([^"]+)"}}([\s\S]*?){{\/lock}}/g;
+
+    const out = input.replace(re, (_, pw, inner) =&gt; {
+      const enc = CryptoJS.AES.encrypt(inner, pw).toString().replace(/"/g, '&amp;quot;');
+      return `
+&lt;div class="lock-box" data-enc="${enc}"&gt;
+  &lt;div class="lock-ui"&gt;
+    &lt;label&gt;Контент скрыт &lt;/label&gt;
+    &lt;input type="password" class="lock-pw" placeholder="Пароль"&gt;
+    &lt;button type="button" class="lock-btn"&gt;ОК&lt;/button&gt;
+    &lt;p&gt;Для открытия контента необходимо &lt;a href="#" target="_blank"&gt;оплатить доступ&lt;/a&gt;&lt;/p&gt;
+    &lt;div class="lock-msg" aria-live="polite"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="lock-content" style="display:none;"&gt;&lt;/div&gt;
+&lt;/div&gt;`.trim();
+    });
+
+    // тройные фигурные скобки {{{ }}} не экранируют, поэтому можно вернуть строку
+    return out;
+  },
+
+  // можно оставить для проверки
+  testPing() { return 'PING'; }
+};</code></pre>
+<p>В файле по пути Publii &gt; sites &gt; ваш_сайт &gt; input &gt; themes &gt; ваша_тема &gt; partials &gt; footer.hbs в конце файла перед закрывающим тегом &lt;/body&gt; вставляем код</p>
+<pre class="language-bash"><code>&lt;script src="{{asset "js/crypto-js.min.js"}}"&gt;&lt;/script&gt;
+&lt;script&gt;
+(function () {
+  function markLoaded(img) {
+    try { img.classList.add('is-loaded'); } catch (e) {}
+  }
+
+  function wireLoadHandlers(root) {
+    var imgs = root.querySelectorAll('img');
+    imgs.forEach(function (img) {
+      if (img.complete &amp;&amp; img.naturalWidth &gt; 0) {
+        markLoaded(img);
+      } else {
+        img.addEventListener('load',  function () { markLoaded(img); }, { once: true });
+        img.addEventListener('error', function () { markLoaded(img); }, { once: true });
+      }
+    });
+  }
+
+  // Починка lazy-медиа (картинки/видео/фоны)
+  function postProcessUnlocked(root) {
+    var imgs = root.querySelectorAll('img');
+    imgs.forEach(function (img) {
+      if (img.dataset) {
+        if (img.dataset.src)    img.src    = img.dataset.src;
+        if (img.dataset.srcset) img.srcset = img.dataset.srcset;
+        if (img.dataset.sizes)  img.sizes  = img.dataset.sizes;
+      }
+      img.loading = 'eager';
+      img.classList.remove('lazy', 'lazyload', 'lazyloaded');
+      if (img.srcset) { img.srcset = img.srcset; }
+      if (!img.getAttribute('src') &amp;&amp; img.currentSrc) img.src = img.currentSrc;
+    });
+
+    var sources = root.querySelectorAll('picture source, source');
+    sources.forEach(function (s) {
+      if (s.dataset &amp;&amp; s.dataset.srcset) s.srcset = s.dataset.srcset;
+      s.removeAttribute('data-srcset');
+    });
+
+    var videos = root.querySelectorAll('video');
+    videos.forEach(function (v) {
+      if (v.dataset &amp;&amp; v.dataset.src)    v.src    = v.dataset.src;
+      if (v.dataset &amp;&amp; v.dataset.poster) v.poster = v.dataset.poster;
+      v.classList.remove('lazy', 'lazyload', 'lazyloaded');
+    });
+
+    var bgNodes = root.querySelectorAll('[data-bg]');
+    bgNodes.forEach(function (n) {
+      var bg = n.getAttribute('data-bg');
+      if (bg) n.style.backgroundImage = 'url("' + bg + '")';
+      n.removeAttribute('data-bg');
+    });
+
+    wireLoadHandlers(root);
+
+    if (window.lazySizes &amp;&amp; window.lazySizes.loader) {
+      imgs.forEach(function (img) { window.lazySizes.loader.unveil(img); });
+      sources.forEach(function (s) {
+        var p = s.parentNode &amp;&amp; s.parentNode.querySelector('img');
+        if (p) window.lazySizes.loader.unveil(p);
+      });
+    }
+  }
+
+  // Переинициализация подсветки синтаксиса для динамически вставленного кода
+  function rehighlight(root) {
+    try {
+      if (window.Prism &amp;&amp; typeof window.Prism.highlightAllUnder === 'function') {
+        window.Prism.highlightAllUnder(root); // для Prism (классы language-*)
+      } else if (window.hljs &amp;&amp; typeof window.hljs.highlightElement === 'function') {
+        root.querySelectorAll('pre code').forEach(function (el) {
+          window.hljs.highlightElement(el);    // для highlight.js (класс hljs добавится сам)
+        });
+      }
+    } catch (e) {
+      /* noop */
+    }
+  }
+
+  function unlock(box) {
+    var enc = box.getAttribute('data-enc'); // Base64 шифротекст
+    var pw  = box.querySelector('.lock-pw').value || '';
+    var msg = box.querySelector('.lock-msg');
+    var out = box.querySelector('.lock-content');
+
+    try {
+      var bytes = CryptoJS.AES.decrypt(enc, pw);
+      var html  = bytes.toString(CryptoJS.enc.Utf8);
+      if (!html) throw 0;
+
+      out.innerHTML = html;
+      postProcessUnlocked(out); // картинки/медиа
+      rehighlight(out);         // &lt;— подсветка кода после вставки
+      out.style.display = '';
+      box.querySelector('.lock-ui').style.display = 'none';
+    } catch (e) {
+      if (msg) {
+        msg.textContent = '❌ Неверный пароль';
+        setTimeout(function () { msg.textContent = ''; }, 1500);
+      }
+    }
+  }
+
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.lock-btn'); if (!btn) return;
+    unlock(btn.closest('.lock-box'));
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter') return;
+    var input = e.target.closest('.lock-pw'); if (!input) return;
+    unlock(input.closest('.lock-box'));
+  });
+})();
+&lt;/script&gt;</code></pre>
+<p>Скачиваем файл <span style="color: var(--text-primary-color); font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);"><a href="https://hidix.ru/crypto-js.min.js">crypto-js.min.js</a> </span>и кладем по пути Publii &gt; sites &gt; ваш_сайт &gt; input &gt; themes &gt; ваша_тема &gt; assets &gt; <span style="color: var(--text-primary-color); font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);">js &gt; crypto-js.min.js</span></p>
+<p>Перегружаем Publii</p>
+<p>Как пользоваться:</p>
+<p>Весь контент, который хотите скрыть, помещайте в тег таким образом:</p>
+<p>{ {#lock pw="123"} }<br>Контент<br>{ {/lock} }</p>
+<p>Между кавычками пробела быть не должно</p>
+<p>{{/lock}}</p>
+<p> </p>
+<p> </p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Заводим YotubeUnblock через USB Модем</title>
+        <author>
+            <name>alex dde</name>
+        </author>
+        <link href="https://hidix.ru/post/zavodim-yt-cherez-usb-modem/"/>
+        <id>https://hidix.ru/post/zavodim-yt-cherez-usb-modem/</id>
+            <category term="Роутеры и настройки"/>
+            <category term="Cudy TR3000"/>
+
+        <updated>2025-11-06T04:07:03+03:00</updated>
+            <summary>
+                <![CDATA[
+                    Инструкция для настройки работы YoutubeUnblock в случае, если трафик идет через USB-модем {{#lock pw="172533"}} # посмотри имена своих интерфейсов (qmi-*, wwan0 и т.п.) ip -br&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>Инструкция для настройки работы YoutubeUnblock в случае, если трафик идет через USB-модем</p>
+<p>{{#lock pw="172533"}}</p>
+<h2>Вариант А</h2>
+<pre class="language-bash"><code># посмотри имена своих интерфейсов (qmi-*, wwan0 и т.п.)
+ip -br link | awk '{print $1}' # выдает ошибку
+uci show network | sed -n 's/^\(network\.[^=]*=.*\)$/\1/p'</code></pre>
+<p># добавляем modem2 и modem3 (или реальные имена, как в /etc/config/network) в зону wan</p>
+<pre class="language-bash"><code>uci add_list firewall.@zone[1].network='modem2'
+uci add_list firewall.@zone[1].network='modem3'
+uci commit firewall
+/etc/init.d/firewall restart</code></pre>
+<p class="p1">Убедиться, что <span class="s1"><strong>nft-цепочка</strong></span> от YouTubeUnblock существует и висит на postrouting</p>
+<pre class="language-bash"><code>nft list chain inet fw4 youtubeUnblock</code></pre>
+<p># в выводе должны быть правила вида:<br>#  tcp dport 443 ct original packets &lt; 20 queue num 537 bypass<br>#  meta l4proto udp ct original packets &lt; 9 queue num 537 bypass</p>
+<p class="p1">Проверить, что сервис жив</p>
+<pre class="language-bash"><code>/etc/init.d/youtubeUnblock status || true
+logread -e youtubeUnblock</code></pre>
+<p class="p1">Тест скоростной «проброски», без YouTubeUnblock будет медленно, с ним — как на mirror.gcr.io</p>
+<pre class="language-bash"><code>curl -o/dev/null -k --connect-to ::google.com -L -H 'Host: mirror.gcr.io' https://test.googlevideo.com/v2/cimg/android/blobs/sha256:6fd8bdac3...</code></pre>
+<p>{{/lock}}</p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Подключение датчика температуры к термостату Sonoff через SprutHub</title>
         <author>
@@ -308,7 +565,7 @@
 <p data-anchor="ZevT">По вопросам приобретения <strong>пишите в телеграм</strong> <a href="https://t.me/alex_dde" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">@ALEX_DDE</a></p>
 <hr>
 <h3 data-anchor="ZevT">Настройка веб-панели и телеграм бота</h3>
-<p>Подготовка:</p>
+<p class="p1">{{#lock pw="172533"}}<br>Подготовка:</p>
 <ul>
 <li data-anchor="h8yr">Арендуем сервер <strong>VPS</strong> на базе <strong>UBUNTU</strong>, делаем на отдельном серваке</li>
 <li data-anchor="zoOo">Получаем токен у <strong>BotFather</strong> и свой <strong>ID</strong> - будет id админа бота</li>
@@ -522,8 +779,10 @@ sudo systemctl restart 3xui-module.service</code></pre>
 <pre class="language-bash"><code>sudo systemctl status 3xui-bot.service
 sudo systemctl status tgbot-api.service
 sudo systemctl status 3xui-module.service</code></pre>
+<p> </p>
 <p data-anchor="FJHu"><span class="link">Установка панели 3x ui и защита есть в ролике по <a href="https://www.youtube.com/watch?v=zt4oxHeUbdk&amp;t=2946s" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">ссылке</a></span></p>
-<p data-anchor="6bTz"> </p>
+<p data-anchor="FJHu">{{/lock}}</p>
+<p data-anchor="FJHu"> </p>
 </section>
             ]]>
         </content>
@@ -949,133 +1208,6 @@ bootm 0x46000000</code></pre>
 <p>Далее <strong>System</strong> &gt;  <strong>Backup</strong> / <strong>Flash</strong> <strong>Firmware</strong> &gt; в самый низ &gt; Flash new firmware image &gt; кнопка <strong>Flash image</strong>.. &gt; выбираем файл <strong>ax3000t-squashfs-sysupgrade.bin</strong>, что скачали в самом начале, снимаем <span style="color: #e03e2d;">обязательно</span> галочку <strong>Keep settings and retain the current configuration</strong>, подтверждаем</p>
 <p>Готово. После перезагрузки роутер будет на <strong>русском языке</strong> и готовый к работе. Питание и программатор можно отключать.</p>
 <p> </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Настройка приложения Lampa для просмотра фильмов и сериалов</title>
-        <author>
-            <name>alex dde</name>
-        </author>
-        <link href="https://hidix.ru/post/nastroyka-prilozheniya-lampa/"/>
-        <id>https://hidix.ru/post/nastroyka-prilozheniya-lampa/</id>
-            <category term="Телевизоры Xiaomi"/>
-            <category term="Инструкции"/>
-
-        <updated>2025-06-14T00:27:32+03:00</updated>
-            <summary>
-                <![CDATA[
-                    Настройка приложения Lampa для просмотра фильмов и сериалов в 4К Вся инструкция уложилась в одну минуту на видео И в текстовом варианте Открываем приложение TorrServe&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <p>Настройка приложения Lampa для просмотра фильмов и сериалов в 4К</p>
-<p>Вся инструкция уложилась в одну минуту на видео</p>
-<div class="post__iframe"><iframe loading="lazy" width="720" height="405" src="https://rutube.ru/play/embed/46c94eade826cc047d911bb5f33ba6d0" frameborder="0" allow="clipboard-write;" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe></div>
-<p>И в текстовом варианте</p>
-<h3>Настройка приложения Lampa</h3>
-<p>Открываем приложение <strong>TorrServe</strong> &gt; <strong>Обновление</strong> &gt; <strong>Установить</strong> / <strong>Обновить</strong> сервер, дожидаемся, пока слева станет зеленым localhost:8090</p>
-<p>Открываем приложение Lampa, при первом запуске приложение попросит ввести ссылку, вводим: <code><a href="http://lampa.stream"  class="extlink extlink-icon-4"  >http://lampa.stream</a></code></p>
-<p>В меню &gt; <strong>Парсер</strong></p>
-<ul style="list-style-type: square;">
-<li>Использовать парсер: ДА</li>
-<li>Ссылка: <code>jacred.xyz</code></li>
-</ul>
-<p>В меню &gt; <strong>TorrServer</strong></p>
-<ul style="list-style-type: square;">
-<li>Встроенный клиент: Да</li>
-<li>Использовать ссылку: Основную</li>
-<li>Основная ссылка: <code>localhost:8090</code> (та, что у нас отобразилась в приложении TorrServ)</li>
-<li>Тестировать скорость: можно протестировать скорость, если вы все ввели верно тест пройдет успешно</li>
-</ul>
-<p>Для удобства просмотра можно в меню зайти в расширения и скачать (рекомендую все, хуже не станет), а так же выставить высокое качество постеров</p>
-<blockquote>
-<p>После каждой перезагрузки телевизора необходимо вначале зайти в приложение TorrServe, дождаться, пока появится слева сверху зеленая надпись <span style="color: #169179;">localhost:8090</span> (2-3 сек), после уже запускать Lampa</p>
-</blockquote>
-<h3>Как запустить просмотр фильма</h3>
-<p>В приложении <strong>Lampa</strong> &gt; выбрать понравившееся &gt; смотреть &gt; Торрент &gt; выбрать из предложенных вариантов качество, далее выбрать плеер для просмотра. Родной плеер (на телевизорах Xiaomi) отлично воспроизводит многоканальное аудио <strong>Dolby</strong>, но не все форматы видео и не может выбирать звуковые дорожки. Плеер <strong>Vimu</strong> - выбирать дорожки умеет, но есть проблемы с воспроизведением звука <strong>Dolby</strong>. Выбирайте <strong>родной</strong> плеер, а если что не так - тогда уже <strong>Vimu</strong> или другие.</p>
-<ul style="list-style-type: square;">
-<li>Фильмы с бейджиками 2160p или 3840x2160 - это <strong>4К</strong> качество</li>
-<li>7.1 или 5.1 означает поддержку многоканального звука</li>
-<li>Чем больше раздающих, тем больше шансов, что не будет зависать видео</li>
-</ul>
-<p> </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Обзор настроек OpenWRT роутера</title>
-        <author>
-            <name>alex dde</name>
-        </author>
-        <link href="https://hidix.ru/post/kak-nastroit/"/>
-        <id>https://hidix.ru/post/kak-nastroit/</id>
-            <category term="Роутеры и настройки"/>
-            <category term="Роутер Xiaomi AX3000T"/>
-
-        <updated>2025-06-13T19:17:35+03:00</updated>
-            <summary>
-                <![CDATA[
-                    Как зайти в веб панель роутера Подключаемся к роутеру по Wi-Fi (по умолчанию сеть называется OpenWRT, пароль 12345678) или кабелем (кабель должен быть воткнут во&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <h3>Как зайти в веб панель роутера</h3>
-<ul>
-<li>Подключаемся к роутеру по Wi-Fi (по умолчанию сеть называется <code>OpenWRT</code>, пароль <code>12345678</code>) или кабелем (кабель должен быть воткнут во второй или третий порт), интернет кабель должен быть воткнут в первый порт около разъема питания)</li>
-<li>В браузере вводим <code>192.168.1.1 или 192.168.10.1</code></li>
-<li>Логин root, без пароля</li>
-<li>Если у вас на этом IP сидит другое устройство, можно попробовать в браузере вместо <code>IP</code> прописать <code>openwrt.lan</code></li>
-</ul>
-<h3>Как сменить название Wi-Fi сети </h3>
-<ul style="list-style-type: square;">
-<li data-start="315" data-end="391">
-<p data-start="318" data-end="391"><strong data-start="318" data-end="346">Перейдите в раздел Wi-Fi</strong><br data-start="346" data-end="349">В верхнем меню: <strong data-start="368" data-end="390">Сети → Беспроводные сети</strong></p>
-<ul>
-<li><strong data-start="477" data-end="487">Radio0</strong> (2.4 GHz)</li>
-<li><strong data-start="477" data-end="487">Radio1</strong> (5 GHz)</li>
-</ul>
-</li>
-<li><strong data-start="530" data-end="548">Нажмите «Изменить»</strong> рядом с тем радиомодулем, SSID (название) которого хотите поменять<br><figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/15/Untitled-4611111-2.png" alt="" width="1800" height="1898" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/15/responsive/Untitled-4611111-2-xs.webp 300w ,https://hidix.ru/media/posts/15/responsive/Untitled-4611111-2-sm.webp 480w ,https://hidix.ru/media/posts/15/responsive/Untitled-4611111-2-md.webp 768w"></figure><br>Вкладка<strong data-start="875" data-end="906"> «Основные настройки»<br></strong>В поле ESSID введите новое имя сети</li>
-<li>Внизу страницы нажмите <strong style="font-family: var(--editor-font-family); font-size: inherit;" data-start="1025" data-end="1033">Сохранить</strong><span style="color: var(--text-primary-color); font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);">.</span>Затем нажмите <strong data-start="1056" data-end="1072">Сохранить и Применить</strong>.</li>
-</ul>
-<h3>Как сменить пароль Wi-Fi сети </h3>
-<ul>
-<li data-start="315" data-end="391">
-<p data-start="318" data-end="391"><strong data-start="318" data-end="346">Перейдите в раздел Wi-Fi</strong><br data-start="346" data-end="349">В верхнем меню: <strong data-start="368" data-end="390">Сети → Беспроводные сети</strong></p>
-<ul>
-<li><strong data-start="477" data-end="487">Radio0</strong> (2.4 GHz)</li>
-<li><strong data-start="477" data-end="487">Radio1</strong> (5 GHz)</li>
-</ul>
-</li>
-<li><strong data-start="530" data-end="548">Нажмите «Изменить»</strong> рядом с тем радиомодулем (названием сети), пароль которого хотите поменять<br><figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/15/Untitled-46222.png" alt="" width="1818" height="2234" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/15/responsive/Untitled-46222-xs.webp 300w ,https://hidix.ru/media/posts/15/responsive/Untitled-46222-sm.webp 480w ,https://hidix.ru/media/posts/15/responsive/Untitled-46222-md.webp 768w"></figure></li>
-<li>Вкладка <strong data-start="610" data-end="641">Защита беспроводной сети<br></strong>В поле <strong data-start="709" data-end="723">Шифрование</strong> выберите <code data-start="733" data-end="743">WPA2-PSK</code> (рекомендуется) или <code data-start="764" data-end="774">WPA3-SAE</code> (если все клиенты поддерживают)<br>В поле <strong style="font-family: var(--editor-font-family); font-size: inherit;" data-start="820" data-end="827">Ключ</strong><span style="color: var(--text-primary-color); font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);"> введите новый пароль (минимум 8 символов)</span></li>
-<li>Внизу страницы нажмите <strong style="font-family: var(--editor-font-family); font-size: inherit;" data-start="1025" data-end="1033">Сохранить</strong><span style="color: var(--text-primary-color); font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);">.</span>Затем нажмите <strong data-start="1056" data-end="1072">Сохранить и Применить</strong></li>
-</ul>
-<h3>Как отключить Wi-Fi ( например если роутер врезан в сеть)</h3>
-<ul>
-<li>Заходим в веб панель роутера (начало статьи)</li>
-<li><strong>Сетевые</strong> <strong>подключения</strong> &gt; <strong>Беспроводная</strong> <strong>сеть<br></strong><figure class="post__image"><img  src="https://hidix.ru/media/posts/15/Untitled-4655.png" alt="" width="2012" height="464" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/15/responsive/Untitled-4655-xs.webp 300w ,https://hidix.ru/media/posts/15/responsive/Untitled-4655-sm.webp 480w ,https://hidix.ru/media/posts/15/responsive/Untitled-4655-md.webp 768w"></figure>Отключаем обе сети<br><figure class="post__image"><img loading="lazy"  style="color: var(--text-primary-color); font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);" src="https://hidix.ru/media/posts/15/Untitled-46444.png" alt="" width="2058" height="876" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/15/responsive/Untitled-46444-xs.webp 300w ,https://hidix.ru/media/posts/15/responsive/Untitled-46444-sm.webp 480w ,https://hidix.ru/media/posts/15/responsive/Untitled-46444-md.webp 768w"></figure></li>
-<li><strong>Сохранить</strong> &gt; <strong>Применить</strong></li>
-</ul>
-<p>Учтите, если вы выключите Wi-Fi, подключиться к роутеру для каких либо настроек вы сможете только по кабелю</p>
-<h3>Как сменить IP адрес роутера (если конфликтует с вашим)</h3>
-<ul>
-<li>Подключаемся к роутеру по Wi-Fi (по умолчанию сеть называется <code>OpenWRT</code>, пароль <code>12345678</code>, интернет кабель <strong>не</strong> втыкать)</li>
-<li>В браузере вводим <code>192.168.1.1 или 192.168.10.1</code></li>
-<li>Логин root, без пароля</li>
-<li>В панели управления переходим в <strong>Сеть</strong> &gt; <strong>Интерфейсы &gt; Lan</strong> &gt; <strong>Изменить</strong></li>
-</ul>
-<figure class="post__image"><img  src="https://hidix.ru/media/posts/15/121111-2.png" alt="" width="1996" height="718" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/15/responsive/121111-2-xs.webp 300w ,https://hidix.ru/media/posts/15/responsive/121111-2-sm.webp 480w ,https://hidix.ru/media/posts/15/responsive/121111-2-md.webp 768w"></figure> <figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/15/12222222-2.png" alt="" width="1920" height="1374" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/15/responsive/12222222-2-xs.webp 300w ,https://hidix.ru/media/posts/15/responsive/12222222-2-sm.webp 480w ,https://hidix.ru/media/posts/15/responsive/12222222-2-md.webp 768w"></figure>
-<p>Меняем IP на <code>192.168.2.1</code>, <strong>Сохранить</strong>, <strong>Применить</strong></p>
-<figure class="post__image"><img  src="https://hidix.ru/media/posts/15/shz-smena-2.png" alt="" width="1822" height="1386" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/15/responsive/shz-smena-2-xs.webp 300w ,https://hidix.ru/media/posts/15/responsive/shz-smena-2-sm.webp 480w ,https://hidix.ru/media/posts/15/responsive/shz-smena-2-md.webp 768w"></figure> <figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/15/primenit.png" alt="" width="1914" height="314" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/15/responsive/primenit-xs.webp 300w ,https://hidix.ru/media/posts/15/responsive/primenit-sm.webp 480w ,https://hidix.ru/media/posts/15/responsive/primenit-md.webp 768w"></figure>
-<p>После нажатия "Применть" вылезет диалоговое окно - выбираем "Применить без проверки"</p>
-<p><strong>Перезапускаем роутер</strong></p>
-<blockquote>
-<p>Внимание: Теперь, чтобы зайти в веб морду роутера, необходимо будет вводить ваш измененный IP адрес (по инструкции 192.168.2.1), все остальные ссылки с веб-панели так же примут новый адрес.</p>
-</blockquote>
             ]]>
         </content>
     </entry>
