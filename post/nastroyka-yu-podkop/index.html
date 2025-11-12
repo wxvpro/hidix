@@ -1,0 +1,262 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Настройка Youtube и встроенного VPN - HIDIX</title><meta name="description" content="Установка необходимых пакетов и настройка роутера для работы Инструкцию писал для себя {{#lock pw='172533'}} Ставим зависимости и Podkop opkg update &amp;&amp; opkg install kmod-nfnetlink-queue kmod-nft-queue&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="stylesheet" href="https://hidix.ru/media/plugins/syntaxHighlighter/prism-black.css"><link rel="stylesheet" href="https://hidix.ru/media/plugins/staticSearch/static.search.min.css"><link rel="canonical" href="https://hidix.ru/post/nastroyka-yu-podkop/"><link rel="alternate" type="application/atom+xml" href="https://hidix.ru/feed.xml" title="HIDIX - RSS"><link rel="alternate" type="application/json" href="https://hidix.ru/feed.json" title="HIDIX - JSON"><link rel="shortcut icon" href="https://hidix.ru/media/website/kllogo-H-2.png" type="image/png"><link rel="preload" href="https://hidix.ru/assets/dynamic/fonts/besley/besley.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="https://hidix.ru/assets/dynamic/fonts/besley/besley-italic.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="https://hidix.ru/assets/css/style.css?v=3c42d95640387f7bd047c66625713529"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://hidix.ru/post/nastroyka-yu-podkop/"},"headline":"Настройка Youtube и встроенного VPN","datePublished":"2025-09-15T23:35+03:00","dateModified":"2025-11-12T15:17+03:00","description":"Установка необходимых пакетов и настройка роутера для работы Инструкцию писал для себя {{#lock pw='172533'}} Ставим зависимости и Podkop opkg update &amp;&amp; opkg install kmod-nfnetlink-queue kmod-nft-queue&hellip;","author":{"@type":"Person","name":"alex dde","url":"https://hidix.ru/authors/alex-dde/"},"publisher":{"@type":"Organization","name":"alex dde"}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript><style>.extlink::before {
+				background-color: currentColor;
+				content: "";
+				display: inline-block;
+				height: 16px;
+				margin-right: 5px;
+				position: relative;
+				top: 0px;
+				width: 16px;
+			}
+		
+					.extlink.extlink-icon-4::before {
+						mask-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'><path d='M7 7h10v10'/><path d='M7 17 17 7'/></svg>");
+						mask-repeat: no-repeat;
+						mask-size: contain;
+					}</style><style>.fi{fill:none;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle}</style><style>.li{fill:none;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle}</style><style>.ti{fill:none;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle}</style><style>:root{--docsearch-primary-color:var(--primary-color);}.DocSearch-Container{z-index:2000!important}.DocSearch-Cancel{width:auto!important;background:var(--primary-color)!important;border:0;border-radius:2px!important;-webkit-box-shadow:0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.05),0 1px 5px 0 rgba(0,0,0,0.12)!important;box-shadow:0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.05),0 1px 5px 0 rgba(0,0,0,0.12)!important;color:var(--white)!important;cursor:pointer!important;font-size:.8239746086rem!important;font-weight:var(--font-weight-bold)!important;letter-spacing:.03em!important;padding:.6666666667rem 1.3333333333rem!important}#docsearch{width:100%}.DocSearch-Button{background:transparent!important;border:none!important;box-shadow:none!important;height:43px!important;margin-left:0!important;width:100%!important;transform:none!important;.DocSearch-Input:focus{box-shadow: none};.DocSearch-Prefill{box-shadow: none!important;color: var(--primary-color) !important;} }</style></head><body class="post-template"><header class="top"><div class="top__logo"><a class="logo" href="https://hidix.ru/">HIDIX</a></div><div class="top__search search"><div class="search__overlay js-search-overlay"><div class="search__overlay-inner"><form action="#search" class="search__form"><input class="search__input" type="search" placeholder="Поиск" aria-label="Поиск"></form><button class="search__close js-search-close" aria-label="Close">Закрыть</button></div></div></div><button class="navbar__toggle" aria-label="Меню" aria-haspopup="true" aria-expanded="false"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Меню</span></span></button></header><main class="main post"><div class="main__left"><div class="main__left-inner"><div class="main__left-content"><article class="content"><header><h1 class="content__title">Настройка Youtube и встроенного VPN</h1></header><div class="content__entry"><p>Установка необходимых пакетов и настройка роутера для работы</p><p>Инструкцию писал для себя</p><p></p><div class="lock-box" data-enc="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"><div class="lock-ui"><label>Контент скрыт</label> <input type="password" class="lock-pw" placeholder="Пароль"> <button type="button" class="lock-btn">ОК</button><p>Для открытия контента необходимо <a href="https://t.me/alex_dde" target="_blank">оплатить доступ</a></p><div class="lock-msg" aria-live="polite"></div></div><div class="lock-content" style="display:none;"></div></div></div><div> </div></article></div><footer><div class="content__footer-top"><div class="content__meta"><span>Обновлено: <time datetime="2025-11-12T15:17">12/11/2025</time></span></div><div class="content__share"><button class="content__share-button js-content__share-button" aria-label="Поделиться в"><svg width="24" height="24"><use xlink:href="https://hidix.ru/assets/svg/svg-map.svg#share"></use></svg></button><div class="content__share-popup js-content__share-popup"></div></div></div><div class="content__footer-bottom"></div></footer><nav><ul class="content-nav"><li class="content-nav__prev"><span>Предыдущая статья: </span><a href="https://hidix.ru/post/razgon-asika-bitmain-antminer-l7-do-112gh-proshivka-pitbit-luchshiy-pul-posleduyushchaya-nastroyka/" class="invert" rel="prev" title="Разгон асика Bitmain Antminer L7 до 11.2Гх, прошивка PitBit, лучший пул, последующая настройка">Разгон асика Bitmain Antminer L7 до 11.2Гх, прошивка PitBit, лучший пул, последующая настройка</a></li><li class="content-nav__next"><span>Следующая статья: </span><a href="https://hidix.ru/post/bystrye-nastroyki-pri-pokupke-routera-u-nas-2/" class="invert" rel="next" title="Быстрые настройки при покупке роутера у нас (конфиг 2)">Быстрые настройки при покупке роутера у нас (конфиг 2)</a></li></ul></nav></div><aside class="main__left-aside"><div class="main__left-aside__inner"><h3>На этой странице</h3><nav class="aside-toc" id="aside-toc"></nav></div></aside></div><div class="main__right"><div class="main__right-inner"><nav class="navbar"><ul class="navbar__menu"><li class="has-submenu"><a href="https://hidix.ru/post/hidix-vpn-molnienosnyy-vpn-servis/" target="_self" aria-haspopup="true">VPN сервис</a><ul class="navbar__submenu level-2" aria-hidden="true"><li><a href="https://hidix.ru/post/hidix-vpn-molnienosnyy-vpn-servis/" target="_self">HIDIX VPN</a></li><li><a href="https://hidix.ru/post/opisanie-raboty-chat-bota-hidix-vpn/" target="_self">Обзор VPN сервиса HIDIX</a></li></ul></li><li class="has-submenu"><a href="https://hidix.ru/post/rusifikaciya-televizorov-xiaomi/" target="_self" aria-haspopup="true">Телевизоры Xiaomi</a><ul class="navbar__submenu level-2" aria-hidden="true"><li><a href="https://hidix.ru/post/rusifikaciya-televizorov-xiaomi/" target="_self">Русификация телевизора Xiaomi</a></li><li><a href="https://hidix.ru/post/nastroyka-prilozheniya-lampa/" target="_self">Настройка приложения Lampa</a></li><li><a href="https://hidix.ru/post/sbros-reset-televizora-xiaomi/" target="_self">Сброс телевизора к заводским настройкам</a></li></ul></li><li class="has-submenu"><a href="https://hidix.ru/post/razgon-asika-bitmain-antminer-l7-do-112gh-proshivka-pitbit-luchshiy-pul-posleduyushchaya-nastroyka/" title="майнинг" target="_self" aria-haspopup="true">Майнинг</a><ul class="navbar__submenu level-2" aria-hidden="true"><li><a href="https://hidix.ru/post/razgon-asika-bitmain-antminer-l7-do-112gh-proshivka-pitbit-luchshiy-pul-posleduyushchaya-nastroyka/" title="Разгон асиков Antminer L7 прошивкой Pitbit" target="_self">Разгон Antminer L7, прошивка, лучший пул</a></li></ul></li><li class="has-submenu"><a href="https://hidix.ru/post/podklyuchenie-datchika-temperatury-k-termostatu-sonoff-cherez-spruthub/" title="Умный дом" target="_self" aria-haspopup="true">Умный дом SprutHub</a><ul class="navbar__submenu level-2" aria-hidden="true"><li><a href="https://hidix.ru/post/podklyuchenie-datchika-temperatury-k-termostatu-sonoff-cherez-spruthub/" title="Подключение датчика температуры к термостату Sonoff" target="_self">Подключение датчика температуры к термостату Sonoff</a></li></ul></li><li class="has-submenu"><a href="https://hidix.ru/post/" target="_self" aria-haspopup="true">Всемогущие роутеры</a><ul class="navbar__submenu level-2" aria-hidden="true"><li class="has-submenu"><a href="https://hidix.ru/tags/router-xiaomi-ax3000t/" title="Xiaomi AX3000T обзор настроек проутера" target="_self" aria-haspopup="true">Xiaomi AX3000T</a><ul class="navbar__submenu level-3" aria-hidden="true"><li><a href="https://hidix.ru/post/router-so-vstroennym-vpn-i-obhodom/" target="_self">Обзор роутера</a></li><li><a href="https://hidix.ru/post/kak-nastroit/" target="_self">Настройки OpenWrt</a></li><li><a href="https://hidix.ru/post/nastroyka-routera-2/" target="_self">Настройки PPOE OPENWRT</a></li><li><a href="https://hidix.ru/post/nastroyka-routera/" target="_self">Импорт конфигурации V2RayA (VPN)</a></li><li><a href="https://hidix.ru/post/vosstanovlenie-routera-xiaomi-ax3000t-na-foresee-programmatorom-ch340/" target="_self">Восстановление роутера Xiaomi AX3000T</a></li><li><a href="https://hidix.ru/post/bystrye-nastroyki-pri-pokupke-routera-u-nas/" target="_self">Если купили роутер у нас (конфиг 1)</a></li><li><a href="https://hidix.ru/post/bystrye-nastroyki-pri-pokupke-routera-u-nas-2/" target="_self">Если купили роутер у нас (конфиг 2)</a></li></ul></li><li class="has-submenu"><a href="https://hidix.ru/tags/cudy-tr3000/" title="Cudy TR3000 Прошивки и Инструкции" target="_self" aria-haspopup="true">Cudy TR3000</a><ul class="navbar__submenu level-3" aria-hidden="true"><li><a href="https://hidix.ru/post/zavodim-yt-cherez-usb-modem/" title="Как заставить работать YoutubeUnblock  с USB  модемом" target="_self">Как заставить работать YoutubeUnblock с USB модемом</a></li></ul></li></ul></li><li class="has-submenu"><a href="https://hidix.ru/post/chat-bot-dlya-3x-ui/" title="Платный софт" target="_self" aria-haspopup="true">Платный софт</a><ul class="navbar__submenu level-2" aria-hidden="true"><li><a href="https://hidix.ru/post/chat-bot-dlya-3x-ui/" title="Телеграм бот для выдачи VLESS ключей VPN" target="_self">Телеграм бот для выдачи VLESS ключей</a></li><li><a href="https://hidix.ru/post/rusifikaciya-televizorov-xiaomi-redmi-iz-kitaya-cn-versiya-programmoy-xiaomi-flasher/" title="Русификация телевизоров Xiaomi программой Xiaomi Flasher" target="_self">Программа русификации телевизоров Xiaomi Redmi</a></li><li><a href="https://hidix.ru/post/plagin-skrytiya-kontenta-publii/" title="Плагин скрытия контента по паролю для Publii" target="_self">Плагин скрытия контента по паролю для Publii</a></li></ul></li></ul></nav><div class="footer main__right-footer"><div class="footer__copy">Powered by <a href="http://t.me/alex_dde">@Alex_dde</a></div></div></div></div></main><footer class="footer"><div class="footer__wrap"><div class="footer__inner"><div class="footer__copy">Powered by <a href="http://t.me/alex_dde">@Alex_dde</a></div></div></div></footer><div class="content__progress" id="js-content__progress" aria-hidden="true"></div><script>window.publiiThemeMenuConfig = {    
+        mobileMenuMode: 'sidebar',        
+        submenuWidth: 300,        
+        mobileMenuExpandableSubmenus: true,
+        isHoverMenu: false,
+        ariaButtonAttribute: 'aria-expanded',
+   };</script><script src="https://hidix.ru/assets/js/html-contents.min.js?v=169077c370ab8ca62b029845f80f7fd5" defer="defer"></script><script>document.addEventListener("DOMContentLoaded", function(event) {
+            htmlContents('#aside-toc', {
+                area: '.content__entry',
+                top: 2,
+                bottom: 3,
+                listType: 'o',
+                filter: function(arr) {
+                    return !arr.matches('.noOutline')
+                },
+                addIds: true,
+                addLinks: true
+            });
+
+            setTimeout(function() {
+                handleActiveClass('#aside-toc');
+            }, 0);
+        })</script><script defer="defer" src="https://hidix.ru/assets/js/scripts.min.js?v=4fce2b30433039b19e7a444fe8ab80b7"></script><script>var images = document.querySelectorAll('img[loading]');
+
+        for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+                images[i].classList.add('is-loaded');
+            } else {
+                images[i].addEventListener('load', function () {
+                    this.classList.add('is-loaded');
+                }, false);
+            }
+        }</script><script>document.addEventListener('DOMContentLoaded', function () {
+  const NAMESPACE = 'hidixviewcount-site2025'; // замени на уникальное имя
+  const TTL_MS = 60 * 60 * 1000; // 1 час
+
+  const el = document.getElementById('pv-num');
+  if (!el) return;
+
+  // нормализуем ключ
+  let path = location.pathname || '/';
+  if (path.length > 1 && path.endsWith('/')) path = path.slice(0, -1);
+  const KEY = (path.replace(/\//g,'_') || 'home');
+
+  el.textContent = '0'; // не показываем «—»
+
+  const base = 'https://api.countapi.xyz';
+  const urlGet    = `${base}/get/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(KEY)}`;
+  const urlCreate = `${base}/create/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(KEY)}`;
+  const urlHit    = `${base}/hit/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(KEY)}`;
+
+  const lsKey = 'pv_hit_' + KEY;
+  const lastHit = Number(localStorage.getItem(lsKey) || 0);
+  const now = Date.now();
+
+  const render = v => { if (Number.isFinite(v)) el.textContent = String(v); };
+
+  const getVal = () =>
+    fetch(urlGet, {cache:'no-store'}).then(r=>r.json()).then(j=>render(j?.value)).catch(()=>{});
+
+  // Гарантируем существование ключа
+  function ensureExists() {
+    return fetch(urlGet, {cache:'no-store'}).then(async r => {
+      if (r.ok) return r.json();
+      // если нет — создаём со значением 0
+      const c = await fetch(urlCreate, {cache:'no-store'}).then(r2=>r2.json());
+      return c;
+    }).then(j => { if (j && typeof j.value !== 'undefined') render(j.value); });
+  }
+
+  function doHit() {
+    return fetch(urlHit, {cache:'no-store'})
+      .then(r=>r.json())
+      .then(j => {
+        if (typeof j?.value !== 'undefined') {
+          render(j.value);
+          localStorage.setItem(lsKey, String(now));
+        } else {
+          return getVal();
+        }
+      })
+      .catch(getVal);
+  }
+
+  (async () => {
+    await ensureExists();
+    // Если 0 — форсируем первый hit сразу (даже если TTL недавно был)
+    if (el.textContent === '0') {
+      await doHit();
+      return;
+    }
+    // иначе уважаем TTL
+    if (!lastHit || (now - lastHit) > TTL_MS) await doHit();
+    else await getVal();
+  })();
+});</script><script defer="defer" src="https://hidix.ru/media/plugins/syntaxHighlighter/prism.js"></script><script defer="defer" src="https://hidix.ru/media/plugins/syntaxHighlighter/clipboard.min.js"></script><script defer="defer" src="https://hidix.ru/media/plugins/syntaxHighlighter/prism-copy-to-clipboard.min.js"></script><script>window.publiiStaticSearchConfig = { 
+					baseURL: 'https://hidix.ru',
+					minCharCount: 3,
+					maxResultsCount: 20,
+					showPopupOnInputClick: true,
+					customTriggerSelector: '',
+					engineSettings: {
+						tokenize: 'full',
+						charset: 'latin:extra cyrillic 0123456789',
+						language: 'ru',
+						cache: 100,
+						suggest: true
+					},
+					indexSettings: {
+						resultsDescription: 'on',
+						indexPostTitles: true,
+						indexPostExcerpts: true,
+						indexPostHeadings: true,
+						indexPostAuthors: true,
+						indexPostMetaDescription: true,
+						indexPageTitles: true,
+						indexPageExcerpts: true,
+						indexPageHeadings: true,
+						indexPageMetaDescription: true,
+						indexTagNames: true,
+						indexTagDescription: true,
+						indexTagMetaDescription: true,
+						indexPostConfig: false,
+						indexPageConfig: false
+					},
+					translations: {
+						inputPlaceholder: 'Поиск...',
+						searchEmptyState: 'Напишите ваш запрос',
+						tooShortPhraseState: 'минимум 3 символа',
+						noResults: 'Не найдено',
+						buttonClose: 'Закрыть'
+					}
+				};</script><script src="https://hidix.ru/media/plugins/staticSearch/flexsearch.bundle.js"></script><script src="https://hidix.ru/media/plugins/staticSearch/static.search.min.js"></script><script src="https://hidix.ru/assets/js/crypto-js.min.js"></script><script>(function () {
+  function markLoaded(img) {
+    try { img.classList.add('is-loaded'); } catch (e) {}
+  }
+
+  function wireLoadHandlers(root) {
+    var imgs = root.querySelectorAll('img');
+    imgs.forEach(function (img) {
+      if (img.complete && img.naturalWidth > 0) {
+        markLoaded(img);
+      } else {
+        img.addEventListener('load',  function () { markLoaded(img); }, { once: true });
+        img.addEventListener('error', function () { markLoaded(img); }, { once: true });
+      }
+    });
+  }
+
+  // Починка lazy-медиа (картинки/видео/фоны)
+  function postProcessUnlocked(root) {
+    var imgs = root.querySelectorAll('img');
+    imgs.forEach(function (img) {
+      if (img.dataset) {
+        if (img.dataset.src)    img.src    = img.dataset.src;
+        if (img.dataset.srcset) img.srcset = img.dataset.srcset;
+        if (img.dataset.sizes)  img.sizes  = img.dataset.sizes;
+      }
+      img.loading = 'eager';
+      img.classList.remove('lazy', 'lazyload', 'lazyloaded');
+      if (img.srcset) { img.srcset = img.srcset; }
+      if (!img.getAttribute('src') && img.currentSrc) img.src = img.currentSrc;
+    });
+
+    var sources = root.querySelectorAll('picture source, source');
+    sources.forEach(function (s) {
+      if (s.dataset && s.dataset.srcset) s.srcset = s.dataset.srcset;
+      s.removeAttribute('data-srcset');
+    });
+
+    var videos = root.querySelectorAll('video');
+    videos.forEach(function (v) {
+      if (v.dataset && v.dataset.src)    v.src    = v.dataset.src;
+      if (v.dataset && v.dataset.poster) v.poster = v.dataset.poster;
+      v.classList.remove('lazy', 'lazyload', 'lazyloaded');
+    });
+
+    var bgNodes = root.querySelectorAll('[data-bg]');
+    bgNodes.forEach(function (n) {
+      var bg = n.getAttribute('data-bg');
+      if (bg) n.style.backgroundImage = 'url("' + bg + '")';
+      n.removeAttribute('data-bg');
+    });
+
+    wireLoadHandlers(root);
+
+    if (window.lazySizes && window.lazySizes.loader) {
+      imgs.forEach(function (img) { window.lazySizes.loader.unveil(img); });
+      sources.forEach(function (s) {
+        var p = s.parentNode && s.parentNode.querySelector('img');
+        if (p) window.lazySizes.loader.unveil(p);
+      });
+    }
+  }
+
+  // Переинициализация подсветки синтаксиса для динамически вставленного кода
+  function rehighlight(root) {
+    try {
+      if (window.Prism && typeof window.Prism.highlightAllUnder === 'function') {
+        window.Prism.highlightAllUnder(root); // для Prism (классы language-*)
+      } else if (window.hljs && typeof window.hljs.highlightElement === 'function') {
+        root.querySelectorAll('pre code').forEach(function (el) {
+          window.hljs.highlightElement(el);    // для highlight.js (класс hljs добавится сам)
+        });
+      }
+    } catch (e) {
+      /* noop */
+    }
+  }
+
+  function unlock(box) {
+    var enc = box.getAttribute('data-enc'); // Base64 шифротекст
+    var pw  = box.querySelector('.lock-pw').value || '';
+    var msg = box.querySelector('.lock-msg');
+    var out = box.querySelector('.lock-content');
+
+    try {
+      var bytes = CryptoJS.AES.decrypt(enc, pw);
+      var html  = bytes.toString(CryptoJS.enc.Utf8);
+      if (!html) throw 0;
+
+      out.innerHTML = html;
+      postProcessUnlocked(out); // картинки/медиа
+      rehighlight(out);         // <— подсветка кода после вставки
+      out.style.display = '';
+      box.querySelector('.lock-ui').style.display = 'none';
+    } catch (e) {
+      if (msg) {
+        msg.textContent = '❌ Неверный пароль';
+        setTimeout(function () { msg.textContent = ''; }, 1500);
+      }
+    }
+  }
+
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.lock-btn'); if (!btn) return;
+    unlock(btn.closest('.lock-box'));
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter') return;
+    var input = e.target.closest('.lock-pw'); if (!input) return;
+    unlock(input.closest('.lock-box'));
+  });
+})();</script></body></html>
