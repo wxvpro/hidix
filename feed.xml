@@ -531,67 +531,6 @@ sudo systemctl status 3xui-module.service</code></pre>
         </content>
     </entry>
     <entry>
-        <title>Быстрые настройки при покупке роутера у нас (конфиг 2)</title>
-        <author>
-            <name>alex dde</name>
-        </author>
-        <link href="https://hidix.ru/post/bystrye-nastroyki-pri-pokupke-routera-u-nas-2/"/>
-        <id>https://hidix.ru/post/bystrye-nastroyki-pri-pokupke-routera-u-nas-2/</id>
-            <category term="Роутеры и настройки"/>
-            <category term="Роутер Xiaomi AX3000T"/>
-
-        <updated>2025-09-17T14:27:46+03:00</updated>
-            <summary>
-                <![CDATA[
-                    Виду того, что многие игнорируют инструкцию ниже и "зачем-то" делают "сами не знают что", наугад, если конфигурация роутера будет отличаться от той, что мы вам&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <blockquote>
-<p>Виду того, что <strong>многие</strong> <span style="color: #e03e2d;"><strong>игнорируют</strong></span> инструкцию ниже и "зачем-то" делают "<strong>сами не знают что</strong>", наугад, если конфигурация роутера будет отличаться от той, что мы вам отправляем, либо от той, что представлена ниже,  услуга помощи в настройке будет оказываться платно!</p>
-</blockquote>
-<p><strong>PS</strong>: После приобретения роутера я осуществляю <strong>базовую</strong> (<strong>первоначальную)</strong> помощь в настройке (если потребуется), а не расширенную настройку с нуля с вашим провайдером. Данная услуга бесплатная и <span style="color: #e03e2d;"><strong>не</strong> <strong>является</strong></span> обязательством. </p>
-<p><strong>PS</strong>: В случае, если вам нужна профессиональная настройка другого уровня, вы можете обратиться за платной услугой расширенной настройки, написав ваше техническое задание мне в телеграм <a href="https://t.me/alex_dde" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">@ALEX_DDE</a> </p>
-<h3>Предисловие</h3>
-<p>Роутер изначально идет готовый, в большинстве случаев просто подключаем к нему кабель и все работает, но - существует достаточно провайдеров, у которых есть авторизация через <strong>логин</strong> <strong>пароль</strong> (например, <code>PPOE</code>, инструкция <a href="https://hidix.ru/post/nastroyka-routera-2/" target="_blank" rel="noopener noreferrer">тут</a>), либо через <code>MAC-адрес</code>. Если при подключении кабеля роутер сам не начал раздавать интернет, обратитесь к провайдеру и задайте ему эти вопросы (какой тип подключения и что надо сделать чтобы работало), часть инструкций есть на этом сайте</p>
-<p><strong>Внимание</strong>: провайдер по умолчанию сразу рекомендует сбросить роутер к заводским настройкам. <span style="color: #e03e2d;"><strong>НЕ ДЕЛАЙТЕ ЭТОГО!</strong></span></p>
-<h3>Подключение роутера</h3>
-<p>Подключаем в роутер кабель провайдера в первый порт, этот тот, который ближе к кабелю питания, подключаем питание. После загрузки роутера мы увидим в списке сетей wi-fi сеть с названием <code>OpenWRT</code>, подключаемся к ней, пароль по умолчанию <code>12345678<br></code></p>
-<p><em>Как сменить <strong>название</strong> сети и <strong>пароль</strong> описано в <a href="https://hidix.ru/post/kak-nastroit/" target="_blank" rel="noopener noreferrer">этой статье</a></em></p>
-<p>Проверяем интернет. Если его нет, значит вам необходимо узнать, какое подключение вам отдает провайдер, возможно потребуется надстройка. Если же у вас стоит роутер GPON, вы подключаете к Lan порту и нет интернета, возможно это конфликт IP адресов. Для этого просто смените IP адрес купленного роутера по <a href="https://hidix.ru/post/kak-nastroit/" target="_blank" rel="noopener noreferrer">этой инструкции</a>. Имейте ввиду, что после смены IP адреса - адрес веб панели роутера тоже изменится.</p>
-<p>Если интернет есть, значит все отлично, приступаем к следующему прункту</p>
-<h3>Получение конфигурации VPN</h3>
-<p>Обращаемся к администратору (<a href="https://t.me/alex_dde" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">контакты</a>), получаем <strong>код оплаты</strong> вида <strong>GSGY64ER </strong>(это пример).<strong> </strong>При покупке роутера у меня, вы получаете полгода высокоскоростного VPN в подарок</p>
-<p>Переходим в бота <a href="https://t.me/hidix_bot" target="_blank"   class="extlink extlink-icon-7 extlink-icon-4"  rel="noopener noreferrer">HIDIX BOT</a></p>
-<p>Личный кабинет &gt; Мои подписки &gt; Тарифы &gt; выбор сервера &gt; выбираем сумму &gt; Оплатить кодом оплаты &gt; вписываем код  <strong>GSGY64ER </strong>(пример)<strong> </strong>&gt; готово</p>
-<p>Бот вам выдаст конфигурацию, ее необходимо скопировать и вставить на следующем этапе</p>
-<h3>Импорт конфигурации в роутер</h3>
-<p>Заходим в веб админку роутера</p>
-<ul>
-<li>В браузере вводим <code>192.168.1.1 или 192.168.10.1</code></li>
-<li>Вводим логин root без пароля (если не устанавливали)</li>
-<li><strong>Службы &gt; Podkop &gt; </strong>Основные настройки</li>
-<li>URL конфигурация Proxy - вставляем конфигурацию в поле, полученную на прошлом шаге от бота VPN</li>
-</ul>
-<figure class="post__image">
-<figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/28/Untitled-134.png" alt="" width="1930" height="564" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/28/responsive/Untitled-134-xs.webp 300w ,https://hidix.ru/media/posts/28/responsive/Untitled-134-sm.webp 480w ,https://hidix.ru/media/posts/28/responsive/Untitled-134-md.webp 768w"></figure>
-</figure>
-<p>В нижней части страницы нажимаем "<strong>Применить</strong>", далее необхожимо перегрузить роутер. Переодим в "<strong>Система</strong>" &gt; "<strong>Перезагрузка</strong>"</p>
-<figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/28/Untitled-135.png" alt="" width="3854" height="1840" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/28/responsive/Untitled-135-xs.webp 300w ,https://hidix.ru/media/posts/28/responsive/Untitled-135-sm.webp 480w ,https://hidix.ru/media/posts/28/responsive/Untitled-135-md.webp 768w"></figure>
-<h3>Проверка работоспособности</h3>
-<p>Закрываем полностью браузер. Переподключаемся к Wi-Fi сети. Открываем снова. Проверяем любимые сайты, все должно работать</p>
-<p>Базовая настройка окончена. Рекомендуем сменить название сети Wi-Fi и пароль, как это сделать описано в <a href="https://hidix.ru/post/kak-nastroit/">этой статье</a></p>
-<p>Если у вас уже есть роутер от провайдера GPON с оптоволокном, то организация подключения будет такая</p>
-<figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/28/Untitled-59.png" alt="" width="1039" height="462" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/28/responsive/Untitled-59-xs.webp 300w ,https://hidix.ru/media/posts/28/responsive/Untitled-59-sm.webp 480w ,https://hidix.ru/media/posts/28/responsive/Untitled-59-md.webp 768w"></figure>
-<p>Статья будет дополняться...</p>
-<p> </p>
-<p> </p>
-<p> </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
         <title>Разгон асика Bitmain Antminer L7 до 11.2Гх, прошивка PitBit, лучший пул, последующая настройка</title>
         <author>
             <name>alex dde</name>
@@ -748,65 +687,6 @@ sudo systemctl status 3xui-module.service</code></pre>
 <p data-anchor="SRSb">Следующая статья будет о том, как выводить / обменивать монеты с самым выгодным курсом</p>
 <p data-anchor="SRSb">Мой ник в телеграм <span class="link"><a href="https://t.me/alex_dde" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">@Alex_dde</a></span>, прошу понять и простить, бесплатных консультаций не даю, нет столько времени, асики это просто хобби, если вам необходима помощь, опишите техническое задание и будьте добры предложить оплату. Спасибо.</p>
 <p data-anchor="SRSb"> </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Быстрые настройки при покупке роутера у нас (Конфиг 1)</title>
-        <author>
-            <name>alex dde</name>
-        </author>
-        <link href="https://hidix.ru/post/bystrye-nastroyki-pri-pokupke-routera-u-nas/"/>
-        <id>https://hidix.ru/post/bystrye-nastroyki-pri-pokupke-routera-u-nas/</id>
-            <category term="Роутеры и настройки"/>
-            <category term="Роутер Xiaomi AX3000T"/>
-
-        <updated>2025-06-20T18:23:27+03:00</updated>
-            <summary>
-                <![CDATA[
-                    Виду того, что многие игнорируют инструкцию ниже и "зачем-то" делают "сами не знают что", наугад, если конфигурация роутера будет отличаться от той, что мы вам&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <blockquote>
-<p>Виду того, что <strong>многие</strong> <span style="color: #e03e2d;"><strong>игнорируют</strong></span> инструкцию ниже и "зачем-то" делают "<strong>сами не знают что</strong>", наугад, если конфигурация роутера будет отличаться от той, что мы вам отправляем, либо от той, что представлена ниже,  услуга помощи в настройке будет оказываться платно!</p>
-</blockquote>
-<p><strong>PS</strong>: После приобретения роутера я осуществляю <strong>базовую</strong> (<strong>первоначальную)</strong> помощь в настройке (если потребуется), а не расширенную настройку с нуля с вашим провайдером. Данная услуга бесплатная и <span style="color: #e03e2d;"><strong>не</strong> <strong>является</strong></span> обязательством. </p>
-<p><strong>PS</strong>: В случае, если вам нужна профессиональная настройка другого уровня, вы можете обратиться за платной услугой расширенной настройки, написав ваше техническое задание мне в телеграм <a href="https://t.me/alex_dde" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">@ALEX_DDE</a> </p>
-<h3>Предисловие</h3>
-<p>Роутер изначально идет готовый, в большинстве случаев просто подключаем к нему кабель и все работает, но - существует достаточно провайдеров, у которых есть авторизация через <strong>логин</strong> <strong>пароль</strong> (например, <code>PPOE</code>, инструкция <a href="https://hidix.ru/post/nastroyka-routera-2/" target="_blank" rel="noopener noreferrer">тут</a>), либо через <code>MAC-адрес</code>. Если при подключении кабеля роутер сам не начал раздавать интернет, обратитесь к провайдеру и задайте ему эти вопросы (какой тип подключения и что надо сделать чтобы работало), часть инструкций есть на этом сайте</p>
-<p><strong>Внимание</strong>: провайдер по умолчанию сразу рекомендует сбросить роутер к заводским настройкам. <span style="color: #e03e2d;"><strong>НЕ ДЕЛАЙТЕ ЭТОГО!</strong></span></p>
-<h3>Подключение роутера</h3>
-<p>Подключаем в роутер кабель провайдера в первый порт, этот тот, который ближе к кабелю питания, подключаем питание. После загрузки роутера мы увидим в списке сетей wi-fi сеть с названием <code>OpenWRT</code>, подключаемся к ней, пароль по умолчанию <code>12345678<br></code></p>
-<p><em>Как сменить <strong>название</strong> сети и <strong>пароль</strong> описано в <a href="https://hidix.ru/post/kak-nastroit/" target="_blank" rel="noopener noreferrer">этой статье</a></em></p>
-<p>Проверяем интернет. Если его нет, значит вам необходимо узнать, какое подключение вам отдает провайдер, возможно потребуется надстройка.</p>
-<p>Если интернет есть, значит все отлично, приступаем к следующему прункту</p>
-<h3>Получение конфигурации VPN</h3>
-<p>Обращаемся к администратору (<a href="https://t.me/alex_dde" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">контакты</a>), получаем <strong>код оплаты</strong> вида <strong>GSGY64ER. </strong>При покупке роутера у нас, вы получаете полгода высокоскоростного VPN в подарок</p>
-<p>Переходим в бота <a href="https://t.me/hidix_bot" target="_blank"   class="extlink extlink-icon-7 extlink-icon-4"  rel="noopener noreferrer">HIDIX BOT</a></p>
-<p>Личный кабинет &gt; Мои подписки &gt; Тарифы &gt; выбор сервера &gt; выбираем сумму &gt; Оплатить кодом оплаты &gt; вписываем код  <strong>GSGY64ER </strong>&gt; готово</p>
-<p>Бот вам выдаст конфигурацию, ее необходимо скопировать и вставить на следующем этапе</p>
-<h3>Импорт конфигурации в роутер</h3>
-<ul>
-<li>В браузере вводим <code>192.168.1.1:2017 или 192.168.10.1:2017</code></li>
-<li>Вводим логин пароль (если покупали роутер у нас и не меняли, логин <strong>admin1</strong>, пароль <strong>admin1</strong>)</li>
-<li><strong>Импортировать, </strong>вставляем <strong>ключ</strong> VLESS конфигурации, что получили в нашем <a href="https://hidix.ru/post/hidix-vpn-molnienosnyy-vpn-servis/index.html" target="_blank" rel="noopener noreferrer">VPN-боте</a> на предыдущем этапе, <strong>подтвердить</strong></li>
-</ul>
-<figure class="post__image"><figure class="is-loaded"><img  src="https://hidix.ru/media/posts/11/11.png" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/11/responsive/11-xs.webp 300w, https://hidix.ru/media/posts/11/responsive/11-sm.webp 480w, https://hidix.ru/media/posts/11/responsive/11-md.webp 768w" alt="" width="1802" height="782" loading="lazy" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/11/responsive/11-xs.webp 300w ,https://hidix.ru/media/posts/11/responsive/11-sm.webp 480w ,https://hidix.ru/media/posts/11/responsive/11-md.webp 768w"></figure> <figure class="is-loaded"><img  src="https://hidix.ru/media/posts/11/222.png" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/11/responsive/222-xs.webp 300w, https://hidix.ru/media/posts/11/responsive/222-sm.webp 480w, https://hidix.ru/media/posts/11/responsive/222-md.webp 768w" alt="" width="1758" height="1018" loading="lazy" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/11/responsive/222-xs.webp 300w ,https://hidix.ru/media/posts/11/responsive/222-sm.webp 480w ,https://hidix.ru/media/posts/11/responsive/222-md.webp 768w"></figure>Далее вкладка <strong>SERVER &gt; Подключиться</strong> <figure class="is-loaded"><img  src="https://hidix.ru/media/posts/11/333.png" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/11/responsive/333-xs.webp 300w, https://hidix.ru/media/posts/11/responsive/333-sm.webp 480w, https://hidix.ru/media/posts/11/responsive/333-md.webp 768w" alt="" width="1822" height="880" loading="lazy" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/11/responsive/333-xs.webp 300w ,https://hidix.ru/media/posts/11/responsive/333-sm.webp 480w ,https://hidix.ru/media/posts/11/responsive/333-md.webp 768w"></figure></figure>
-<ul>
-<li>Сверху в левом верхнем углу нажимаем "<strong>пуск</strong>"</li>
-<li><strong>Готово</strong></li>
-</ul>
-<h3>Проверка работоспособности</h3>
-<p>Закрываем полностью браузер. Открываем снова. Проверяем любимые сайты, все должно работать</p>
-<p>Базовая настройка окончена. Рекомендуем сменить название сети Wi-Fi и пароль, как это сделать описано в <a href="https://hidix.ru/post/kak-nastroit/">этой статье</a></p>
-<p>Если у вас уже есть роутер от провайдера GPON с оптоволокном, то организация подключения будет такая</p>
-<figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/19/Untitled-59.png" alt="" width="1039" height="462" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/19/responsive/Untitled-59-xs.webp 300w ,https://hidix.ru/media/posts/19/responsive/Untitled-59-sm.webp 480w ,https://hidix.ru/media/posts/19/responsive/Untitled-59-md.webp 768w"></figure>
-<p>Статья будет дополняться...</p>
-<p> </p>
-<p> </p>
-<p> </p>
             ]]>
         </content>
     </entry>
@@ -1078,6 +958,114 @@ bootm 0x46000000</code></pre>
 <blockquote>
 <p>Внимание: Теперь, чтобы зайти в веб морду роутера, необходимо будет вводить ваш измененный IP адрес (по инструкции 192.168.2.1), все остальные ссылки с веб-панели так же примут новый адрес.</p>
 </blockquote>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Русификация телевизоров Xiaomi из Китая</title>
+        <author>
+            <name>alex dde</name>
+        </author>
+        <link href="https://hidix.ru/post/rusifikaciya-televizorov-xiaomi/"/>
+        <id>https://hidix.ru/post/rusifikaciya-televizorov-xiaomi/</id>
+            <category term="Телевизоры Xiaomi"/>
+
+        <updated>2025-06-13T19:00:26+03:00</updated>
+            <summary>
+                <![CDATA[
+                    Русификация китайских телевизоров Xiaomi становится всё более востребованной процедурой среди пользователей, стремящихся получить полноценный интерфейс на телевизоре Xiaomi из Китая . Для успешной процедуры достаточно&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <div class="post__iframe"><iframe loading="lazy" width="720" height="405" src="https://rutube.ru/play/embed/bffc2a7e3eb076503260f8e97ce620bf" frameborder="0" allow="clipboard-write;" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe></div>
+<p>Русификация китайских телевизоров <strong>Xiaomi</strong> становится всё более востребованной процедурой среди пользователей, стремящихся получить полноценный интерфейс на телевизоре Xiaomi из Китая . Для успешной процедуры достаточно скачать утилиту <strong>Xiaomi Flasher</strong> и установить модификацию с установкой русского интерфейса. Популярные запросы «Русификация Xiaomi TV» и «прошивка китайских телевизоров Xiaomi» чаще всего приводят к инструкциям с утилитой <strong>Xiaomi Flasher</strong> и подробным пошаговым гайдам. Ввиду того, что утилита написана мной (<a href="https://t.me/alex_dde" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">@ALEX_dde</a>), я решил указать все данные в этой статье. Более подробное описание программы по <a href="https://hidix.ru/post/rusifikaciya-televizorov-xiaomi-redmi-iz-kitaya-cn-versiya-programmoy-xiaomi-flasher/" title="Русификация Китайских телевизоров Xiaomi Redmiиз Китая" target="_blank" rel="noopener noreferrer">этой ссылке</a>.</p>
+<p data-start="203" data-end="467"><a href="https://t.me/alex_dde" target="_blank"   class="btn btn--green extlink extlink-icon-4"  rel="noopener noreferrer">Приобрести / Задать вопрос</a></p>
+<h3 class="block-text has-rtl"><strong>Что необходимо?</strong></h3>
+<div class="block-text has-rtl">У вас должен быть ноутбук/компьютер на <strong>Windows 10 или 11, </strong>другие операционные системы<strong> <span style="color: #c92a2a;">НЕ ПОДДЕРЖИВАЮТСЯ!</span></strong></div>
+<h3>Что мы получаем?</h3>
+<p>После русификации, телевизор будет загружаться сразу в <strong>русский</strong> интерфейс, все приложения будут так же на русском. В меню настроек вы сможете изменить фон, сможете настроить категории и размер иконок под себя. Голосовой ассистент будет работать с главного экрана, а так же в большинстве приложений.</p>
+<p>Зачастую, неумелые пользователи пытаются сами установить различные моды, что приводит к черному экрану. При русификации телевизоров Xiaomi черный экран возникает тогда, когда лаунчер не может стартануть. Все мануалы и инструкции, что есть в сети, давно устарели и не работают с новыми моделями.</p>
+<p>Утилита <strong>Xiaomi Flasher</strong> автоматически за 3 минуты русифицирует телевизор без танцев с бубном. В процессе русификации утилита <strong>дополнительно</strong> отключит все китайские сервисы (телевизор не будет пытаться стучаться в Китай и скачивать какую либо рекламу), удалит все китайские приложения и установит русские. По итогу мы получаем <strong>полноценный</strong> телевизор на <strong>русском</strong> языке. Исключение составляет пункт основных настроек телевизора, они останутся на английском языке, технически их русифицировать невозможно. Но как часто вы туда заходите? Один раз настроил и забыл. Видео готового результата вы сможете посмотреть на видео ниже</p>
+<h3><strong style="font-family: var(--editor-font-family); font-size: inherit;">Процедура русификации включает в себя:</strong></h3>
+<div class="blocks-section s-16670396-2 has-s s-14756636 is-transparent  has-next-s is-next-transparent">
+<div>
+<div class="page-container">
+<div class="section-main">
+<div>
+<div>
+<div class="block-item block-text is-textable b-b0b29a114d6c">
+<div>
+<div class="block-text has-rtl">— русификация интерфейса<br>— избавление от китайских иероглифов<br>— отключение китайских сервисов (ваш тв больше не посылает в Китай никакие данные)<br>— удаление китайских программ и сервисов (высвобождается оперативная память)<br>— установка голосового поиска<br>— установка пакета популярных приложений и сервисов (огромное количество фильмов, сериалов 4К бесплатно)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="blocks-section s-16670396-3 is-transparent">
+<div class="page-container">
+<div class="section-main">
+<div class="block-item block-text is-first is-textable b-b7fd464ee6b5">
+<div>
+<div class="block-text has-rtl"> </div>
+<div><strong style="font-family: var(--font-base); font-size: 1.42383em; letter-spacing: var(--letter-spacing);">Как все происходит?</strong></div>
+</div>
+</div>
+<div class="block-item block-text is-textable b-bac68f41b016">
+<div class="block-text has-rtl">‌Я передаю вам программу и инструкцию + видео инструкцию, вы делаете самостоятельно по инструкции, в случае чего я обязательно помогаю. Никакие кабели не нужны, программа работает по Wi-Fi. Программа достаточно <strong>легкая</strong>, большинство пользователей проделывают эту процедуру за <strong>10−15</strong> минут.</div>
+</div>
+<div class="block-item block-html b-79648580">
+<div>Телеграм: <a href="https://t.me/alex_dde" target="_blank"  class="extlink extlink-icon-4"  rel="noopener">@ALEX_dde</a></div>
+<div> </div>
+<div>Для всех желающих прошиться через мой софт я предлагаю к приобретению всемогущий роутер и даю промокод на скидку. Благодаря этому роутеру вы сможете смотреть видео сервисы в высоком качестве без тормозов и ограничений. Роутер умеет открывать любые сайты и большинство без VPN. Описание роутера по этой <a href="https://hidix.ru/post/router-so-vstroennym-vpn-i-obhodom/">ссылке</a></div>
+</div>
+</div>
+</div>
+</div>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Настройка роутера OpenWRT по протоколу PPOE</title>
+        <author>
+            <name>alex dde</name>
+        </author>
+        <link href="https://hidix.ru/post/nastroyka-routera-2/"/>
+        <id>https://hidix.ru/post/nastroyka-routera-2/</id>
+            <category term="Роутеры и настройки"/>
+            <category term="Роутер Xiaomi AX3000T"/>
+
+        <updated>2025-06-12T20:14:59+03:00</updated>
+            <summary>
+                <![CDATA[
+                    Настройка роутера OpenWRT по протоколу PPOE Инструкция для тех, у кого провайдер работает по этому протоколу. Если у вас установлен GPON терминал от провайдера с&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <h2>Настройка роутера OpenWRT по протоколу PPOE </h2>
+<p><em>Инструкция для тех, у кого провайдер работает по этому протоколу</em>.</p>
+<blockquote>
+<p>Если у вас установлен <strong>GPON</strong> терминал от провайдера с оптоволокном, <strong><span style="color: #e03e2d;">никакие данные</span></strong> в роутер вносить не надо! Необходимо комплектным кабелем соединить собой два роутера. Подключите кабель к любому порту LAN роутера провайдера, другую сторону кабеля подключите к купленному роутеру в первый порт около кабеля питания. Все автоматически заработает, инструкция ниже для вас будет более не актуальна.</p>
+</blockquote>
+<ul>
+<li>Подключаем кабель провайдера в первое гнездо роутера, которое около кабеля питания</li>
+<li>В браузере вводим <code>192.168.1.1</code></li>
+<li>Логин: root</li>
+<li>Пароль: без пароля (если вы не ставили)</li>
+<li>Попадаем в админку роутера, здесь сверху в меню выбираем<br><strong>Сеть</strong> &gt; <strong>Интерфейсы</strong></li>
+<li><figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/12/444.png" alt="" width="1940" height="548" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/444-xs.webp 300w ,https://hidix.ru/media/posts/12/responsive/444-sm.webp 480w ,https://hidix.ru/media/posts/12/responsive/444-md.webp 768w"></figure></li>
+<li>Напротив<strong> WAN </strong>&gt;<strong> Изменить<br></strong></li>
+<li><figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/12/Untitled45enr.png" alt="" width="1996" height="1100" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled45enr-xs.webp 300w ,https://hidix.ru/media/posts/12/responsive/Untitled45enr-sm.webp 480w ,https://hidix.ru/media/posts/12/responsive/Untitled45enr-md.webp 768w"></figure></li>
+<li>Протокол: меняем на <strong>PPOE</strong>, ниже появляется кнопка <strong>Изменить протокол</strong>, нажимаем ее, ниже появляются дополнительные поля, в поле "<strong>Имя пользователя PAP/CHAP</strong>" вписываем имя пользователя, что вам выдал <strong>провайдер</strong>, в поле "<strong>Пароль PAP/CHAP</strong>" - пароль, что вам выдал <strong>провайдер</strong>. Нажимаем <strong>Сохранить</strong>, после - <strong>Применить</strong></li>
+<li><figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/12/Untitled-464.png" alt="" width="2028" height="1048" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled-464-xs.webp 300w ,https://hidix.ru/media/posts/12/responsive/Untitled-464-sm.webp 480w ,https://hidix.ru/media/posts/12/responsive/Untitled-464-md.webp 768w"></figure></li>
+<li><figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/12/Untitled-46f.png" alt="" width="1890" height="1426" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled-46f-xs.webp 300w ,https://hidix.ru/media/posts/12/responsive/Untitled-46f-sm.webp 480w ,https://hidix.ru/media/posts/12/responsive/Untitled-46f-md.webp 768w"></figure></li>
+<li><strong>Готово</strong></li>
+</ul>
+<p> </p>
             ]]>
         </content>
     </entry>
