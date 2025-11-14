@@ -3,12 +3,87 @@
     <title>HIDIX</title>
     <link href="https://hidix.ru/feed.xml" rel="self" />
     <link href="https://hidix.ru" />
-    <updated>2025-11-12T04:30:09+03:00</updated>
+    <updated>2025-11-15T01:45:41+03:00</updated>
     <author>
         <name>alex dde</name>
     </author>
     <id>https://hidix.ru</id>
 
+    <entry>
+        <title>Прошивка роутера Cudy WR3000S v1 на OpenWrt с последующей настройкой Youtube и установкой VPN</title>
+        <author>
+            <name>alex dde</name>
+        </author>
+        <link href="https://hidix.ru/post/proshivka-routera-cudy-na-openwrt-s-posleduyushchey-nastroykoy-youtube-i-ustanovkoy-vpn/"/>
+        <id>https://hidix.ru/post/proshivka-routera-cudy-na-openwrt-s-posleduyushchey-nastroykoy-youtube-i-ustanovkoy-vpn/</id>
+            <category term="Cudy WR3000S v1"/>
+
+        <updated>2025-11-15T00:44:39+03:00</updated>
+            <summary>
+                <![CDATA[
+                    Инструкция с нуля и до результата, на примере OpenWrt 24.10.4, пишу в основном для себя {{#lock pw="172533"}} Нам понадобятся: Подключаем роутер, переходим по 192.168.10.1 &gt;&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>Инструкция с нуля и до результата, на примере OpenWrt 24.10.4, пишу в основном для себя</p>
+<div class="post__toc">
+<h3>Оглавление</h3>
+<ul>
+<li><a href="#mcetoc_1ja27468r1ce">Подготовка</a></li>
+<li><a href="#mcetoc_1ja27468r1cf">Прошивка промежуточной версии</a></li>
+<li><a href="#mcetoc_1ja27468r1cg">Бекап системы</a></li>
+<li><a href="#mcetoc_1ja27468r1ch">Установка ванильной версии </a></li>
+<li><a href="#mcetoc_1ja27468r1ci">Смена разметки</a></li>
+<li><a href="#mcetoc_1ja27468r1cj">Прошивка OpenWrt  с увеличенной свободной памятью</a></li>
+<li><a href="#mcetoc_1ja27468r1ck">Установка встроенного VPN, разблокировка YouTube, установка русского языка</a></li>
+</ul>
+</div>
+<p id="mcetoc_1ja27468r1ce">{{#lock pw="172533"}}</p>
+<h2>Подготовка</h2>
+<p>Нам понадобятся:</p>
+<ul>
+<li>программа <a href="https://winscp.net/eng/download.php" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">WinCP</a></li>
+<li>программа <a href="https://putty.org.ru/download" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">Putty</a></li>
+<li>ноутбук на Windows</li>
+<li>скачиваем <a href="https://hidix.ru/WR3000S_v1.zip">архив</a>, папки пронумерованы по шагам</li>
+</ul>
+<h2 id="mcetoc_1ja27468r1cf">Прошивка промежуточной версии</h2>
+<p>Подключаем роутер, переходим по <code>192.168.10.1</code> &gt; Далее &gt; Отмена &gt; Дополнительно &gt; Прошивки &gt; Загружаем прошивку cudy_wr3000s-v1-sysupgrade.bin из папки "1. Промежуточная"</p>
+<h2 id="mcetoc_1ja27468r1cg">Бекап системы</h2>
+<p>После прошивки мы попадаем в промежуточную версию OpenWrt, переходим 192.168.1.1 &gt; Система &gt; Восстановление и обновление, там делаем резервную копию всех разделов (начинаются с BL2)</p>
+<h2 id="mcetoc_1ja27468r1ch">Установка ванильной версии </h2>
+<p>Система &gt; Восстановление и обновление &gt; Загрузка образа &gt; выбираем openwrt-24.10.4-mediatek-filogic-cudy_wr3000s-v1-squashfs-sysupgrade.bin из папки "Ванильная OpenWrt"</p>
+<h2 id="mcetoc_1ja27468r1ci">Смена разметки</h2>
+<p>Подключаемся программой WinCP к роутеру (<strong>SCP</strong> соединение, <strong>ip</strong>: 192.168.1.1, логин <strong>root,</strong> без пароля), копируем файл FIP_web.bin с папки "Смена FIP" в роутер в папку /tmp/</p>
+<p>Интернет на роутере должен быть</p>
+<p>Нажимаем в <strong>WinCP</strong> комбинацию клавиш <strong>CTRL+P</strong> (или кнопку сверху в панели "Открыть сессию в Putty"), вводим команды</p>
+<pre class="language-bash"><code>opkg update &amp;&amp; opkg install kmod-mtd-rw
+insmod mtd-rw i_want_a_brick=1
+mtd -e FIP write /tmp/FIP_web.bin FIP</code></pre>
+<p class="p1">Через 10-15 секунд выключаем роутер</p>
+<h2 id="mcetoc_1ja27468r1cj">Прошивка OpenWrt  с увеличенной свободной памятью</h2>
+<p>На компьютере Windows заходим в сетевые параметры - изменение параметров адаптера - выставляем вручную ip: 192.168.1.88, маска подсети: 255.255.255.0</p>
+<p>Зажимаем на роутере кнопку WPS и включаем его, кнопку держим 10 секунд. Переходим 192.168.1.1, попадаем в uBoot Mode, выбираем разметку, вместо <strong>default</strong> ставим <strong>112mb</strong></p>
+<p>Обзор &gt; выбираем прошивку openwrt-24.10.4-mediatek-filogic-cudy_wr3000s-v1-squashfs-sysupgrade.bin из папки "4. Прошивка Openwrt 112mb", прошиваем</p>
+<h2 id="mcetoc_1ja27468r1ck">Установка встроенного VPN, разблокировка YouTube, установка русского языка</h2>
+<p>Возвращаем сетевые параметры адаптера на "Автоматически"</p>
+<p>В WinCp в Putty выполняем команду</p>
+<pre class="language-apacheconf"><code>opkg update &amp;&amp; opkg install luci-i18n-base-ru &amp;&amp; opkg install kmod-nfnetlink-queue kmod-nft-queue kmod-nf-conntrack &amp;&amp; sh &lt;(wget -O - https://raw.githubusercontent.com/itdoginfo/podkop/refs/heads/main/install.sh)</code></pre>
+<p>После установки пакетов ставим YoutubeUnblock вручную из папки "5. Установка Podkop и YU"</p>
+<p>Система &gt; Software &gt; Загрузить пакет - вначале ставим 1_y-23.05.ipk, после 2_luci-y.ipk </p>
+<p>Базовая настройка окончена. После всех этих манипуляций перезагрузка роутера обязательна. Далее необходимо настроить маршруты YoutubeUnblock и Podkop, лучше конечно вам вникнуть самостоятельно, будет полезнее</p>
+<p>{{/lock}}</p>
+<hr>
+<p>Здесь я для себя прикреплю свои файлы конфигурации под другим паролем</p>
+<p>{{#lock pw="17253344"}}</p>
+<p><a href="https://hidix.ru/6. Config.zip" target="_blank" rel="noopener noreferrer">Ссылки на конфиги</a></p>
+<p>{{/lock}}</p>
+<p> </p>
+<p> </p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Подключение датчика температуры к термостату Sonoff через SprutHub</title>
         <author>
@@ -140,9 +215,12 @@
 <div class="faq-question"><span class="faq-arrow">▼</span> Можно ли вернуть все обратно?</div>
 <div class="faq-answer">Да, в телевизорах <strong>Xiaomi</strong> есть встроенная система восстановления. В любой момент можно сделать <a href="https://hidix.ru/post/sbros-reset-televizora-xiaomi/" target="_blank" rel="noopener noreferrer">полный сброс</a> и вернуть телевизор в исходное состояние</div>
 </div>
+<h2>Интерфейс программы</h2>
+<div class="post__iframe"><iframe loading="lazy" width="720" height="405" src="https://rutube.ru/play/embed/6e023e40b1e126f100ae0f12be859a11/?p=null" frameborder="0" allow="clipboard-write; " webkitallowfullscreen="webkitallowfullscreen" allowfullscreen="allowfullscreen"></iframe></div>
 <hr>
-<h3>Начало работы с программой</h3>
-<h5><strong>Этап 1. Полный сброс:</strong></h5>
+<h3>Инструкция для тех, кто приобрел программу </h3>
+{{#lock pw="11112222"}}<br><strong style="font-family: var(--font-base); font-size: 1.125em; letter-spacing: var(--letter-spacing);">Этап 1. Полный сброс:</strong></div>
+<div class="faq">
 <p><strong>В моделях до 2025 года:</strong><br>Настройки (шестеренка)  &gt; ‌Settings &gt; General Settings &gt; Reset<br>‌Выберите &gt; <strong>Reset</strong> (или Delete) &gt; <strong>Confirm (Reset)</strong><br>‌<br>‌<strong>В новых моделях (HyperOS):</strong><br>‌Настройки (шестеренка) &gt; ‌Settings &gt; General Settings &gt; Restore<br>‌Выберите <strong>Don't Retain</strong> &gt; Restore Now &gt; <strong>Confirm (Restore)</strong></p>
 <div class="post__iframe"><iframe loading="lazy" width="720" height="405" style="border: none;" src="https://rutube.ru/play/embed/4a057949761da65d4fc6b5d4cc498c93" allow="clipboard-write; autoplay" allowfullscreen="allowfullscreen"></iframe></div>
 <h5>Этап 2. Подготовка. Включение пунктов 'ADB' и 'Неизвестные источники'</h5>
@@ -245,15 +323,16 @@
 </div>
 <!-- FAQ end --> <!-- script  -->
 <script>
-			document.querySelectorAll('.faq-item').forEach(item => {
-				item.addEventListener('click', () => {
-					item.classList.toggle('active');
+				document.querySelectorAll('.faq-item').forEach(item => {
+					item.addEventListener('click', () => {
+						item.classList.toggle('active');
+					});
 				});
-			});
-		</script>
+			</script>
 <!-- script end -->
+<p>{{/lock}}</p>
 <p>Программа платная, оплачивая программу вы поддерживаете развитие проекта и помогаете многим людям</p>
-<p data-start="203" data-end="467"><a href="https://t.me/alex_dde" target="_blank"   class="btn btn--green extlink extlink-icon-4"  rel="noopener noreferrer">Приобрести / Задать вопрос</a></p>
+<p data-start="203" data-end="467"><a href="https://t.me/alex_dde" target="_blank"   class="btn btn--green extlink extlink-icon-4"  rel="noopener noreferrer">Приобрести программу / Задать вопрос</a></p>
 </div>
 </div>
 </div>
@@ -987,7 +1066,7 @@ bootm 0x46000000</code></pre>
 <p>После русификации, телевизор будет загружаться сразу в <strong>русский</strong> интерфейс, все приложения будут так же на русском. В меню настроек вы сможете изменить фон, сможете настроить категории и размер иконок под себя. Голосовой ассистент будет работать с главного экрана, а так же в большинстве приложений.</p>
 <p>Зачастую, неумелые пользователи пытаются сами установить различные моды, что приводит к черному экрану. При русификации телевизоров Xiaomi черный экран возникает тогда, когда лаунчер не может стартануть. Все мануалы и инструкции, что есть в сети, давно устарели и не работают с новыми моделями.</p>
 <p>Утилита <strong>Xiaomi Flasher</strong> автоматически за 3 минуты русифицирует телевизор без танцев с бубном. В процессе русификации утилита <strong>дополнительно</strong> отключит все китайские сервисы (телевизор не будет пытаться стучаться в Китай и скачивать какую либо рекламу), удалит все китайские приложения и установит русские. По итогу мы получаем <strong>полноценный</strong> телевизор на <strong>русском</strong> языке. Исключение составляет пункт основных настроек телевизора, они останутся на английском языке, технически их русифицировать невозможно. Но как часто вы туда заходите? Один раз настроил и забыл. Видео готового результата вы сможете посмотреть на видео ниже</p>
-<h3><strong style="font-family: var(--editor-font-family); font-size: inherit;">Процедура русификации включает в себя:</strong></h3>
+<h3><strong style="font-family: var(--editor-font-family); font-size: inherit;">Процедура русификации включает в себя</strong></h3>
 <div class="blocks-section s-16670396-2 has-s s-14756636 is-transparent  has-next-s is-next-transparent">
 <div>
 <div class="page-container">
@@ -996,7 +1075,7 @@ bootm 0x46000000</code></pre>
 <div>
 <div class="block-item block-text is-textable b-b0b29a114d6c">
 <div>
-<div class="block-text has-rtl">— русификация интерфейса<br>— избавление от китайских иероглифов<br>— отключение китайских сервисов (ваш тв больше не посылает в Китай никакие данные)<br>— удаление китайских программ и сервисов (высвобождается оперативная память)<br>— установка голосового поиска<br>— установка пакета популярных приложений и сервисов (огромное количество фильмов, сериалов 4К бесплатно)</div>
+<div class="block-text has-rtl">— русификацию интерфейса<br>— избавление от китайских иероглифов<br>— отключение китайских сервисов (ваш тв больше не посылает в Китай никакие данные)<br>— удаление китайских программ и сервисов (высвобождается оперативная память)<br>— установка голосового поиска<br>— установка пакета популярных приложений и сервисов (огромное количество фильмов, сериалов 4К бесплатно)</div>
 </div>
 </div>
 </div>
@@ -1025,47 +1104,6 @@ bootm 0x46000000</code></pre>
 </div>
 </div>
 </div>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Настройка роутера OpenWRT по протоколу PPOE</title>
-        <author>
-            <name>alex dde</name>
-        </author>
-        <link href="https://hidix.ru/post/nastroyka-routera-2/"/>
-        <id>https://hidix.ru/post/nastroyka-routera-2/</id>
-            <category term="Роутеры и настройки"/>
-            <category term="Роутер Xiaomi AX3000T"/>
-
-        <updated>2025-06-12T20:14:59+03:00</updated>
-            <summary>
-                <![CDATA[
-                    Настройка роутера OpenWRT по протоколу PPOE Инструкция для тех, у кого провайдер работает по этому протоколу. Если у вас установлен GPON терминал от провайдера с&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <h2>Настройка роутера OpenWRT по протоколу PPOE </h2>
-<p><em>Инструкция для тех, у кого провайдер работает по этому протоколу</em>.</p>
-<blockquote>
-<p>Если у вас установлен <strong>GPON</strong> терминал от провайдера с оптоволокном, <strong><span style="color: #e03e2d;">никакие данные</span></strong> в роутер вносить не надо! Необходимо комплектным кабелем соединить собой два роутера. Подключите кабель к любому порту LAN роутера провайдера, другую сторону кабеля подключите к купленному роутеру в первый порт около кабеля питания. Все автоматически заработает, инструкция ниже для вас будет более не актуальна.</p>
-</blockquote>
-<ul>
-<li>Подключаем кабель провайдера в первое гнездо роутера, которое около кабеля питания</li>
-<li>В браузере вводим <code>192.168.1.1</code></li>
-<li>Логин: root</li>
-<li>Пароль: без пароля (если вы не ставили)</li>
-<li>Попадаем в админку роутера, здесь сверху в меню выбираем<br><strong>Сеть</strong> &gt; <strong>Интерфейсы</strong></li>
-<li><figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/12/444.png" alt="" width="1940" height="548" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/444-xs.webp 300w ,https://hidix.ru/media/posts/12/responsive/444-sm.webp 480w ,https://hidix.ru/media/posts/12/responsive/444-md.webp 768w"></figure></li>
-<li>Напротив<strong> WAN </strong>&gt;<strong> Изменить<br></strong></li>
-<li><figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/12/Untitled45enr.png" alt="" width="1996" height="1100" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled45enr-xs.webp 300w ,https://hidix.ru/media/posts/12/responsive/Untitled45enr-sm.webp 480w ,https://hidix.ru/media/posts/12/responsive/Untitled45enr-md.webp 768w"></figure></li>
-<li>Протокол: меняем на <strong>PPOE</strong>, ниже появляется кнопка <strong>Изменить протокол</strong>, нажимаем ее, ниже появляются дополнительные поля, в поле "<strong>Имя пользователя PAP/CHAP</strong>" вписываем имя пользователя, что вам выдал <strong>провайдер</strong>, в поле "<strong>Пароль PAP/CHAP</strong>" - пароль, что вам выдал <strong>провайдер</strong>. Нажимаем <strong>Сохранить</strong>, после - <strong>Применить</strong></li>
-<li><figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/12/Untitled-464.png" alt="" width="2028" height="1048" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled-464-xs.webp 300w ,https://hidix.ru/media/posts/12/responsive/Untitled-464-sm.webp 480w ,https://hidix.ru/media/posts/12/responsive/Untitled-464-md.webp 768w"></figure></li>
-<li><figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/12/Untitled-46f.png" alt="" width="1890" height="1426" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled-46f-xs.webp 300w ,https://hidix.ru/media/posts/12/responsive/Untitled-46f-sm.webp 480w ,https://hidix.ru/media/posts/12/responsive/Untitled-46f-md.webp 768w"></figure></li>
-<li><strong>Готово</strong></li>
-</ul>
-<p> </p>
             ]]>
         </content>
     </entry>
