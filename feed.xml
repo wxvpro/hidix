@@ -3,7 +3,7 @@
     <title>HIDIX</title>
     <link href="https://hidix.ru/feed.xml" rel="self" />
     <link href="https://hidix.ru" />
-    <updated>2025-11-15T01:45:41+03:00</updated>
+    <updated>2025-11-19T15:18:43+03:00</updated>
     <author>
         <name>alex dde</name>
     </author>
@@ -321,6 +321,9 @@ mtd -e FIP write /tmp/FIP_web.bin FIP</code></pre>
 </ul>
 </div>
 </div>
+<p>{{/lock}}</p>
+<p>Программа платная, оплачивая программу вы поддерживаете развитие проекта и помогаете многим людям</p>
+<p data-start="203" data-end="467"><a href="https://t.me/alex_dde" target="_blank"   class="btn btn--green extlink extlink-icon-4"  rel="noopener noreferrer">Приобрести программу / Задать вопрос</a></p>
 <!-- FAQ end --> <!-- script  -->
 <script>
 				document.querySelectorAll('.faq-item').forEach(item => {
@@ -329,11 +332,7 @@ mtd -e FIP write /tmp/FIP_web.bin FIP</code></pre>
 					});
 				});
 			</script>
-<!-- script end -->
-<p>{{/lock}}</p>
-<p>Программа платная, оплачивая программу вы поддерживаете развитие проекта и помогаете многим людям</p>
-<p data-start="203" data-end="467"><a href="https://t.me/alex_dde" target="_blank"   class="btn btn--green extlink extlink-icon-4"  rel="noopener noreferrer">Приобрести программу / Задать вопрос</a></p>
-</div>
+<!-- script end --></div>
 </div>
 </div>
             ]]>
