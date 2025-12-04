@@ -1,0 +1,262 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Прошивка роутера Cudy TR3000 на OpenWrt с последующей настройкой Youtube и установкой VPN - HIDIX</title><meta name="description" content="Инструкция с нуля и до результата, на примере OpenWrt 24.10.4, пишу в основном для себя {{#lock pw='172533'}} Нам понадобятся: Подключаем роутер, переходим по 192.168.10.1 &gt;&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="stylesheet" href="https://hidix.ru/media/plugins/syntaxHighlighter/prism-black.css"><link rel="stylesheet" href="https://hidix.ru/media/plugins/staticSearch/static.search.min.css"><link rel="canonical" href="https://hidix.ru/post/proshivka-routera-cudy-tr3000-na-openwrt-s-posleduyushchey-nastroykoy-youtube-i-ustanovkoy-vpn/"><link rel="alternate" type="application/atom+xml" href="https://hidix.ru/feed.xml" title="HIDIX - RSS"><link rel="alternate" type="application/json" href="https://hidix.ru/feed.json" title="HIDIX - JSON"><link rel="shortcut icon" href="https://hidix.ru/media/website/kllogo-H-2.png" type="image/png"><link rel="preload" href="https://hidix.ru/assets/dynamic/fonts/besley/besley.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="https://hidix.ru/assets/dynamic/fonts/besley/besley-italic.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="https://hidix.ru/assets/css/style.css?v=b2dea22ddcd8294500a0c2ef26f9acd4"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://hidix.ru/post/proshivka-routera-cudy-tr3000-na-openwrt-s-posleduyushchey-nastroykoy-youtube-i-ustanovkoy-vpn/"},"headline":"Прошивка роутера Cudy TR3000 на OpenWrt с последующей настройкой Youtube и установкой VPN","datePublished":"2025-11-30T16:39+03:00","dateModified":"2025-12-04T23:21+03:00","description":"Инструкция с нуля и до результата, на примере OpenWrt 24.10.4, пишу в основном для себя {{#lock pw='172533'}} Нам понадобятся: Подключаем роутер, переходим по 192.168.10.1 &gt;&hellip;","author":{"@type":"Person","name":"alex dde","url":"https://hidix.ru/authors/alex-dde/"},"publisher":{"@type":"Organization","name":"alex dde"}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript><style>.extlink::before {
+				background-color: currentColor;
+				content: "";
+				display: inline-block;
+				height: 16px;
+				margin-right: 5px;
+				position: relative;
+				top: 0px;
+				width: 16px;
+			}
+		
+					.extlink.extlink-icon-4::before {
+						mask-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'><path d='M7 7h10v10'/><path d='M7 17 17 7'/></svg>");
+						mask-repeat: no-repeat;
+						mask-size: contain;
+					}</style><style>.fi{fill:none;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle}</style><style>.li{fill:none;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle}</style><style>.ti{fill:none;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle}</style><style>:root{--docsearch-primary-color:var(--primary-color);}.DocSearch-Container{z-index:2000!important}.DocSearch-Cancel{width:auto!important;background:var(--primary-color)!important;border:0;border-radius:2px!important;-webkit-box-shadow:0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.05),0 1px 5px 0 rgba(0,0,0,0.12)!important;box-shadow:0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.05),0 1px 5px 0 rgba(0,0,0,0.12)!important;color:var(--white)!important;cursor:pointer!important;font-size:.8239746086rem!important;font-weight:var(--font-weight-bold)!important;letter-spacing:.03em!important;padding:.6666666667rem 1.3333333333rem!important}#docsearch{width:100%}.DocSearch-Button{background:transparent!important;border:none!important;box-shadow:none!important;height:43px!important;margin-left:0!important;width:100%!important;transform:none!important;.DocSearch-Input:focus{box-shadow: none};.DocSearch-Prefill{box-shadow: none!important;color: var(--primary-color) !important;} }</style></head><body class="post-template"><header class="top"><div class="top__logo"><a class="logo" href="https://hidix.ru/">HIDIX</a></div><div class="top__search search"><div class="search__overlay js-search-overlay"><div class="search__overlay-inner"><form action="#search" class="search__form"><input class="search__input" type="search" placeholder="Поиск" aria-label="Поиск"></form><button class="search__close js-search-close" aria-label="Close">Закрыть</button></div></div></div><button class="navbar__toggle" aria-label="Меню" aria-haspopup="true" aria-expanded="false"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Меню</span></span></button></header><main class="main post"><div class="main__left"><div class="main__left-inner"><div class="main__left-content"><article class="content"><header><h1 class="content__title">Прошивка роутера Cudy TR3000 на OpenWrt с последующей настройкой Youtube и установкой VPN</h1></header><div class="content__entry"><p>Инструкция с нуля и до результата, на примере OpenWrt 24.10.4, пишу в основном для себя</p><div class="post__toc"><h3>Оглавление</h3><ul><li><a href="#mcetoc_1jbe0ledm3l">Подготовка</a></li><li><a href="#mcetoc_1ja27468r1cf">Прошивка первой промежуточной версии</a></li><li><a href="#mcetoc_1ja27468r1ch">Шьем версию с новыми драйверами</a></li><li><a href="#mcetoc_1ja27468r1cg">Бекап системы</a></li><li><a href="#mcetoc_1ja27468r1cf">Прошивка загрузчика</a></li><li><a href="#mcetoc_1ja27468r1cf">Прошивка второй временной версии</a></li><li><a href="#mcetoc_1jbe0ledm3m">Прошивка с поддержкой модемов</a></li><li><a href="#mcetoc_1jbe0r15q4o">Настройка конфигурации под Youtube</a></li></ul></div><p></p><div class="lock-box" data-enc="U2FsdGVkX18AAADFAAAAGn/lITH5+hle1aZjZdEBwQzCY7pB6l0bAkMXZOg06yIC/Zs6NPA5H2Qg5TP/3cBNIQ+YDazsjbsj0kWg/nnTbF1SemgoKo7JFrhc8+gvp1faqCeoxNMeXrGazhoiZKBySnHIXsXu5aGhsjF3H8Li0Ioykcb/bUskLLlBBImEuqXbC8cHih1f3QwGJZCQiDRnYi7u1ZFVNtxJy/Nk5X5HB4pPjV8FVkHG+ZZrz8EEGX3Age++Tm8cvq5ixruEiyPIyokbjNLMjVkciBqe0ckoHUtIeU7Ymqmc5Ea8XvZkM+fn4aJgEJN1zxpe7sl6o4Mezt+ASsks959U0BVcJxHARxCUUeBbT1zVjaa/lieT9tdRsNAT+Yi0Esxz2V0PBDeqM+IDEd7qBh/24dMpi+MLFXFSa0BMZmCTKf1Ez/9OiU7tYUY/1uu8cFfS6ZS7susJwbRrH7QZFLBECHd4g2fkZun8ysvD/NQK8w53eDQvaHWGQWBekrxfb74jKif5zQgytxET5CRF3XcXtWMyBGfFC+8LqVL8tuxSSh0hjszZzt6Mi8ny+/G1cKkk+0QDH9NcOLUuWkY03N7s/dFJLHXCNaq263S6Gy4fdVXcpqordOLLvtLI9F1MObJZXZLY4rLZ4+etqZ/LQaz/9rdp6oYygTeqcWpvLifW+mAdeMpsNqrHilW2ezTKapFjKHtBRzq/A6vpLbxaPnkaagPfQRhu19U0jN3hP+ypfS8DtkPmfd/3qXs3lKPG1qFExtxhFZbYs6WqYAq+9k28xsGybOY39zXXkb5wLMjBb6nTz2ROA21k8Kr4yMDWvk/rm6jugJOiZ3gUWzYpsXQc4z1SYmzvRV5x3vgH5ZFg7/nZ4LQSjqnPZYQAb5h3xq3Kz+bEx4GFZajmHNAi2v9x0HLjZOLmOo3ylIZkn/SQxtpFKkfB989kE2JvLEoA5wDZbR8XIM/a4hN5NzfuaMRgxM534ZudWJ0w5AZHVFniC5iZRAu6Zwet+5tiQ0LcORlKh6HnPNEld4WqfV+U3uYwLrIjiIN8d4QKrdg+h2wXNxrPtF3Gicp7q2rVTFJaZH3HCuUew/NecGLgl36A/IrujNxt04fxv0vJuG+QAAT9zYeM92bEPxiP0mLYPyk/vxmXPJ4T2xL+v4Z3gdpbIct7DAMdC4KSbMs0yzHFIuE19F2bihGyw6P+9v5ODbxf9AytQArm3nv4+BvYv27AvtAxaB2fWhzQPe9tRtAidmngXwSgVAJEOA4go32NMHmQ8djPnUsy+usIhzX38Fx8L+DTnHPDT5yPASKQyaWfnKOQgFpdMm8+umCH6pbe4rJPUr32ZvnmuuUn/QnnnNR4swYJoNdoLReQVq5QXatrhCdknrmnKgU5JOVRt82g7VoUZMMq0cx71FILjqOu4y17Ca5fpJWkmwFrhIDPXrZjWkWrnQU8Kqd9A73w6kvOcHlV0tQcqUx8qrdrnKtMHDyuYmUOlwIQpJcai3K5Dh6aA8gR8GLfBnwrbSB/m3JBA9/KUeHcr5zBaWWR7AQuxxbpy070OJ3wdTt2PpwbqRCZYuH4pKibbK0GVesYEGEtgrxXb6hUlXTWwja2DvqiAPFCc7MWNfcGlvdwrL2RMpckR25nydnruNdbl5aj32lBvIUnnfYBoX6QgRu9HcYrU13EO6fB2DfwdyZ4BrxqkXNHJ86iNS0XTsfMH3MI3tADCioFXRIxPVNuX58W6FXNMrpK+CkVrNyACZdrGKyJRVPVXOinFfsaYo28ZPErHl1bnX4vmw5BxCjjIOl/UGdLWLoUzwffN9x9Cz3EyydTXRGQ6FjfLWjPpVsda+W3by6SKLPe1d34jBAT7R8Va41z4IqhAWoslXWgQ/r00GXjO7TV+kgPt7ytYilgusDIpl75/a8l52kuq73zNmJACBn0VEm9hZ/BlBU7LmXFdCY7dBjEcJS4rl7lrSc8OhZGqpX/TmE0+M6TUY6kVHLnkLC5uir0Q0AzCE45HJxzicUuPTspzLC441A14vQsRrrYbnwZ3yyHgdSOTR6zLK75sNWNkbDOZ/DKNdEUWFdXJx8Qwe7WKXyVEnSzbaWNtrFvS+NuGh25XZYc8yCZ7Egy/CLVlL6chaKDjrinj9op2BNfT9Aq/oKyQfIOIpRs+lUsg4ceT8Sb5PxXo1TPvdIm6CRoqmEqktAgyuzcGCLJxVsjCOB5FIKxgboGDmd/fH6p/4nlOumd20NFV3b3s1YJD+TOSY2x5ynWPurqwycUZh5OXTbu/4XkCIc/PZhmK861VCjOpjkK/lXRA6fBTcyoTIfOedmpBxh7piIH9T20YswKIL1y84/1AA3XikK7YKdrxpbyYISeG1efXb4MaTCFj9mRwepc/27fyFUCLgB0MAu7D+MoOpdu0M4JulR9bURa9PHz4SysK8I935Lh4/04y57Y0QtU9b2lheDctwAKPRRz1gQwg0f4W0LsXBKXUFUa81p8Gp2vh2Z/DikJ4CUQsbxaVmRCgxFdka1m9qS4Bud3A/E9k7XWpBFbZKZRFyhVh4EUFKVAwEWhzLEF9kXayIu8d3/B3HajFTWrjbNL1hkbfnf53j2k+qg9mejwPR0efn2H5lgn0sjeKOFA6NgsJOUAk92CLFO5ym9+rAYkdSnuBrnTyZ8Y/sKYVbyyukjtdkm2c+MhrVQBKzCnW85FoA2lHdrLAEfuQs+xoIIlrWj78YFqk1c6AY4E652I9kzUckxtutkf4jPufsazj59Jm+64LEW+EsgM0nZFZtPaq4J/4E2dLssHUTwNO3pnzjyxHoaCxfHi51DLe9pov9johI6lvk+S/fgI00Rn6RvMvML361YTrec2SRiML0AQHVFkyVRyV3pjWEega+ctvfKdNov/77Fz9p/IqAdnVAhCXeExR4fkj4x2Um2QMAaWuK05kaTmSBc+tiiwsZL4ImXO/eQeCGhTFF33FM637sBbUInENBB9MMcWCrY9TwJapZ6/H23uHsQF41I23q1SqGCcbHq485IQRP1ymF5KaVol+rIbM0t1m67kAUviHXKXwKqjg5Eft0I0H0vIR+cBXMlHHacT27cKz5mRJcCiqogjvIAM2N2m9ezrgYrI9WvTdTsNiwhWADrP2EmxzfUenwgxIB0EhCE6puCZbnrmJr20ABVPXLZXbs1y0dHBfJqCz85vZEtiypqSD+64c0ZUWFD9GkxC+Ug2JVqx9aCsAHJDs8lWM00++HDzsh2DFhTXVB+/oQ+9x8jjxBe71aRaSBKNKa9uvFbzcmPYYIqtK/D4poHD3DpTLTFIA4czkiE8JxY3gn6N3NARE8YXOV4B1z6qnL/tfYlUzfBA4FKRteZKSka9RyQHUpmwSziIzyscmM8CNljVlTfi9gszb+ZYBO1tHScbTVIM3ulondf4GBFgnDf9rt8yDmAJKd7b89Uj2AD2Oj6ncXxza2WXnWh6qvtlMb0jNsSwLl+NTIlWXlEY2oio5BP9WSLmZ0WKhFihbUpjtdwWY8rIcR7qe5eKCzFR0aJ3MiKwnWkX3zPHORmxhE8FQixmiVkyisByUAGraD/48dLl9f2WTlNQiHWqlip/JswW4sv4on4Fopu2Gjo/y2WNqKERDRCDrITxlaWsg5jA1MQ9fwQducgy46fPaRKL/x/0PlnY6o9Jln5BBwyH0T/R0dSYCnAOgJqAehK+INo4CLY8y9pzcnmby/evGGTlVJpy/JCNl1yYHDYgxtYg7/JtB1WAVfYTw0q0H+YVXlrKDcn/vZC8GOei7FGNywt642fYkXEgQorpn1/7oh3bQ9QwCrFNv1DvuuyLpDKsHlZII544w7DE21visSpe2PJo4crDY1zJRATm5nQpL0+QT12sLNAC6l1pzYI1iPD1DUkibtxg1ATkYzgzC/APS8tRz5X4TdmLt9OEAJmDkOzYd38R7HYYDh+dl1A/R4TPuRbpGBu6kHjkWc9PkDjETkmhOapL+LhfBq5OcU2TZVUBiP67GH5NK+l8yF7/2yXfURLjwS2+oYyp0MbFVIVPE6z5hprJVF4hG0ZOoUYuaQdYNROSGDdurRwVVH43u+Dq1IaEhR+uqp8EOc49SnYaBHy/dxPQvsinRN1jT8Sininyau6nXCZuQVgsY3KuLEbTjyqnnxrx5+MFvuYeH2g0uWardjtLR+DzOO+JE/gLSNNKo0B8F/l8trOJu/sHJbKVHpvY1LPlIWirfQuuAJPHQk8vkKxBMUxv+TrKhnwGXWmhb3THLSUnndxMqpmBJ1Irwew4fzdiwY86YLa9VGbn/uL9MARn7EghQW9ass5/23pplL4CWW3KySoRkFC2mKty2LteqLY/i4Ds0NjRW9NzwTrlWgs/N4IngktityRoufce8Vg9WBpFdDNp5O00mkjDkYewdJ4adwTsup0z/3dedIYSEqHa9ZzuvR01RiXGaTOFFRg2aI0LWZVrhKJ2sOTZOlL8u/xgdL0UMEZZr+dEhCp6O0+LgDqT6rFhMHpvBgHPSPH+IZuM6iy1+SPJ4bOzo8Kj3FKhQCGn4UA8FUEUg5m7BH3xicyt80qixANMLpbVEwEYLwcT0+ZXQS2bTvsj2lX2F7E/RI8h6rsaNRDe0XeAxMTrWymZ1bGwU2z8i2R1d1KjHB+hN0tcZDuTari1Z56kxTx4RQIMoO6FSRyOU6HVZRH5E/6xn3SD2CjAVv6bweYi6eqgBDBergHBrRbp53LalEVmyevIUoy4e2xT9B7LpLkacLCskMrdu0baClq4jSLskBBBVrktUihtgp74JBWMYAzvCS1eArvcweC2HTc+OfpNMv3BMM3PtD9SX3U10yTEgpbnVOunkB2UFzfxtlcDh6SfEG0Mphes5VH4Lrh8uSX2a5Ipfg3RcTsl6l6vM0fk/+bPNxbKXdOkfsUceZxLRoABYEu8tSO/jJa4/YO0m+Ery+KV7bVRQPLCAe0DsHx7F9UECRo3qIPCWAhsJHJZb+3zD/zQeP+9gPZegCn2jmfyU7faNrtHfHKzhqymyJm+Z/XNeZ+06LtKd80eaRSh7YG/tzCsuw9mLonj004r7tF7/FfdTl/3CulXllVCKt9pQUt79+6v7nfqiat1pExzF9UMPsCT+dRhwS3N8ME22htqBGT+2oD0zcwf6JRArXClFzNbZeTJJ22zr8GnkBvpVTVixX6kdjPj3GOno6HS/5bADTvlc9PSwl5AlFToBhX6BDpK5yFItv+MRKrRHWHzv28g1KW80Ss1JxxQ+whiEyhWErYQttc6c7GXIkPRsM9uR/BprtjOkpw8jDonsJCA2d9hNbn5pFglXr5WTsAK5OG5eG0tr0I/AnPZZo+pEjIW4cNPu9x39c7LySfOE3RiCBaL41FZiPuOShNApUH3Z67QQgtFwPxZSnKgds6ixkzj79tfVzs+9Q2ZEeQZfOg06hg9Tv1mqpJ0tAjPFN3SIJBRzHtx6zOZ5m6fkEeqBSyB7StOtNs8fXunquFcavBf1lxzddWNXKvmUBQeFThk41TqBdKzJuJ0L6Sf3BdSqsHYcsZ2PZtemSGVUudMOgTB53BqsqBrBP/5pijoMbx3lArXAGDlg8JvKLcFRurat52DiZCumqex1jw7+LVcJJnamT7+bAhqpShalp2Hl5KDkXOo8fOvB2iBeRjvBWrzJEE/nEJngQ9ZNxM8HSrxmfK7I0bs3AaEPN4temp7Tjt7DaXIUDJrQiN9Mp2UL6yvoxaYk6vVJDEke/9k5UBq97pVOEZoO64a8FmUP0Ns3HHy5DaZI77k70QsRBDYMh28dQXaLF0qge7T5D0byPO3vHzQZKHDAt8Jbf8zFSWuJaHCxf9FJBgCdPmWPHJZI2bLcBF318Ypx8i/cl5xpiksnF7TVDtSupVH5xGttnryJabTxDQJC7NORUBFGAITXzkGIST98XIn2DIftiMCDkoAuG1uxYjA1BlTxf0LwdzItBq+YxT9uXmyQB42VaT1vhvp/ZSmAjZ4E9CBe+4kwe/LfKp6hNnX6b/XTGgpgFW1vagPbXLy/xJsX4LujRMTq1XuucXDm2fGqNUBtiCK4I1Hz5cZ4qpaYR+stWU1rIGxdDTzFdYKRNEhDPL0yNjURAr9CqTNvPLKuTyfeByPAIrMpSC3EoIK6O09Lzfq6UwjL/361pz7BuMWKYUyNcvSS6LMhuwLLXDQYusJcxH+6a4s+sltoprh8AoLQ4v7XMbt5fLKTUF9NQiw/2SlwoCFPw0I1BLiv+hdjYj7HFge7JanZa7PpyMVIClLBlVcgtZ9RtRjWVHecvSr2GX8ubKeb642WYnYLc2kv0Xdo7lq5cRw3HN1gJs6NPmiObHoUy/y3aXTOFM3fEHhsFmXZSUmZX02qPHtc836qSNGCeZolp3309vWx1DlhvnSQAvi4e8ofEyq8TqFulAJ6EVoB8pITm/rIdkhFY4jHwPl8FllOKI/7APqV5XRHE2/nhbThhubZQlQd+5BHf85BVbTi5moycTeGGu9aIEcK7qFl9i2fPZnsXQI/TbiWoyUHJhCkIGLGT1zJLcqXNA4NDCAjL/IcOG8Oc0toSRjfyGwLfO9q2G0AJ+xMowKcWM6kKYEJUqGgKYIiV+DLOqibVrDVSHLCSBnza2gI7QJS6/S9tjPrQJE6c6xRDlmrdeuY4BPXFxLZ1W+kR5E7xWk8/H2/fiLiIbpcDg9J4/kzvfP0mO82rSymq4oMcJNc0aGVRkb68YHh58yO/rakEBGdulO7ekEgejlJjYhLAJJ+JuX2VwiuOxkOpr8Lyddyxt0vMiRiiisNM+5j2yZCCtZJzWhfc6JMF3eoVst76gVZQQh6cw1wrl45YEppGMlcOO7Lc23iiAXSqMmXQuxx4tr5Z1M8EARk+8WMp5vRierJQBR2l6joBF9IDRCfOjQ1k3CXTieoqQcngiu2ODbl4gKpFC+m+9cfr9+/fKVqa+Q2UHYthvl00VslIbckfxhMa4sksUOHuS1tIS2colsU4H9ykdDGu1V8PSEWhvujL6JuCoRYfEDZZWLgMnM9j6NCvgDSrQNxrnsI16lio86rn09NpAoKt1UelT5K7f6r1rITEQyDEQnpLm5ZcAuWEiMPapgKdloZrdz8ml8WdcgOwVHfdX3hfmLWpC2DL989GDXHF+4rUzweE5nPOq+4WFvqYsonoPnRhrx+dCPr0sMj1mvMmHX//PHfDD4CRcxxruUKJBBUYUZMyeGQ0LSZtEgjOb5wrsoiYhjdbiM/tld+/B6zEUu1V5NUhFkUQvBfK/lcKFTsis8JxkVJodkCNcQdh4SKg/1ZrnCexobCC9cMIiPSJn/gMR/1Ya1FndtWgGisasCe3g+Pi7fXzIP4A/pp///Mpzh6OiRAEVRrgeDwG/0Esq5QKnLZPDIxaTgkcKZY8e8JB/mVyOopvytPWmiIduwePnvhFCv8UdyHphj0KGCwQaj/iE/NAMVZYVJBBG/vYsOZkJ8ubLL8rjdR8GdAFWuFtSTqmThTt41bqRI/n3ikbeMlqtN4osWmvmETPKAKHbZp/FVpdLLxZUdirvYpjqdxgxvU6Z+tyuH+GUgg33fIXODlu5FjbQVIW53X+IZM1AuUabLBPILWMgD5twA3PlDWzG0A5z/zSzFGg0je4m5bWbpQ6xV3O9OVCjYrMxRhbUBkF0qjs4zqA/PIM9O9tvb6Q/7AtKRGHiHpiwME52Fb5JXWcC2emiO+MJQY6rdg68sbKARicXPVrSGBNELUdB0xS72woegcQjOHF4yhBctwoeIbzPQsXWtJE7PjqwjQbtn4ctWazAJFcFQJafb1LcknjVGbORaiKYiaew+swSpNwxMxi6ai/1wtKEkL4/LUqO3wDwTnAKpqhbWbYtHWOAwSgtCv6ch1cWZUdOArq2Nd3zh4wkpE/MzaQsY3xoq0tQp7ELNEMt2FNQrXQbPragoB7YISQHUiB2e2weW9PNrhBsLgS8zTbNc2J3N3EApw7c2bn0EcdxNB/FIMxcrH54gKwHe891kNFjNTiqxVU9gXX2UUQTMKa7+v3U48NSim3qSsItfiu8+FjPtJk9QWhegMvPbHG6jEdWa0Hua0qdhI4/npmCXnqp1EnNKiC/GjZy4HAol97UBgLCSRZTQsrn3OAOll1CY/GfHEU8U/sQvWMSevfhFJ18EWJbx4F8oENjqWB2M3PolBN7dwnYrvb1ybj0vNJrzHHyr8XG5rrQ9TlmU2Tgm9I0DN+drK1nsIonHDnenkeJLCvpIWH18wU7oFoWSOAvQqlU8M05MSKv/EZmM4SbouJqS9CS0by9TrPWnOrCB6/8TnRPp/Go2QtTBX7p0dlpeN/Io/2HWcZ53HX86hbs0nPtkskC+EnYnHW/GWf+p4lyD3LL2AeDRdqdbhiMzUzCPKz8f01xjegqdz5K8MrTCJcE6my0zqyOXastTysyoA7msVybF8qTiJytKZOgPqCfRK9Q+bY0HNYxcaNgxVeShzORdD7y/eOCeA4cAspkr0QCVnaDtsWIqQMp/Zs8wDWucuLeddzCvlI8PbcQ2/pIh0Qq7WOhzkbDvs/WskZ251DzTWvpvCyqyxIVZQyULQSejBuQ3U6l14eN8FNKDyrPlHdVuQxbemsQqjXcv3NtZ94MuNKrinSKKliiYdNqZ3z3NLQer1sJrdOhH6q80s5oTQMC6dIVMjCb5WEH5wEoWISqTSXZglR7TVhqN4TcSTREwhrmXQ1ifP/C7ZWlEuJx2ap/kwjc1+TrVQWU0e32X46YdDjpOmqEt0rv7klqE/g9otqrYw3kfxeVx/AavTX3wpWnICxOrQyf7hS7/gd3YSc9PuNH2pd5sLmx+qf78Ix8lTRf7iCPT8yjyfv3csCpY8uBlCVe16aylVlJZAF91aLKTHf7a/LDdB7ndA+MY5Qxb/OmUBNFQUL67p08IjG+Yb9G0OVoScqancuxKNLm4DL98Q9CrMoI/WTC2jqEj2zdFAhcktOapjThurfSpEwncG8LPJ/c3hrcfT8+fVH+G5k5ArqDl5aawlmKlapHDHeAexQvlVOj+HjLwgIVz4ZEeNvmMjtPUWVjMT5E/A9Ngu65diY9xjnunC3itSDrsyr0aRE8k1tQt/RX7YDllD9YENTafB7xHYCQTYbDw528c/yu8+OACwBhGBQYaQW57Iax48+oThZmDE3n3DYWQg7yy66tqN+fDErSjvSTsbFGR59AubCjIylWYUcwNfFtxskpFCEMXUYTUKV9tANk9fO6EG9u/9YMXYOckDyTqUufVdvpdR0gmr99SEcO0YdyPvyf/Aag/SSDO4QKS93kA4UTyKFHLmInCkE/QsivVYSsabKsM+1p9jck0B0GurwGW5FKHI+mTnFnUPHZR4BjkyZgqtSWsWd17qzuCFGU/xdrgrPoyX+Fev7ODCuKBoEsSveQhKSCDQBD89uFSBT5zqJwdAk5zFqs4i3DYCMmKUB6NrYa1xNPi0refNbxGrGqpg8GhDfKNzwrVkdP+7Xsrb8JpLuyUBT9kzKuemAp2H4T6hbWfZB5QpjXlTEUx31Ws8UAbPsNUqhRohikokSYWs8dITZyHMhfaoF6hm6K1OqFwbMvbhTchypR2AGH/4NPyMCSic+bSkZwQc36M5ld1KAOPfh8DbNk8Vc/py0HnRzpGVoaK0Yh9DfAbvkT0useJl6UZmHpXrJh3HJNynSIkA5XrvnkX7uLG2IRX94VgMaZbqN5o63nAx9QIK5VCwZmfic6YSMrw/U6GvONLPahkVhDOyAspU4194eFG+qE5eHV7fxWcfGaSnSiEODKxYCb/DY4+de/Voa/OqmuwY3Aj68HiTBM2RVqNnx+cxM/wl10DTHznWQHTPdbdYaGlwC9yi/oW7MWQ/1292NjtCTbd2ZhqVF/eMiuzfk39FSlQez3NodGXsI1SpTbN3aqswxrMt0bmfn2XlgV7ZRycgNQWSIQBZZmGxBr6KHCBY7AzsM68xz5knYouIGfSMVcUSMrPGVeCHUgSJBz2S6/7eMnbGuJ9a0fbfaueiwGiwhiLXh2oflVPz0pAVPMY/byBAuIYmbwJcWL/kMvngRm/z0xdkpUBSjZPfnZoQ4tOKViw7Et0eHRjSc0kyFOu/7VabbDxQzH/2Ql2HqX12gOg7FQAZXBVxiVZxR8Veh0HRjRAoznVMTqRFu/B4ln00ozU6GTDnKoFBayxtOYIIzFhUysPPNVPo01xaR0maBaAqqosTZF6Ayn6ZsvhcliTKjExp4hWoO60QfZ6oKM0SbCYJWL6pInSuo4PoFi+knJTrCW5LmQjzcyJ3QdHU36vMHGX4LM7KbKCeVOVNhgWi4tqtMxK4vObspHxcEsJ1RIc9d46Q9OaGzrbLbMAwQpiHeiznVPGZUj3iAN+xdPXFYjvfBuSGNumGgZHQhMpKsf3sBFcTP/Fiv2nz3+LJgW+brc0U2ehnOFZDbTZg1oNRxd/DPXggqGZ3P71ovQl0bv33fxfB4yp5lC2LlHBk3Un68HiVbsMkbTkklDLLFq6X7wWW03L0ol4r6nXeCW1kaH8crWRWZfKa4ipwjKzFbgue2P4lfh10NEH1dMICGO+r0vJIIjVYKvQwtN5BcsmwwwrdpF6gicvu93fMHF1QAatRROu/xuJRVnfRScb8TXzp7WqP+XuPkt2rcD8m7/t02x4EQCEeG4sMlFRTt1TsIkiAwrbxfOnnH/R8pl2TPxIHerMaBlZcaoQHVfzy/u9yGN/giH6RxXFPRI2HMbOTUO+smDlQjB26ElhT5lfWPnp3QyfMRuJmWx4qDOk+MOk7RumDQwr0+BRQmn1cBYoGn24masFsvMAdY7VGI8byqV36DgU1O0Evodu6+KVByXskgrkM2qrlN2xm0eMjJrqESbl+GiclaXqa1/ESGWb2oS2TOIZwH03oPYC7qAtLX6sOcUL3J/dIv11MOvJpSykDYiR+meawlKlH7fDwF8UcrbVUtQ+9W3CUNU8kB6YnxeCQaYoSPDYANNJCA82jGRNwgwupqlb7DWnXmesG6xIHjIlfdVR66IVLcFi7SFx7SoLv7UqgzbB+mqVyBbLnrS/kEgHM2SCtV6CCgQpEvkqrwu1yjmo5PPnAAoT4CJtVNbIsGKymAU4FFumiFFaA/EOkMFnvymNcLl/zAFbGjlegAnkrE9fT2WeBiA02q5Gox1t7H6KdPVY29E0NMLf0wv8WIFQR8zJZy8cEzByY7ECNLeOJjscmeLfvmjt2mzdyTRe0aPdyGKIRfT1yUmkGqVVHzcGRV0utEjgu8M9AaolTqzCGpKp8fH0UbhIOEddqQWRg3uTNCmnSU9wwQNag1tnMMaVNMa0z6nFr3eYKdee33sZf/SRm4SaU83YXbt0DUZEmZ48l58T3pJQlj7syfIftlkH6GINbTVwuMXqrDctGfnOCXnbAgF3irnsd/ikMrcegP/lD+ew+tPpmsEOVYG6ZfJi/aJM+kxOnwoHc/R4KXPJfH+FINqIFnOxTsFG1IzmqP4YI0Lthao7Yxe4FsxnYr9yAM2QPIbaq8HJNPXeoTaPsDiuw11itNnF0paJrOJY+/gBQE1al+OhSlA/Rs6m+8m2l4kfsXz4XK3ugajmWzZKF78Ym39Drph65YdGs6nbQCExzmHLGM244kETbIDLtD/Zf3PzETEAlGMhrtvfcSIEa3m+RToY3IpRTST3+e5J8I2yW5u9V8jdSxzIIn2CNusGLnz1iBE7KsNjfK3K8dMNXgw4ext4KG1xrcy1eCQ3VerPDaxymrGW77M6m1VapU/NfJNgdV3V2TZQ2KjR+pa6N+eFO6W+ZYPS0xbSa5UtlNCG3YUgv9sP33FGhX2DnbHS3NFG+5QGpwBKfgdh0Tk5nhWLbUV3DCrzZ9X0sa/snbIjAIDQE5izRpPQFaTUC8ouYO66ivnOI4WkM4adATjPu+7WfEHwo8hZNQNXWvKBhlmey+BHdIxb8eeUiWoBJWkscsRFtw+hQWQWaJGaULrqAk5V8Q2q4zuVdhsoZv8+rLABbYPas4gGp2Kwub+qcYBkBTq4q438b4vpWayaiIFeX1pPPB/rYZIZ0ANIzbocMZahNSk2Wh7b5iavni4aMKIrGMaNb3YQLMtmwfnxuzEo2SqA9t8uCMGbt8BMwf6+WOJurKhIDOmhSC+EJWiHoyfy0y+S2+dsgjmDL4Aomnm58DEEgm7NbowDtNFBz5DUjLek9ro/wW2RvRtuZOnlE51R5pnzqRbh6G5B6i2GU8LlLI2pxvrgJi6hmqY0kQgrhm0l339xJ3sPIdnMPYEyx5AYJpTRVX6F837+KVUnV7bJNgFRky1PY72ViTiZ6ZkeWAjWKkPe/C48dARO1gSxQjMwmRggjNsgHmQf8iQGkme0vn0mxxPw1Q8SNhSwX9oNg9joOgzOv/p3XzlHWQhNXVQ66kXXsbpudJmBXVxMwq9Zd+3gRzH+VQGrHYAT24GxpWgkLB8JiTuEcOe9Vo6i8zMnUERmQxL45lBba+4eMFRMf4pcFbKwjYTabNsPl2enuKp069STeWYo576OwJl6ncIaGYE1n3Y/Y1prOZSWQdkiOUjUOHA9mwj7wWKxGMcpoWJQvvGIDei9B93MxJmkZaMmF34HYvW2OEob6KQDP+Mhhr3Dm41RHG2HQOaNiKcjRlsjO7Y7Bzg7AVf3Rq6bTf7UIqPp5JYeJYOSqvUb5oq2QijN/0nnhiFzrDJx4FQ8MEOGScYVqQqBVDbwPY7pD2O+Ue73sxBr/qidtiIvsZgKuEydhPkhaz7WA44g97kcRS5Xg7BTXtSeg66oESbelTL8sXjTyAzFnCnw9b86OQPCK++xATMLTXEIVE6qS4C57Di5awRo9lW8BCnJCYM1jVQ0hmVLo/+2Z0IvjyFDH+1IiXuVdArSfRnDmB9UJ1nvLocqJKVYbMC4n4OGo/CoFCkYCi9TMZpjrYNoMwUAJ/dEjusDxzbEv1TZp9GJRmXYVQU7r8KNsRHzXp7LgcRkLBmVyz7BuSCfnQZKKQkdFtZJ/Rb5nIlqsp6a2zneFTAEhBXYd0//Ma6c9YKIcF1IY3fDKNCcOaYvzH1+dYyDUv6lfl+eRjPJDVja9M440d/oQuNNB6D6AxMGA7guUXxTc1+i0Wy3t+tEmQ60LHC+tthPYwaw3+BvkaevoPzYDDRPCbt0y3qpsQfqYC3Ao7Zzs5NMlN2c/5YqricpRxVuWNyVfU88XwFdabb4KabK/qE5KVGh05xAQHZS0C10Ky5in7fkF+JAwvp8pfwfrDQgYTxbURrKbW+AHZOW/0tk+uZ4Tk9CdX59exxOlnVNL8rZBl38+9OYnHtOhO4nSoFwljWNC/2inSiHiUp8hJoUiSHIYZh8zl+EE7i3XQuCEY6TGEn7COFqrGNibY9IzHT4RkrF0cGjuBF94ST3RURb8uv5Wk93Fi44X3HwLr0nHapVGoVjd4DpL4wKt1KJtQdB/5T6eKUDEliqVaOGK6iNYxxCcE94XR/0q9AgJox3eg5yIliGO2wRKFV8vxVpclSB3U5AQTeXJ6yfyqOwaC4iWWfTQTq4VIx6WdOqRIDDfPDPN0T8rC58A19nmAKbveCzy/BAle2cCUubFg78c8WZVVf+9PL+xF2Po9Po+RWoFVM7Ll/qhEFCRGWAE3PO8aJfG+/SYMi6ZLSsuPVSqP//XiOCGfR2SoKP8v7Qu1vvKyhYL+GZAzmjctEKZLW7TVT21Zh1SjbonH1gcE1x1bjVA3r3VS+GgvSP3YuNWmJuLIG821syVN/l+iDLVcTg7f55UmnOle6F6ajtRvoADRrLajwyMfNSJvDbfCopoxDyOZ2x3cddOdP/lF7ZluckI5wu0IBbHzUj86YsahmEL6UrZgcErZTHKfOpY3VN0mMIjGfLBVxREbJ300FjacSutStjD1y2WAw8/8LerXFmIoK2N1ffu291cA7pxCBpaSNsuhqeFdF9XptzHe1i04abyUgzaxoMpkz2Fbbj494ghKzrl/icTKOg09VFDyaBie0izzSfSgtZBecTmihXRgfk5bjjnw8iQbCeSnVARNu3D2AcpwSV9m7gQtj7r8C9+8wnW1jxqpLbgYjIqUWCWNrXKOjUccHZhVMIHc1Yjg/1Y08o+MK3jfdtEBaaFvGpB+kmq4HCJoiGBbs7jWZs6WKGd0vYIiexgVPqCfvpF9x4E//zDVVKcmvZV4T4TQtWcYbfPeVXQKYhnf/Q9ETNFFfXwdk428wLtK457W1Gh65LC9P0K1iVZzsBQ+JmqmXJcJ0ynlATSV5H+sHA+jOLhsTtuFr9v2FgNOo7Pkl6hPs4IU+DbDVojd39GJ5RwmZ3kZPVbeZlR6fL+85j1D8LekqZ+nicHMmzZFsQFX1lRS4vS1LOjVOBAAGIfi8LXbKayCYkW/c7D40tkwaujjeB//6Lv4yRnm180XBOWcSq5BL/Ck1TiyhqkqjLPIRUC/e0wQyQ+6JKuyu3OYzjKtVMdnrT9FuA2RXcSnMzVGzSnRRfL0Z69GavdBcN9w6Kt7mmmNhs+F4B/LK80jKoGRCtse/3bdqVDTlUG41mfuhI+yPIScHAG2i5aj0uktirgenjc9BHBOY6h8s5nJNW+cMaJWZNmJ4xxAXSo3Rqojm0AvLSXGFhUKC3kZ8kqqRhQm/Qnj759R4+ZX0WIRwkr/x8CiCRpKPC8FjMYuz99P7lmx2hheUW3VRARxFi6DQKQpDNpy0x304iGC/R03fB7ujcvjxpDHMsCUg6eXXqLMYvTjOpWWrnDMvFz4IcIxzjiJXkI8+yWwcrQiY3VgiRgzXnCa1F5/oY4/EcpI7rehKxKUR7OH0aoobt2FK0FMqsNwLAyIBP+dUdZCibh0vYiooPoBw+afI9uvtOxxjQmPpJEqJIoeYk69AYCmTJGUYcfpUQSX2sqZ91V2T+VMGefeNtkMxSxK4b4K35+t2YVc3v5j6VliLekR80A6IoPobSIBRvvNdwyTXRomVrIkNevLsYkJnkZTqfhj/1rg4d57DZCpPreWtNPW1erjqSrvru0hOFuLEtj/OyR+zzMnv32t8oaLJ/YccC10QUQry9m2KrysEBQsKC0quu65Oybb9LIzhAtDMHEYFQWDPNvyThQNpY1kB5NFrhZmZKnPGldAuRxjveoU3eUgG+KsMungdYrqeHBnww7AU9nKFwY+ao+lM5snxyHzAAGzQlngwIVeL/wAFl9GOF65u845Y9GC8ornlOtLlI5KQ+xUH1EMoG3lxOEd0Zb4sQZlA6n6BWHiGAFvFXW7URrSBFvUXgmYNGV98B0vV9eF8k/W4YFHYn+LjmCacc4fXRr8BGf54CoJp3lh0/k3D00ASNNWNHmbfq0wsEJTqxzKs8GQ7fVTXgR9w57FAU3OEbgqkgm+KWpaB6yPe6P2QD/8Qnb7cXZQS1Jip0nXie5yfS3hf9uLeRh2tf7YGFZ/8adDQrNV4h2znkRL3DpLFgfNX+jg3Ndz1YCfqkV5rAE/gJtb9dCz5Jn6WlEuSaXLF2xmodOu9ip3j1wKOGhutclMtwgICjhe35LHOGRhyFGkp06aZAhYTgWYHD5UWuFoibrus8iLjbiqZneYYRAOuDquqB8mjIZ1Eg3U/2b2OnsltgAo7NUnqLAAiAQqHM4cVhRSNIuzn8fv/tH70ao9gKMTRafuKFRSnPD80FbPCFtt6aHWfmFTosCy9GAnuBOCOwDTTMwPIu9jWIsEPCiypeRhz2NMIS5wQre351uDC6ZpVB0t6jkl9MZ7sBHFVeyxYdD5taukGp6oBgqPcfsY+kVWyoS+6vQNWNV8wILAs/zxsSolCyPISTNAlkO4CkHErAdF2Oy/vGwo/5SD1uBSp8+hGNciuEXRVHEdgJN7AGpd9iNdekcKKRIa7og+jHuYUFijzDigVKkyBQs8CuBSpHh+6q+FCZKDZQAaPrcfzMYQLUh7AZ7bJsNQ9YP43qtryGjoPOJGMZN8aS37smPPycm+8CbX6kKLRHvHceesiagcaa77oixkiN8v7VAUaV15jCnItGQLkwopR6qf/j+S3XfJZJNLXc8YhBwqwotUUUncThUFZ0u3SAN0t6/mnmxFwvKIF3t9Hs9udMt+Ztk7eXTtuppQ6kMvR6i0fb329OGnjnTVPpgUaNisYjBdnZ4dYHKTurvNCvO6HJwvilurAGIEEjbOfcXy5c/gkjF+bgPwfuBtPDjnv2Fs91VhlcmodaK9d20z/fd9gxWNXMikH/XWan9tPdm0hJ2/1CH1SrLtw4X8hD5OUtfDyVu4goTFiPSYuUrLX1+v6rlutl5blOw8sF+tSD3Yezkt+ELRMd1knp+FMM67dbum6wuIwY11c+pR1Tmw6feqWfapb45Lik4bsvJbIO1VWB08V+CUyqAahKtVpBq7gqOiGERTz0DpueBkX0u835iEVciVhwxrpKDEasyrYYoRl2OlC/bJwZ8BC0cjyIEPkDLGPiGKwZiTlJ24Ko2ft3fIYPMCnTDjbeyco/K3DsrTgolMla1eknUa4Q1ODvkhSwRkmDHechspVmHhw1ZFxDiTwDqaPipzRbIBdAJHSidXja40oQB9ZcB3x0RCClkgKEF9uVg8gX3I+2+VKoWIcKePOXpkFOL5Gd63rCYxNuqkE4jkq7hclsBnmDFQ3lo4UdT1o3eWO54aZ9mgAa1Mho4gNNnCxfUUhbsKbQKAtHL81iLlVcz1fmmwpHssoG2t74DAT3P40gyJ2HNFHhbpGFyQM0uJKVTNfgZ2O+44kc7d16rysT2ZE5oa1D1kaxna72Ki04Nu+lRpn2IHKgpVYIjxILxvrfy7+H9qaPMP0ozxikLQR6/0KOGSrD1dNBCTEiDcsC3pRk6VVbAJP07jXE/hKqTu+x5g4GW4uF4LECiW1SsdO1kRXCPI5MxkdMUuyMGtOrHTRkZF70r6b6kUJC3oUDP38uxcvmEcHImE7rh0C/xCR6JqolJLS5JiFO//hxRIwJUAUKXJmQAYUS9p3pQaL9gRExINT8U13QDUcwtF6/GkE62Px19zYEEa1p2RxieIBoFMn0dRje34KUg389Bp9hnHvj+LWJ//3yZ2F41tMxEKuZj/6YpVNuoB/THV6r9ZtwvbfBR2ylr+R1xVv3Ij0hAG5AlocEWYzm5wD69+ahFK33WH/yhG3GupD4WauxRIjcy2CfZBbtGVx4C1+ik+hzTrIxFJD2SV6JbwCNG9P6B+XS7znDUKImjzk2BLPmjVL58MtgIoyhSjl8F/5uU4StMiy/D6V7/eT6HUQtTC+M0JiXCpZFwtTneilAk2DDxz2TTuRKCOinXKXGQz1WPdmBggzplI3DioojPRqokr6ob+MNkyIJvpFCpm3Avg/f5vICLimutM32wI4tloTa6wcrec0pki+HHwdY+KnxF1M+pAqlQsaIsvBPriZuV8B7mh5TKujUKetT7xLuU5o+Uu3zQRZ0x+dTU6+agCp3VvunL7acJWgoxLSp61Zrb/EP8X80iFk/276r0LXQ//Xz24DO/wYifiS4bEAUMN5FUN32qrTxVGDK510QD73Ocj3Jlb3MorXKlFtn30uGQ4w4Mkbdotn556Cni0bwAhnOGEBAyKGgH0xrc5DdSMsAwpJHTJaUwkYehGDO9cK5NZFz/LIn8FvE9in2L870vqjbJaO65Yhyn6l3poSsf4KaieLCOgqldNaYgNtMHtveGX8ZkiwrUQW3ZlNmrHixdcs4gpANBoDlaNkSUz9LbCbiGMxfvh2bYu/XEkzrW29lGcVlhQqaOdnnlNCKuzo6V/NyIrYv3ETVO5TypfkO5cjNBH1RSUdDahZ1N6seIaYn3odtPYaXnQwRQH11RfvMG/AG9zVVDLpLZQFTGYJLiXy1n/GPdV/nG6oB4HU9vRZllhnfU5Jc/IFFrLdeF3FWDrreQXR2o1Z4bpgizC4vc42a7NX+ITa7IIVfIOuHJd6YnyT9KH/uUeyvwxS5jhWkgqxsQ6SXUWq++/sO3PfyTN7farqITKkwWibJ0KlhvnSdj+QGVXk943j01oep9F2qnihybzbnAoKDhHtvuYWltyrK/V3usFxYRigz6SP324xH05yjeEFFr6xQWxUmG695jrpZ4J65UwSefroUTm6pbalGosgFkUEnp0POAtPDQHDcphTXl60kecXSba/bLYtbzX8Ekbzf4SGBVbbz16nElsyIulZXjc3S8k7OhApRBISlMf7d283f4l9EB1uOvWdOCze3EpTe822qh05Xvfch/jLFfEF5permJUgMvEh/AGph6I/h9f+ucs5pQE6CjYaustqu7gyKCmb+nxtIXlO08MMjtZIdgrlsWQoPpXzsaazOcjMf2HUAOCjpeTIHQxtFsC3RGeEL02IX/CRuJ8YrxxpDVpXvfrIDU6UJrCCaSBNg3EzyrnvMpz0V2XH/+oeqxhdsYZ/LP2C49zRA0uFqNhyOF6+ykATfSEI5w23FBbOXkZhfoJBOQxX4JRELaQNBwCVWkVIvmQvimrCRRDPqxoakZRPtGIs3y2uCQMG8lbrjtlDVbn38PquYFfpP/kRGMGb6+aLdKgvl6g8o0ywgBIjPOhyYNUkheG5D5MfKHIdq53A6z8raI0Jw0II0LNStt/p8IXRLl6Eq9wjFXNzvbdHnozeA9iCIW/osh+MJnfIygaSy414o17aYjJCGTuRAkHapjiJpVRq3VbHvIVwTuTbz4SeG0ndmNQRtzs3MqWRjS+jNrYe00R7TCZh8278LoE9Fg53o+fw1Ftql5g/pW0VxeHlfglS0f7cDrd8skCIZHSYmQFE0fEkPq1+hBKTTKKAeTcCVlDeioX3rPh+Cm1F+mQnDZcsB7Z5UoLqjBPFf3+B7rdHEVTMiihujbCltgwPqflvOgshdov/mUrWjvh1lxfx+gdF891prC2dDbRj/DyhzV1AXbQorX4UTZez5bDeOmmxMOKnO8FS7PW3gn2jWLl5P/8gAa1SywUFbN4FTra9JxbwsRNEUeAEKsVPBQbYTVFpk5P1avhLolX9759b9bNIGRpQz4HxlnlS7w3IjkbPfQ0CILUTeH6NPxqWHG8BUvKpscSvZV7WGtVX2c5rz0nX7B2c8cl9u6NVukb+OASZFBCZeWbppUJrOFJzrg3GinlfMpSeKb4ghZClNVa+VrV28QyvAIatDgJM2dSBWeqd+4s282tvSpZ+5IJjWO0/BHRbzX4+NKpsa0Lzc7H6kwnDpbWXWuFmYOA5WIEVE0gS/Jh0RHdujthzeZWpUA+P7FzaULoAxbMbdmHOsdsXDUOZbYvqROH/b7EfkUzQQCqGt0qNHRjGxXnhUogyQKFKTLZlKwmBJuv3PKxc/fwDQ3MhHjFvQrmv3L5JNfT77u1WptYpESt3g14H1UcO1SqXNfrNY1sm9RuBN+HoroTbfAsEmcssCCKtZTbC5wwsb50hLghMgI/+O026pxKsL/2zx+3K78H2F7MKjZAjbZDoxU7X4dzGkvEs4pyLl7JPH3omFg6o9UD3LZEioWHh7xVKD0D9Zb3JN3MvuyjxgiVa6qnXLvrsJGC1W30TY649RV48wWp8og98VJ8DSDx/T41D4+mJdioR41uWj7fBJlWfeLgMA7zyPcEFG4Yu6YPldTw/RppkX1C37bPOJEv1PQ2m+FWIR3FibeEzVmbaAmp6oB7IXNQlFrdfJ0VD5+ZgFx14xJCc0iuk2DOo4rgxxkIWaVZOZxjn7XkklfrSwAS6L9zzfjRkHaY+ZbuRouw=="><div class="lock-ui"><label>Контент скрыт</label> <input type="password" class="lock-pw" placeholder="Пароль"> <button type="button" class="lock-btn">ОК</button><p>Для открытия контента необходимо связаться <a href="https://t.me/alex_dde" target="_blank">с администратором</a></p><div class="lock-msg" aria-live="polite"></div></div><div class="lock-content" style="display:none;"></div></div><p></p><p> </p><p> </p><p> </p></div><footer><div class="content__footer-top"><div class="content__meta"><span>Обновлено: <time datetime="2025-12-04T23:21">04/12/2025</time></span></div><div class="content__share"><button class="content__share-button js-content__share-button" aria-label="Поделиться в"><svg width="24" height="24"><use xlink:href="https://hidix.ru/assets/svg/svg-map.svg#share"></use></svg></button><div class="content__share-popup js-content__share-popup"></div></div></div><div class="content__footer-bottom"><ul class="content__tag"><li><a href="https://hidix.ru/tags/cudy-tr3000/">Cudy TR3000</a></li></ul></div></footer></article><nav><ul class="content-nav"><li class="content-nav__prev"><span>Предыдущая статья: </span><a href="https://hidix.ru/post/ispravlenie-raboty-youtube-posle-20112025/" class="invert" rel="prev" title="Исправление работы Youtube после 20.11.2025">Исправление работы Youtube после 20.11.2025</a></li></ul></nav></div><aside class="main__left-aside"><div class="main__left-aside__inner"><h3>На этой странице</h3><nav class="aside-toc" id="aside-toc"></nav></div></aside></div></div><div class="main__right"><div class="main__right-inner"><nav class="navbar"><ul class="navbar__menu"><li class="has-submenu"><a href="https://hidix.ru/post/hidix-vpn-molnienosnyy-vpn-servis/" target="_self" aria-haspopup="true">VPN сервис</a><ul class="navbar__submenu level-2" aria-hidden="true"><li><a href="https://hidix.ru/post/hidix-vpn-molnienosnyy-vpn-servis/" target="_self">HIDIX VPN</a></li><li><a href="https://hidix.ru/post/opisanie-raboty-chat-bota-hidix-vpn/" target="_self">Обзор VPN сервиса HIDIX</a></li></ul></li><li class="has-submenu"><a href="https://hidix.ru/post/rusifikaciya-televizorov-xiaomi/" target="_self" aria-haspopup="true">Телевизоры Xiaomi</a><ul class="navbar__submenu level-2" aria-hidden="true"><li><a href="https://hidix.ru/post/rusifikaciya-televizorov-xiaomi/" target="_self">Русификация телевизора Xiaomi</a></li><li><a href="https://hidix.ru/post/nastroyka-prilozheniya-lampa/" target="_self">Настройка приложения Lampa</a></li><li><a href="https://hidix.ru/post/sbros-reset-televizora-xiaomi/" target="_self">Сброс телевизора к заводским настройкам</a></li></ul></li><li class="active-parent has-submenu"><a href="https://hidix.ru/post/" target="_self" aria-haspopup="true">Всемогущие роутеры</a><ul class="navbar__submenu level-2" aria-hidden="true"><li class="has-submenu"><a href="https://hidix.ru/tags/router-xiaomi-ax3000t/" title="Xiaomi AX3000T обзор настроек проутера" target="_self" aria-haspopup="true">Xiaomi AX3000T</a><ul class="navbar__submenu level-3" aria-hidden="true"><li><a href="https://hidix.ru/post/router-so-vstroennym-vpn-i-obhodom/" target="_self">Обзор роутера</a></li><li><a href="https://hidix.ru/post/kak-nastroit/" target="_self">Настройки OpenWrt</a></li><li><a href="https://hidix.ru/post/nastroyka-routera-2/" target="_self">Настройки PPOE OPENWRT</a></li><li><a href="https://hidix.ru/post/nastroyka-routera/" target="_self">Импорт конфигурации V2RayA (VPN)</a></li><li><a href="https://hidix.ru/post/vosstanovlenie-routera-xiaomi-ax3000t-na-foresee-programmatorom-ch340/" target="_self">Восстановление роутера Xiaomi AX3000T</a></li></ul></li><li class="has-submenu"><a href="https://hidix.ru/tags/cudy-wr3000s-v1/" title="Cudy TR3000 Прошивки и Инструкции" target="_self" aria-haspopup="true">Cudy WR3000S v1</a><ul class="navbar__submenu level-3" aria-hidden="true"><li><a href="https://hidix.ru/post/proshivka-routera-cudy-na-openwrt-s-posleduyushchey-nastroykoy-youtube-i-ustanovkoy-vpn/" title="Прошивка роутера Cudy WR3000S v1 на OpenWrt с полным фаршем настроек" target="_self">Прошивка Cudy WR3000S v1 + плюшки</a></li></ul></li><li class="active-parent has-submenu"><a href="https://hidix.ru/tags/cudy-tr3000/" target="_self" aria-haspopup="true">Cudy TR3000</a><ul class="navbar__submenu level-3" aria-hidden="true"><li class="active"><a href="https://hidix.ru/post/proshivka-routera-cudy-tr3000-na-openwrt-s-posleduyushchey-nastroykoy-youtube-i-ustanovkoy-vpn/" target="_self">Прошивка Cudy TR3000 + плюшки</a></li></ul></li><li class="has-submenu"><a href="https://hidix.ru/tags/instrukcii-dlya-routerov/" title="Инструкции для роутеров" target="_self" aria-haspopup="true">Инструкции</a><ul class="navbar__submenu level-3" aria-hidden="true"><li><a href="https://hidix.ru/post/zavodim-yt-cherez-usb-modem/" title="Как заставить работать YoutubeUnblock  с USB  модемом" target="_self">Как заставить работать YoutubeUnblock с USB модемом</a></li><li><a href="https://hidix.ru/post/nastroyka-yu-podkop/" title="Настройка Youtube  и встроенного VPN на роутере OpenWrt" target="_self">Настройка Youtube и встроенного VPN на роутере OpenWrt</a></li><li class="has-submenu"><a href="https://hidix.ru/post/ispravlenie-raboty-youtube-posle-20112025/" title="Исправление Youtube после 22.11.2025" target="_self" aria-haspopup="true">Исправление Youtube после 22.11.2025</a><ul class="navbar__submenu level-4" aria-hidden="true"><li><a href="https://hidix.ru/post/bystrye-nastroyki-pri-pokupke-routera-u-nas/" target="_self">Если купили роутер у нас (конфиг 1)</a></li><li><a href="https://hidix.ru/post/bystrye-nastroyki-pri-pokupke-routera-u-nas-2/" target="_self">Если купили роутер у нас (конфиг 2)</a></li></ul></li></ul></li></ul></li><li class="has-submenu"><a href="https://hidix.ru/post/podklyuchenie-datchika-temperatury-k-termostatu-sonoff-cherez-spruthub/" title="Умный дом" target="_self" aria-haspopup="true">Умный дом SprutHub</a><ul class="navbar__submenu level-2" aria-hidden="true"><li><a href="https://hidix.ru/post/podklyuchenie-datchika-temperatury-k-termostatu-sonoff-cherez-spruthub/" title="Подключение датчика температуры к термостату Sonoff" target="_self">Подключение датчика температуры к термостату Sonoff</a></li></ul></li><li class="has-submenu"><a href="https://hidix.ru/post/razgon-asika-bitmain-antminer-l7-do-112gh-proshivka-pitbit-luchshiy-pul-posleduyushchaya-nastroyka/" title="майнинг" target="_self" aria-haspopup="true">Майнинг</a><ul class="navbar__submenu level-2" aria-hidden="true"><li><a href="https://hidix.ru/post/razgon-asika-bitmain-antminer-l7-do-112gh-proshivka-pitbit-luchshiy-pul-posleduyushchaya-nastroyka/" title="Разгон асиков Antminer L7 прошивкой Pitbit" target="_self">Разгон Antminer L7, прошивка, лучший пул</a></li></ul></li><li class="has-submenu"><a href="https://hidix.ru/post/chat-bot-dlya-3x-ui/" title="Платный софт" target="_self" aria-haspopup="true">Платный софт</a><ul class="navbar__submenu level-2" aria-hidden="true"><li><a href="https://hidix.ru/post/chat-bot-dlya-3x-ui/" title="Телеграм бот для выдачи VLESS ключей VPN" target="_self">Телеграм бот для выдачи VLESS ключей</a></li><li><a href="https://hidix.ru/post/rusifikaciya-televizorov-xiaomi-redmi-iz-kitaya-cn-versiya-programmoy-xiaomi-flasher/" title="Русификация телевизоров Xiaomi программой Xiaomi Flasher" target="_self">Программа русификации телевизоров Xiaomi Redmi</a></li><li><a href="https://hidix.ru/post/plagin-skrytiya-kontenta-publii/" title="Плагин скрытия контента по паролю для Publii" target="_self">Плагин скрытия контента по паролю для Publii</a></li></ul></li></ul></nav><div class="footer main__right-footer"><div class="footer__copy">Powered by <a href="http://t.me/alex_dde">@Alex_dde</a></div></div></div></div></main><footer class="footer"><div class="footer__wrap"><div class="footer__inner"><div class="footer__copy">Powered by <a href="http://t.me/alex_dde">@Alex_dde</a></div></div></div></footer><div class="content__progress" id="js-content__progress" aria-hidden="true"></div><script>window.publiiThemeMenuConfig = {    
+        mobileMenuMode: 'sidebar',        
+        submenuWidth: 300,        
+        mobileMenuExpandableSubmenus: true,
+        isHoverMenu: false,
+        ariaButtonAttribute: 'aria-expanded',
+   };</script><script src="https://hidix.ru/assets/js/html-contents.min.js?v=169077c370ab8ca62b029845f80f7fd5" defer="defer"></script><script>document.addEventListener("DOMContentLoaded", function(event) {
+            htmlContents('#aside-toc', {
+                area: '.content__entry',
+                top: 2,
+                bottom: 3,
+                listType: 'o',
+                filter: function(arr) {
+                    return !arr.matches('.noOutline')
+                },
+                addIds: true,
+                addLinks: true
+            });
+
+            setTimeout(function() {
+                handleActiveClass('#aside-toc');
+            }, 0);
+        })</script><script defer="defer" src="https://hidix.ru/assets/js/scripts.min.js?v=4fce2b30433039b19e7a444fe8ab80b7"></script><script>var images = document.querySelectorAll('img[loading]');
+
+        for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+                images[i].classList.add('is-loaded');
+            } else {
+                images[i].addEventListener('load', function () {
+                    this.classList.add('is-loaded');
+                }, false);
+            }
+        }</script><script>document.addEventListener('DOMContentLoaded', function () {
+  const NAMESPACE = 'hidixviewcount-site2025'; // замени на уникальное имя
+  const TTL_MS = 60 * 60 * 1000; // 1 час
+
+  const el = document.getElementById('pv-num');
+  if (!el) return;
+
+  // нормализуем ключ
+  let path = location.pathname || '/';
+  if (path.length > 1 && path.endsWith('/')) path = path.slice(0, -1);
+  const KEY = (path.replace(/\//g,'_') || 'home');
+
+  el.textContent = '0'; // не показываем «—»
+
+  const base = 'https://api.countapi.xyz';
+  const urlGet    = `${base}/get/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(KEY)}`;
+  const urlCreate = `${base}/create/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(KEY)}`;
+  const urlHit    = `${base}/hit/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(KEY)}`;
+
+  const lsKey = 'pv_hit_' + KEY;
+  const lastHit = Number(localStorage.getItem(lsKey) || 0);
+  const now = Date.now();
+
+  const render = v => { if (Number.isFinite(v)) el.textContent = String(v); };
+
+  const getVal = () =>
+    fetch(urlGet, {cache:'no-store'}).then(r=>r.json()).then(j=>render(j?.value)).catch(()=>{});
+
+  // Гарантируем существование ключа
+  function ensureExists() {
+    return fetch(urlGet, {cache:'no-store'}).then(async r => {
+      if (r.ok) return r.json();
+      // если нет — создаём со значением 0
+      const c = await fetch(urlCreate, {cache:'no-store'}).then(r2=>r2.json());
+      return c;
+    }).then(j => { if (j && typeof j.value !== 'undefined') render(j.value); });
+  }
+
+  function doHit() {
+    return fetch(urlHit, {cache:'no-store'})
+      .then(r=>r.json())
+      .then(j => {
+        if (typeof j?.value !== 'undefined') {
+          render(j.value);
+          localStorage.setItem(lsKey, String(now));
+        } else {
+          return getVal();
+        }
+      })
+      .catch(getVal);
+  }
+
+  (async () => {
+    await ensureExists();
+    // Если 0 — форсируем первый hit сразу (даже если TTL недавно был)
+    if (el.textContent === '0') {
+      await doHit();
+      return;
+    }
+    // иначе уважаем TTL
+    if (!lastHit || (now - lastHit) > TTL_MS) await doHit();
+    else await getVal();
+  })();
+});</script><script defer="defer" src="https://hidix.ru/media/plugins/syntaxHighlighter/prism.js"></script><script defer="defer" src="https://hidix.ru/media/plugins/syntaxHighlighter/clipboard.min.js"></script><script defer="defer" src="https://hidix.ru/media/plugins/syntaxHighlighter/prism-copy-to-clipboard.min.js"></script><script>window.publiiStaticSearchConfig = { 
+					baseURL: 'https://hidix.ru',
+					minCharCount: 3,
+					maxResultsCount: 20,
+					showPopupOnInputClick: true,
+					customTriggerSelector: '',
+					engineSettings: {
+						tokenize: 'full',
+						charset: 'latin:extra cyrillic 0123456789',
+						language: 'ru',
+						cache: 100,
+						suggest: true
+					},
+					indexSettings: {
+						resultsDescription: 'on',
+						indexPostTitles: true,
+						indexPostExcerpts: true,
+						indexPostHeadings: true,
+						indexPostAuthors: true,
+						indexPostMetaDescription: true,
+						indexPageTitles: true,
+						indexPageExcerpts: true,
+						indexPageHeadings: true,
+						indexPageMetaDescription: true,
+						indexTagNames: true,
+						indexTagDescription: true,
+						indexTagMetaDescription: true,
+						indexPostConfig: false,
+						indexPageConfig: false
+					},
+					translations: {
+						inputPlaceholder: 'Поиск...',
+						searchEmptyState: 'Напишите ваш запрос',
+						tooShortPhraseState: 'минимум 3 символа',
+						noResults: 'Не найдено',
+						buttonClose: 'Закрыть'
+					}
+				};</script><script src="https://hidix.ru/media/plugins/staticSearch/flexsearch.bundle.js"></script><script src="https://hidix.ru/media/plugins/staticSearch/static.search.min.js"></script><script src="https://hidix.ru/assets/js/crypto-js.min.js"></script><script>(function () {
+  function markLoaded(img) {
+    try { img.classList.add('is-loaded'); } catch (e) {}
+  }
+
+  function wireLoadHandlers(root) {
+    var imgs = root.querySelectorAll('img');
+    imgs.forEach(function (img) {
+      if (img.complete && img.naturalWidth > 0) {
+        markLoaded(img);
+      } else {
+        img.addEventListener('load',  function () { markLoaded(img); }, { once: true });
+        img.addEventListener('error', function () { markLoaded(img); }, { once: true });
+      }
+    });
+  }
+
+  // Починка lazy-медиа (картинки/видео/фоны)
+  function postProcessUnlocked(root) {
+    var imgs = root.querySelectorAll('img');
+    imgs.forEach(function (img) {
+      if (img.dataset) {
+        if (img.dataset.src)    img.src    = img.dataset.src;
+        if (img.dataset.srcset) img.srcset = img.dataset.srcset;
+        if (img.dataset.sizes)  img.sizes  = img.dataset.sizes;
+      }
+      img.loading = 'eager';
+      img.classList.remove('lazy', 'lazyload', 'lazyloaded');
+      if (img.srcset) { img.srcset = img.srcset; }
+      if (!img.getAttribute('src') && img.currentSrc) img.src = img.currentSrc;
+    });
+
+    var sources = root.querySelectorAll('picture source, source');
+    sources.forEach(function (s) {
+      if (s.dataset && s.dataset.srcset) s.srcset = s.dataset.srcset;
+      s.removeAttribute('data-srcset');
+    });
+
+    var videos = root.querySelectorAll('video');
+    videos.forEach(function (v) {
+      if (v.dataset && v.dataset.src)    v.src    = v.dataset.src;
+      if (v.dataset && v.dataset.poster) v.poster = v.dataset.poster;
+      v.classList.remove('lazy', 'lazyload', 'lazyloaded');
+    });
+
+    var bgNodes = root.querySelectorAll('[data-bg]');
+    bgNodes.forEach(function (n) {
+      var bg = n.getAttribute('data-bg');
+      if (bg) n.style.backgroundImage = 'url("' + bg + '")';
+      n.removeAttribute('data-bg');
+    });
+
+    wireLoadHandlers(root);
+
+    if (window.lazySizes && window.lazySizes.loader) {
+      imgs.forEach(function (img) { window.lazySizes.loader.unveil(img); });
+      sources.forEach(function (s) {
+        var p = s.parentNode && s.parentNode.querySelector('img');
+        if (p) window.lazySizes.loader.unveil(p);
+      });
+    }
+  }
+
+  // Переинициализация подсветки синтаксиса для динамически вставленного кода
+  function rehighlight(root) {
+    try {
+      if (window.Prism && typeof window.Prism.highlightAllUnder === 'function') {
+        window.Prism.highlightAllUnder(root); // для Prism (классы language-*)
+      } else if (window.hljs && typeof window.hljs.highlightElement === 'function') {
+        root.querySelectorAll('pre code').forEach(function (el) {
+          window.hljs.highlightElement(el);    // для highlight.js (класс hljs добавится сам)
+        });
+      }
+    } catch (e) {
+      /* noop */
+    }
+  }
+
+  function unlock(box) {
+    var enc = box.getAttribute('data-enc'); // Base64 шифротекст
+    var pw  = box.querySelector('.lock-pw').value || '';
+    var msg = box.querySelector('.lock-msg');
+    var out = box.querySelector('.lock-content');
+
+    try {
+      var bytes = CryptoJS.AES.decrypt(enc, pw);
+      var html  = bytes.toString(CryptoJS.enc.Utf8);
+      if (!html) throw 0;
+
+      out.innerHTML = html;
+      postProcessUnlocked(out); // картинки/медиа
+      rehighlight(out);         // <— подсветка кода после вставки
+      out.style.display = '';
+      box.querySelector('.lock-ui').style.display = 'none';
+    } catch (e) {
+      if (msg) {
+        msg.textContent = '❌ Неверный пароль';
+        setTimeout(function () { msg.textContent = ''; }, 1500);
+      }
+    }
+  }
+
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.lock-btn'); if (!btn) return;
+    unlock(btn.closest('.lock-box'));
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter') return;
+    var input = e.target.closest('.lock-pw'); if (!input) return;
+    unlock(input.closest('.lock-box'));
+  });
+})();</script></body></html>
