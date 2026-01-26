@@ -3,12 +3,219 @@
     <title>HIDIX</title>
     <link href="https://hidix.ru/feed.xml" rel="self" />
     <link href="https://hidix.ru" />
-    <updated>2025-12-04T23:25:37+03:00</updated>
+    <updated>2026-01-26T18:22:45+03:00</updated>
     <author>
         <name>alex dde</name>
     </author>
     <id>https://hidix.ru</id>
 
+    <entry>
+        <title>Прошивка роутера Netis NX31 на OpenWrt с последующей настройкой Youtube и установкой VPN </title>
+        <author>
+            <name>alex dde</name>
+        </author>
+        <link href="https://hidix.ru/post/proshivka-routera-netis-nx31-na-openwrt-s-posleduyushchey-nastroykoy-youtube-i-ustanovkoy-vpn/"/>
+        <id>https://hidix.ru/post/proshivka-routera-netis-nx31-na-openwrt-s-posleduyushchey-nastroykoy-youtube-i-ustanovkoy-vpn/</id>
+            <category term="Netis NX31"/>
+
+        <updated>2026-01-26T18:18:58+03:00</updated>
+            <summary>
+                <![CDATA[
+                    Инструкция с нуля и до результата, на примере OpenWrt, пишу в основном для себя {{#lock pw="172533"}} Нам понадобятся: Подключаем роутер, переходим по 192.168.1.1 &gt; проходим&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>Инструкция с нуля и до результата, на примере OpenWrt, пишу в основном для себя</p>
+<div class="post__toc">
+<h3>Оглавление</h3>
+<ul>
+<li><a href="#mcetoc_1jfte66dvd8">Подготовка</a></li>
+<li><a href="#mcetoc_1ja27468r1cf">Прошивка промежуточной версии</a></li>
+<li><a href="#mcetoc_1ja27468r1cg">Меняем разметку </a></li>
+<li><a href="#mcetoc_1ja27468r1ch">Установка финальной OpenWrt </a></li>
+<li><a href="#mcetoc_1jfte66dvd9">Установка пакетов для Youtube и маршрутизации</a></li>
+</ul>
+</div>
+<p id="mcetoc_1jfte66dvd8">{{#lock pw="172533"}}</p>
+<h2>Подготовка</h2>
+<p>Нам понадобятся:</p>
+<ul>
+<li>программа <a href="https://winscp.net/eng/download.php" target="_blank"   class="extlink extlink-icon-4"  rel="noopener noreferrer">WinCP</a></li>
+<li>программа <strong>Tftpd64</strong></li>
+<li>ноутбук на Windows</li>
+</ul>
+<h2 id="mcetoc_1ja27468r1cf">Прошивка промежуточной версии</h2>
+<p>Подключаем роутер, переходим по <code>192.168.1.1</code> &gt; проходим базовую настройку</p>
+<h2 id="mcetoc_1ja27468r1cg">Меняем разметку </h2>
+<p>выставляем настройки сетевой карты: <strong>IP: </strong>192.168.1.254, <strong>маска:</strong> 255.255.255.0</p>
+<p>Подключаемся по SSH, закидываем в папку tmp файл openwrt-mediatek-filogic-netis_nx31-bl31-uboot.fip FIP, далее в консоли выполняем </p>
+<pre class="language-bash"><code>mtd write /tmp/openwrt-mediatek-filogic-netis_nx31-bl31-uboot.fip FIP
+</code></pre>
+<p>Запускаем <strong>TFTPD64, </strong>выполняем команды</p>
+<pre class="language-bash"><code>mtd erase ubi
+reboot</code></pre>
+<h2 id="mcetoc_1ja27468r1ch">Установка финальной OpenWrt </h2>
+<p>После перезагрузки TFTPD подхватит и установит промещуточную версию. Переходим по ip: 192.168.1.1 и шьем финальную версию</p>
+<h2 id="mcetoc_1jfte66dvd9">Установка пакетов для Youtube и маршрутизации</h2>
+<pre class="language-bash"><code>opkg update &amp;&amp; opkg install kmod-nft-tproxy &amp;&amp; opkg install https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/luci-app-ssclash_3.3.2-r1_all_final.ipk</code></pre>
+<p>{{/lock}}</p>
+<hr>
+<p> </p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Всемогущие роутеры OpenWrt для дома и Smart TV - все работает без танцев с бубном</title>
+        <author>
+            <name>alex dde</name>
+        </author>
+        <link href="https://hidix.ru/post/router-s-vpn-dlya-doma-i-smart-tv-bez-tancev-s-bubnom/"/>
+        <id>https://hidix.ru/post/router-s-vpn-dlya-doma-i-smart-tv-bez-tancev-s-bubnom/</id>
+
+        <updated>2025-12-16T18:00:11+03:00</updated>
+            <summary>
+                <![CDATA[
+                    В продаже готовые и настроенные Всемогущие роутеры на OpenWrt Xiaomi AX3000T Cudy TR3000 Netis NX31 Назначение: Для дома и дачи Для дома и путешествий Для&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <h3>В продаже готовые и настроенные <strong>Всемогущие</strong> роутеры на OpenWrt</h3>
+<table style="border-collapse: collapse; width: 98.7179%; height: 911.813px; border-style: none;" border="1">
+<tbody>
+<tr style="height: 288.797px;">
+<td class="align-center" style="width: 33.4298%; height: 288.797px;">
+<figure class="post__image"><img loading="lazy"  style="color: var(--text-primary-color); font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);" src="https://hidix.ru/media/posts/41/ax3000.png" alt="" width="234" height="250" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/41/responsive/ax3000-xs.webp 300w ,https://hidix.ru/media/posts/41/responsive/ax3000-sm.webp 480w ,https://hidix.ru/media/posts/41/responsive/ax3000-md.webp 768w"></figure>
+</td>
+<td class="align-center" style="width: 33.4298%; height: 288.797px;"><figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/41/tr3000.png" alt="" width="239" height="250" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/41/responsive/tr3000-xs.webp 300w ,https://hidix.ru/media/posts/41/responsive/tr3000-sm.webp 480w ,https://hidix.ru/media/posts/41/responsive/tr3000-md.webp 768w"></figure></td>
+<td class="align-center" style="width: 33.1404%; height: 288.797px;"><figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/41/nx31.png" alt="" width="296" height="250" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/41/responsive/nx31-xs.webp 300w ,https://hidix.ru/media/posts/41/responsive/nx31-sm.webp 480w ,https://hidix.ru/media/posts/41/responsive/nx31-md.webp 768w"></figure></td>
+</tr>
+<tr style="height: 52.8828px;">
+<td class="align-center" style="width: 33.4298%; height: 52.8828px;"><strong>Xiaomi AX3000T</strong></td>
+<td class="align-center" style="width: 33.4298%; height: 52.8828px;"><strong>Cudy TR3000</strong></td>
+<td class="align-center" style="width: 33.1404%; height: 52.8828px;"><strong>Netis NX31</strong></td>
+</tr>
+<tr style="height: 82.2891px;">
+<td class="align-center" style="width: 33.4298%; height: 82.2891px;"><strong>Назначение</strong>: Для дома и дачи</td>
+<td class="align-center" style="width: 33.4298%; height: 82.2891px;">Для дома и путешествий</td>
+<td class="align-center" style="width: 33.1404%; height: 82.2891px;">Для дома и дачи</td>
+</tr>
+<tr style="height: 52.8828px;">
+<td class="align-center" style="width: 33.4298%; height: 52.8828px;"><strong>ОЗУ: </strong>256Мб</td>
+<td class="align-center" style="width: 33.4298%; height: 52.8828px;">512Мб</td>
+<td class="align-center" style="width: 33.1404%; height: 52.8828px;">256Мб</td>
+</tr>
+<tr style="height: 52.8828px;">
+<td class="align-center" style="width: 33.4298%; height: 52.8828px;"><strong>ПЗУ</strong>: 128Мб</td>
+<td class="align-center" style="width: 33.4298%; height: 52.8828px;">128Мб</td>
+<td class="align-center" style="width: 33.1404%; height: 52.8828px;">128Мб</td>
+</tr>
+<tr style="height: 82.2891px;">
+<td style="width: 33.4298%; height: 82.2891px;"><strong>Ширина канала: </strong>160Гц</td>
+<td class="align-center" style="width: 33.4298%; height: 82.2891px;">160Гц</td>
+<td class="align-center" style="width: 33.1404%; height: 82.2891px;">160Гц</td>
+</tr>
+<tr style="height: 52.8828px;">
+<td class="align-center" style="width: 33.4298%; height: 52.8828px;"><strong>Ранг</strong>: Wi-Fi 6, AX3000</td>
+<td class="align-center" style="width: 33.4298%; height: 52.8828px;">Wi-Fi 6, AX3000</td>
+<td class="align-center" style="width: 33.1404%; height: 52.8828px;">Wi-Fi 6, AX3000</td>
+</tr>
+<tr style="height: 82.2891px;">
+<td class="align-center" style="width: 33.4298%; height: 82.2891px;"><strong>Порты: </strong>4 x 1Гб/с</td>
+<td class="align-center" style="width: 33.4298%; height: 82.2891px;">1 x 2.5Гб/с + 1 x 1Гбит/с</td>
+<td class="align-center" style="width: 33.1404%; height: 82.2891px;">4 x 1Гбит/с</td>
+</tr>
+<tr style="height: 82.2891px;">
+<td class="align-center" style="width: 33.4298%; height: 82.2891px;"><strong>Особенности:</strong></td>
+<td class="align-center" style="width: 33.4298%; height: 82.2891px;">Питание от Type c (включая Powerbank)</td>
+<td style="width: 33.1404%; height: 82.2891px;"> </td>
+</tr>
+<tr style="height: 82.3281px;">
+<td class="align-center" style="width: 33.4298%; height: 82.3281px;"><strong>Поддержка</strong>: 6 мес в подарок</td>
+<td class="align-center" style="width: 33.4298%; height: 82.3281px;">6 мес в подарок</td>
+<td class="align-center" style="width: 33.1404%; height: 82.3281px;"><span style="color: #02192b;"> 6 мес в подарок</span></td>
+</tr>
+</tbody>
+</table>
+<p class="align-center">Роутеры прошиты на <strong>OpenWrt </strong>и настроены так, чтобы сеть работала стабильно, а сервисы и сайты открывались молниеносно, без задержек</p>
+<p><strong>В каждом комплекте:</strong></p>
+<table border="1">
+<tbody>
+<tr>
+<td class="align-center"><strong>VPN клиент</strong></td>
+<td class="align-center"><strong>Wi-Fi 6 AX3000</strong></td>
+<td class="align-center"><strong>Маршрутизация</strong></td>
+<td class="align-center"><strong>Поддержка</strong></td>
+</tr>
+<tr>
+<td class="align-center">VLESS</td>
+<td class="align-center">(2.4 + 5 GHz)</td>
+<td class="align-center">РУ трафик идет напрямую</td>
+<td class="align-center">6 мес в подарок</td>
+</tr>
+</tbody>
+</table>
+<p>🎁 6 месяцев сервиса в подарок к любому роутеру</p>
+<p><a href="https://t.me/alex_dde" target="_blank"   class="btn btn--green extlink extlink-icon-4"  rel="noopener noreferrer">Приобрести / Задать вопрос</a></p>
+<h3>Преимущества покупки роутера</h3>
+<table style="border-collapse: collapse; width: 100%; height: 296.812px; margin-bottom: 0px;" border="1">
+<tbody>
+<tr style="height: 48.5625px;">
+<td style="width: 49.9288%; height: 48.5625px;"><strong>БЕЗ РОУТЕРА</strong></td>
+<td style="width: 49.9288%; height: 48.5625px;"><strong>С РОУТЕРОМ</strong></td>
+</tr>
+<tr style="height: 48.5625px;">
+<td style="width: 49.9288%; height: 48.5625px;">❌ «YouTube не грузит на ТВ, некоторые игры не грузятся» </td>
+<td style="width: 49.9288%; height: 48.5625px;">✅  Youtube летает как ракета, Роблокс работает!</td>
+</tr>
+<tr style="height: 75.5625px;">
+<td style="width: 49.9288%; height: 75.5625px;">❌ «VPN на телевизор не поставить»</td>
+<td style="width: 49.9288%; height: 75.5625px;">✅  Все работает на всех устройствах в доме</td>
+</tr>
+<tr style="height: 48.5625px;">
+<td style="width: 49.9288%; height: 48.5625px;">❌ «c VPN все глючит, часть сайтов работает, часть отказывается»</td>
+<td style="width: 49.9288%; height: 48.5625px;">✅  Настроена умная маршрутизация, все работает как надо и когда надо</td>
+</tr>
+<tr style="height: 75.5625px;">
+<td style="width: 49.9288%; height: 75.5625px;">❌ «Любимые соц сети и ИИ не работают»</td>
+<td style="width: 49.9288%; height: 75.5625px;">✅  Просто включил в розетку и сразу все работает как надо</td>
+</tr>
+</tbody>
+</table>
+<h3>Вопрос / Ответ</h3>
+<div class="faq">
+<div class="faq-item">
+<div class="faq-question"><span class="faq-arrow">▼</span> Можно ли настроить Меш?</div>
+<div class="faq-answer">Да, меш сеть работает <code><strong>ТОЛЬКО</strong></code> с роутерами на ОС <code>OpenWrt</code>, то есть, если у вас несколько роутеров OpenWrt, то вы сможете их обьединить в одну сеть. Услуга настройки - также имеется</div>
+</div>
+<div class="faq-item">
+<div class="faq-question"><span class="faq-arrow">▼</span> Как долго проработает?</div>
+<div class="faq-answer">Настроено на максимальное время работы, в случае, если что то идет не так, можернищирую для себя, тестирую, после помогаю вам с новыми настройками</div>
+</div>
+<div class="faq-item">
+<div class="faq-question"><span class="faq-arrow">▼</span> На каких операторах работает?</div>
+<div class="faq-answer">Оператор не играет роли, работает со всеми операторами</div>
+</div>
+<div class="faq-item">
+<div class="faq-question"><span class="faq-arrow">▼</span> Работает ли с белыми списками?</div>
+<div class="faq-answer">Нет. Ввиду того, что это все индивидуально под каждый регион, не представляется возможным настроить</div>
+</div>
+<p><a href="https://t.me/alex_dde" target="_blank"   class="btn btn--green extlink extlink-icon-4"  rel="noopener noreferrer">Приобрести / Задать вопрос</a></p>
+</div>
+<p>
+<script>
+	// Делегирование событий: работает и для FAQ в зашифрованном блоке после расшифровки
+	document.addEventListener('click', function(e) {
+		const item = e.target.closest('.faq-item');
+		if (!item) return;
+		item.classList.toggle('active');
+	});
+</script>
+</p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Прошивка роутера Cudy TR3000 на OpenWrt с последующей настройкой Youtube и установкой VPN</title>
         <author>
@@ -1251,154 +1458,6 @@ sudo systemctl status 3xui-module.service</code></pre>
 </tr>
 </tbody>
 </table>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Восстановление роутера Xiaomi AX3000T на Foresee программатором ch340</title>
-        <author>
-            <name>alex dde</name>
-        </author>
-        <link href="https://hidix.ru/post/vosstanovlenie-routera-xiaomi-ax3000t-na-foresee-programmatorom-ch340/"/>
-        <id>https://hidix.ru/post/vosstanovlenie-routera-xiaomi-ax3000t-na-foresee-programmatorom-ch340/</id>
-            <category term="Роутеры и настройки"/>
-            <category term="Роутер Xiaomi AX3000T"/>
-
-        <updated>2025-06-18T02:15:36+03:00</updated>
-            <summary>
-                <![CDATA[
-                    Восстановление роутера Xiaomi AX3000T после прошивки — полное руководство по восстановление кирпича. Инструкция написана для Foresee, если у вас есть другой бекап, замените файлы бекапа&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <p>Восстановление роутера Xiaomi AX3000T после прошивки — полное руководство по восстановление кирпича. Инструкция написана для Foresee, если у вас есть другой бекап, замените файлы бекапа в папке tftpd64. Инструкция для опытных, если вы не знакомы c принципом, категорически не стоит повторять, чтобы окончательно не убить. Вы можете заказать услугу (платно), для этого напишите мне в <a href="https://t.me/alex_dde" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">телеграм</a>.</p>
-<h3>Для восстановления роутера понадобится</h3>
-<ul style="list-style-type: square;">
-<li>Программатор ch340</li>
-<li>Коннекторы</li>
-<li>Ноутбук на Windows</li>
-<li>Архив с софтом, <a href="https://drive.google.com/file/d/1-uI_pr2T8V161WuX1CvOm9WtSScRQc5q/view?usp=share_link" target="_blank"  class="extlink extlink-icon-4"  rel="nofollow noopener noreferrer">скачать</a> (<strong>пароль:</strong> <code>12345678</code>)</li>
-<li>Прошивка openwrt, <a href="https://drive.google.com/file/d/1gJ7wC06sXp0Y2FnyTxgZTuKrNkbR6i6J/view?usp=share_link" target="_blank"  class="extlink extlink-icon-4"  rel="nofollow noopener noreferrer">скачать</a></li>
-</ul>
-<h3>Подключение программатора к роутеру</h3>
-<figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/17/Untitled.png" alt="" width="2578" height="1722" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/17/responsive/Untitled-xs.webp 300w ,https://hidix.ru/media/posts/17/responsive/Untitled-sm.webp 480w ,https://hidix.ru/media/posts/17/responsive/Untitled-md.webp 768w"></figure>
-<figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/17/Untitled-46.png" alt="" width="1814" height="1800" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/17/responsive/Untitled-46-xs.webp 300w ,https://hidix.ru/media/posts/17/responsive/Untitled-46-sm.webp 480w ,https://hidix.ru/media/posts/17/responsive/Untitled-46-md.webp 768w"></figure>
-<p>схема подключения обратная:</p>
-<table style="border-collapse: collapse; width: 100%; height: 145.688px;" border="1">
-<tbody>
-<tr style="height: 48.5625px;">
-<td class="align-center" style="width: 49.9288%; height: 48.5625px;"><strong>Программатор</strong></td>
-<td class="align-center" style="width: 49.9288%; height: 48.5625px;"><strong>Роутер</strong></td>
-</tr>
-<tr style="height: 48.5625px;">
-<td class="align-center" style="width: 49.9288%; height: 48.5625px;">TX</td>
-<td class="align-center" style="width: 49.9288%; height: 48.5625px;">RX</td>
-</tr>
-<tr>
-<td class="align-center" style="width: 49.9288%;">GND</td>
-<td class="align-center" style="width: 49.9288%;">GND</td>
-</tr>
-<tr style="height: 48.5625px;">
-<td class="align-center" style="width: 49.9288%; height: 48.5625px;">RX</td>
-<td class="align-center" style="width: 49.9288%; height: 48.5625px;">TX</td>
-</tr>
-</tbody>
-</table>
-<h3>Подключение роутера к ноутбуку на Widows</h3>
-<p>Отключаем брандмауэр и антивирусы, если есть. В свойствах сетевого адаптера изменить IPv4 адрес на <code>192.168.1.100</code>, маску ставим <code>255.255.255.0</code>, шлюз <code>192.168.1.1</code>, <strong>сохраняем</strong>, втыкаем кабель во <strong>второй</strong> или <strong>третий</strong> слот роутера.</p>
-<h3>Процесс прошивки</h3>
-<p>Подразумевается, что к роутеру вы уже подключены коннекторами, подключенными к программатору, питание на роутер не подаем</p>
-<ul>
-<li>Разархивируем архив с софтом. Заходим в папку tftpd64 и запускаем tftpd64.exe от имени администратора и сворачиваем</li>
-<li>Подключаем программатор к ноуту (втыкаем программатор в USB порт)</li>
-<li>Открываем диспетчер устройств, смотрим номер COM порта</li>
-<li>Заходим в папку mtk_uartboot, запускаем run1.bat, вводим номер COM порта, нажимаем Enter, после надписи Handshake будет пауза, подаем питание на роутер</li>
-<li>После подачи питания на роутер мы сразу увидим загрузку, через 10-20 сек вылезет окно putty, и как только в нем начнет отображаться статус загрузки (пойдут текстом логи), прерываем процесс CTRL+C</li>
-</ul>
-<p>Далее в этом окне нам необходимо ввести команды прошивки. <span style="color: #e03e2d;"><strong>Поочередно</strong></span> построчно вводим команды</p>
-<pre class="language-batch"><code>setenv ipaddr 192.168.1.1
-setenv serverip 192.168.1.100
-
-nand erase.force 0x0 0x8000000
-</code></pre>
-<p>После последней команды мы увидим статус выполнения стирания флеш памяти. После команды с именем файла отобразится статус и объем файла и командная строка станет прежней. <span style="color: #e03e2d;"><strong>Поочередно</strong></span> построчно вводим команды </p>
-<pre class="language-batch"><code>tftpboot 0x46000000 BL2.bin
-nand write 0x46000000 0x0 0x100000
-
-tftpboot 0x46000000 FIP.bin
-nand write 0x46000000 0x380000 0x200000
-
-tftpboot 0x46000000 Nvram.bin
-nand write 0x46000000 0x100000 0x40000
-
-tftpboot 0x46000000 Bdata.bin
-nand write 0x46000000 0x140000 0x40000
-
-tftpboot 0x46000000 Factory.bin
-nand write 0x46000000 0x180000 0x200000
-
-tftpboot 0x46000000 openwrt-mediatek-filogic-xiaomi_mi-router-ax3000t-initramfs-kernel.bin
-
-bootm 0x46000000</code></pre>
-<p>Последняя команда запускает роутер, в окне где вы вводили команды пойдут логи событий, через некоторое время (минута+-) роутер включится и будет доступен по адресу <code>192.168.1.1</code></p>
-<h3>Прошивка Русской сборкой</h3>
-<p>Переходим в браузере по пути <code>192.168.1.1</code>, вводим логин <code>root</code>, поле пароль оставляем пустым, нажимаем "<strong>войти</strong>"</p>
-<p>Далее <strong>System</strong> &gt;  <strong>Backup</strong> / <strong>Flash</strong> <strong>Firmware</strong> &gt; в самый низ &gt; Flash new firmware image &gt; кнопка <strong>Flash image</strong>.. &gt; выбираем файл <strong>ax3000t-squashfs-sysupgrade.bin</strong>, что скачали в самом начале, снимаем <span style="color: #e03e2d;">обязательно</span> галочку <strong>Keep settings and retain the current configuration</strong>, подтверждаем</p>
-<p>Готово. После перезагрузки роутер будет на <strong>русском языке</strong> и готовый к работе. Питание и программатор можно отключать.</p>
-<p> </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Настройка приложения Lampa для просмотра фильмов и сериалов</title>
-        <author>
-            <name>alex dde</name>
-        </author>
-        <link href="https://hidix.ru/post/nastroyka-prilozheniya-lampa/"/>
-        <id>https://hidix.ru/post/nastroyka-prilozheniya-lampa/</id>
-            <category term="Телевизоры Xiaomi"/>
-            <category term="Инструкции"/>
-
-        <updated>2025-06-14T00:27:32+03:00</updated>
-            <summary>
-                <![CDATA[
-                    Настройка приложения Lampa для просмотра фильмов и сериалов в 4К Вся инструкция уложилась в одну минуту на видео И в текстовом варианте Открываем приложение TorrServe&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <p>Настройка приложения Lampa для просмотра фильмов и сериалов в 4К</p>
-<p>Вся инструкция уложилась в одну минуту на видео</p>
-<div class="post__iframe"><iframe loading="lazy" width="720" height="405" src="https://rutube.ru/play/embed/46c94eade826cc047d911bb5f33ba6d0" frameborder="0" allow="clipboard-write;" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe></div>
-<p>И в текстовом варианте</p>
-<h3>Настройка приложения Lampa</h3>
-<p>Открываем приложение <strong>TorrServe</strong> &gt; <strong>Обновление</strong> &gt; <strong>Установить</strong> / <strong>Обновить</strong> сервер, дожидаемся, пока слева станет зеленым localhost:8090</p>
-<p>Открываем приложение Lampa, при первом запуске приложение попросит ввести ссылку, вводим: <code><a href="http://lampa.stream"  class="extlink extlink-icon-4"  >http://lampa.stream</a></code></p>
-<p>В меню &gt; <strong>Парсер</strong></p>
-<ul style="list-style-type: square;">
-<li>Использовать парсер: ДА</li>
-<li>Ссылка: <code>jacred.xyz</code></li>
-</ul>
-<p>В меню &gt; <strong>TorrServer</strong></p>
-<ul style="list-style-type: square;">
-<li>Встроенный клиент: Да</li>
-<li>Использовать ссылку: Основную</li>
-<li>Основная ссылка: <code>localhost:8090</code> (та, что у нас отобразилась в приложении TorrServ)</li>
-<li>Тестировать скорость: можно протестировать скорость, если вы все ввели верно тест пройдет успешно</li>
-</ul>
-<p>Для удобства просмотра можно в меню зайти в расширения и скачать (рекомендую все, хуже не станет), а так же выставить высокое качество постеров</p>
-<blockquote>
-<p>После каждой перезагрузки телевизора необходимо вначале зайти в приложение TorrServe, дождаться, пока появится слева сверху зеленая надпись <span style="color: #169179;">localhost:8090</span> (2-3 сек), после уже запускать Lampa</p>
-</blockquote>
-<h3>Как запустить просмотр фильма</h3>
-<p>В приложении <strong>Lampa</strong> &gt; выбрать понравившееся &gt; смотреть &gt; Торрент &gt; выбрать из предложенных вариантов качество, далее выбрать плеер для просмотра. Родной плеер (на телевизорах Xiaomi) отлично воспроизводит многоканальное аудио <strong>Dolby</strong>, но не все форматы видео и не может выбирать звуковые дорожки. Плеер <strong>Vimu</strong> - выбирать дорожки умеет, но есть проблемы с воспроизведением звука <strong>Dolby</strong>. Выбирайте <strong>родной</strong> плеер, а если что не так - тогда уже <strong>Vimu</strong> или другие.</p>
-<ul style="list-style-type: square;">
-<li>Фильмы с бейджиками 2160p или 3840x2160 - это <strong>4К</strong> качество</li>
-<li>7.1 или 5.1 означает поддержку многоканального звука</li>
-<li>Чем больше раздающих, тем больше шансов, что не будет зависать видео</li>
-</ul>
-<p> </p>
             ]]>
         </content>
     </entry>
