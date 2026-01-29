@@ -3,7 +3,7 @@
     <title>HIDIX</title>
     <link href="https://hidix.ru/feed.xml" rel="self" />
     <link href="https://hidix.ru" />
-    <updated>2026-01-29T21:16:56+03:00</updated>
+    <updated>2026-01-29T21:20:06+03:00</updated>
     <author>
         <name>alex dde</name>
     </author>
@@ -1245,7 +1245,9 @@ sudo systemctl restart 3xui-module.service</code></pre>
 <pre class="language-bash"><code>sudo systemctl status 3xui-bot.service
 sudo systemctl status tgbot-api.service
 sudo systemctl status 3xui-module.service</code></pre>
-<p> </p>
+<h3>Дополнительно</h3>
+<p>В панели 3x-ui устанавливаем BBR, Fail2Ban, в файле  etc/fail2ban/jail.d/3x-ipl.conf выставляем </p>
+<p>findtime<span class="s1">=</span><strong>10</strong><span class="s1"><strong>m</strong><br></span>bantime<span class="s1">=</span><strong>1<span class="s1">h</span></strong></p>
 <p data-anchor="FJHu"><span class="link">Установка панели 3x ui и защита есть в ролике по <a href="https://www.youtube.com/watch?v=zt4oxHeUbdk&amp;t=2946s" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">ссылке</a></span></p>
 <p data-anchor="FJHu">{{/lock}}</p>
 <p data-anchor="FJHu"> </p>
