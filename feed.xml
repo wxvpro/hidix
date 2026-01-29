@@ -3,7 +3,7 @@
     <title>HIDIX</title>
     <link href="https://hidix.ru/feed.xml" rel="self" />
     <link href="https://hidix.ru" />
-    <updated>2026-01-29T21:20:06+03:00</updated>
+    <updated>2026-01-30T01:11:17+03:00</updated>
     <author>
         <name>alex dde</name>
     </author>
@@ -865,8 +865,11 @@ logread -e youtubeUnblock</code></pre>
 <h3>Инструкция для тех, кто приобрел программу</h3>
 {{#lock pw="11112222"}} <br><strong style="font-family: var(--font-base); font-size: 1.125em; letter-spacing: var(--letter-spacing);">Этап 1. Полный сброс:</strong>
 <div class="faq">
-<p><strong>В моделях до 2025 года:</strong><br>Настройки (шестеренка) &gt; ‌Settings &gt; General Settings &gt; Reset<br>‌Выберите &gt; <strong>Reset</strong> (или Delete) &gt; <strong>Confirm (Reset)</strong><br>‌<br>‌<strong>В новых моделях (HyperOS):</strong><br>‌Настройки (шестеренка) &gt; ‌Settings &gt; General Settings &gt; Restore<br>‌Выберите <strong>Don't Retain</strong> &gt; Restore Now &gt; <strong>Confirm (Restore)</strong></p>
-<div class="post__iframe"><iframe loading="lazy" width="720" height="405" style="border: none;" src="https://rutube.ru/play/embed/4a057949761da65d4fc6b5d4cc498c93" allow="clipboard-write; autoplay" allowfullscreen="allowfullscreen"></iframe></div>
+<p><strong>В моделях до 2025 года:</strong><br>Настройки (шестеренка) &gt; ‌Settings &gt; General Settings &gt; Reset<br>‌Выберите &gt; <strong>Reset</strong> (или Delete) &gt; <strong>Confirm (Reset)</strong><br>‌<br>‌<strong>В новых моделях (HyperOS):</strong><br>‌Настройки (шестеренка) &gt; ‌Settings &gt; General Settings &gt; Restore<br>‌Выберите <strong>Don't Retain</strong> &gt; Restore Now &gt; <strong>Confirm (Restore)<br></strong></p>
+<figure class="post__video"><video loading="lazy" width="720" height="405" style="width: 696px; height: 348px;" controls="controls" data-mce-fragment="1">
+					<source src="4a057949761da65d4fc6b5d4cc498c93" />
+				</video></figure>
+<p><br><iframe loading="lazy" width="720" height="405" style="border: none;" src="https://rutube.ru/play/embed/4a057949761da65d4fc6b5d4cc498c93" allow="clipboard-write; autoplay" allowfullscreen="allowfullscreen"></iframe>
 <h5>Этап 2. Подготовка. Включение пунктов 'ADB' и 'Неизвестные источники'</h5>
 <ul>
 <li>При первоначальной настройке подключаем телевизор <strong>по Wi-Fi</strong> (не по проводу, если он включен - вынуть)</li>
@@ -877,7 +880,7 @@ logread -e youtubeUnblock</code></pre>
 <li>Account &amp; Security &gt; <strong>Включаем</strong> ползунки <strong>ADB Debugging</strong> и <strong>Unknown Sources.</strong> Если такой пункт не появился, перезагрузите телевизор подержав кнопку "<strong>Power</strong>" и выбрав "<strong>Reboot</strong>", после повторите все пункты снова</li>
 <li>После выполнения всех условия выходим на рабочий стол ТВ кнопкой <strong>HOME</strong></li>
 </ul>
-<div class="post__iframe"><iframe loading="lazy" width="720" height="405" src="https://rutube.ru/play/embed/b5ca0aed06d4f65310c39e015ccea494/?p=CozrYAlgpQv-6Tr3opk63A" frameborder="0" allow="clipboard-write; " webkitallowfullscreen="webkitallowfullscreen" allowfullscreen="allowfullscreen"></iframe></div>
+<iframe loading="lazy" width="720" height="405" src="https://rutube.ru/play/embed/b5ca0aed06d4f65310c39e015ccea494/?p=CozrYAlgpQv-6Tr3opk63A" frameborder="0" allow="clipboard-write; " webkitallowfullscreen="webkitallowfullscreen" allowfullscreen="allowfullscreen"></iframe>
 <h5>Этап 3. Запуск программы</h5>
 <ul>
 <li>Отключаем Антивирус (можно сразу и брандмауэр)</li>
@@ -886,11 +889,12 @@ logread -e youtubeUnblock</code></pre>
 <li>На телевизоре выскочит окно - подтверждаем подключение: ставим галочку ✅ Always Allow, нажимаем <strong>ОК</strong> (или <strong>Allow</strong>). После этого программа подключится к телевизору и отобразит серийный номер</li>
 <li>Копируем <strong>серийный номер</strong> кнопкой и отправляем <strong>мне</strong> (разработчику), я выдаю вам <strong>лицензионный код</strong>, вставляем в соответствующее поле <strong>кнопкой</strong> и нажимаем "<strong>Проверить</strong>". Если код верный, все функции разблокируются.</li>
 </ul>
-<div class="post__iframe"><iframe loading="lazy" width="720" height="405" src="https://rutube.ru/play/embed/6e023e40b1e126f100ae0f12be859a11/?p=null" frameborder="0" allow="clipboard-write; " webkitallowfullscreen="webkitallowfullscreen" allowfullscreen="allowfullscreen"></iframe></div>
+<iframe loading="lazy" width="720" height="405" src="https://rutube.ru/play/embed/6e023e40b1e126f100ae0f12be859a11/?p=null" frameborder="0" allow="clipboard-write; " webkitallowfullscreen="webkitallowfullscreen" allowfullscreen="allowfullscreen"></iframe>
 <h5>Этап 4. Русификация</h5>
 <ul>
+<li>Крайне рекомендуется отключить кабель интернета от  роутера перед запуском русификации (опытным путем было выявлено, что если в тТВ не будет интернета во время русификации,  прошивка "ляжет" лучше и с <strong>первого</strong> раза)</li>
 <li>Выберите модель телевизора из списка, после нажмите "Русификация"</li>
-<li>Если у вас модель HyperOS, пробуйте вначале вариант по умолчанию</li>
+<li>Если вашей модели нет и у вас модель на <strong>HyperOS</strong>, пробуйте вначале вариант по умолчанию</li>
 </ul>
 <h5>Этап 5. Установка приложений</h5>
 <p>При нажатии "<strong>Скачать приложения</strong>" программа скачает свежий архив популярных приложений и распакует в папку. При нажатии "<strong>Установить приложения с папки</strong>" программа их установит.</p>
@@ -900,7 +904,7 @@ logread -e youtubeUnblock</code></pre>
 <h5><strong>Этап 6</strong>. Дополнительные функции:</h5>
 <p>Голосовой поиск автоматически устанавливается при русификации системы, дополнительно его ставить нет необходимости. В случае, если вы случайно удалили приложение "Микрофон", вы можете "восстановить" приложение кнопкой "Голосовой поиск - переустановка".</p>
 <p>В случае, если вы нечаянно в меню поменяли язык, вы можете вернуть обратно с помощью установки Локали, нажав кнопку "Локаль RU", локаль переустановится.</p>
-<p>Для удобства после установки приложений на ТВ вы увидите приложение Телеграм. Если вам лень устанавливать приложения с помощью программы, вы можете создать сами себе канал с приложениями, регулярно их обновлять и устанавливать через свой телеграм прямо на телевизоре.</p>
+<p>Для удобства после установки приложений на ТВ вы увидите приложение Телеграм. Если вам лень устанавливать приложения с помощью программы, вы можете создать сами себе канал с приложениями, регулярно их обновлять и устанавливать через свой телеграм прямо на телевизоре</p>
 <!-- FAQ внутри защищённого блока -->
 <h3>Вопрос / Ответ</h3>
 <div class="faq">
@@ -909,6 +913,10 @@ logread -e youtubeUnblock</code></pre>
 <div class="faq-answer">Да, программа работает <code><strong>ТОЛЬКО</strong></code> на <code>Windows 10</code> или <code>Windows 11</code>
 <div>С телефона <code><strong>НЕЛЬЗЯ</strong></code>, с флешки <code><strong>НЕЛЬЗЯ</strong></code>, <code><strong>только</strong></code> <strong>Windows 10</strong> или <strong>Windows 11</strong></div>
 </div>
+</div>
+<div class="faq-item">
+<div class="faq-question"><span class="faq-arrow">▼</span> Голосовой поиск будет работать? Как запустить?</div>
+<div class="faq-answer">Да, работает в большинстве приложений, но не во всех. С рабочего стола процедура выглядит так: нажимаем на иконку микрофона на телевизоре, зажимаем кнопку микрофона на пульте, произносим запрос, отпускаем кнопку микрофона на пульте (иногда после надо нажать еще кнопку ОК)</div>
 </div>
 <div class="faq-item">
 <div class="faq-question"><span class="faq-arrow">▼</span> Можно ли сломать телевизор?</div>
@@ -972,13 +980,13 @@ logread -e youtubeUnblock</code></pre>
 {{/lock}}</div>
 <p>
 <script>
-	// Делегирование событий: работает и для FAQ в зашифрованном блоке после расшифровки
-	document.addEventListener('click', function (e) {
-		const item = e.target.closest('.faq-item');
-		if (!item) return;
-		item.classList.toggle('active');
-	});
-</script>
+		// Делегирование событий: работает и для FAQ в зашифрованном блоке после расшифровки
+		document.addEventListener('click', function(e) {
+			const item = e.target.closest('.faq-item');
+			if (!item) return;
+			item.classList.toggle('active');
+		});
+	</script>
 </p>
             ]]>
         </content>
