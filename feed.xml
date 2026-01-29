@@ -3,7 +3,7 @@
     <title>HIDIX</title>
     <link href="https://hidix.ru/feed.xml" rel="self" />
     <link href="https://hidix.ru" />
-    <updated>2026-01-26T18:22:45+03:00</updated>
+    <updated>2026-01-29T21:16:56+03:00</updated>
     <author>
         <name>alex dde</name>
     </author>
@@ -56,9 +56,9 @@
 <pre class="language-bash"><code>mtd erase ubi
 reboot</code></pre>
 <h2 id="mcetoc_1ja27468r1ch">Установка финальной OpenWrt </h2>
-<p>После перезагрузки TFTPD подхватит и установит промещуточную версию. Переходим по ip: 192.168.1.1 и шьем финальную версию</p>
+<p>Выставляем ip: <code>192.168.1.254</code>, маска <code>255.255.255.0</code>. После перезагрузки TFTPD подхватит и установит промежуточную версию. Переходим по ip: 192.168.1.1 и шьем финальную версию</p>
 <h2 id="mcetoc_1jfte66dvd9">Установка пакетов для Youtube и маршрутизации</h2>
-<pre class="language-bash"><code>opkg update &amp;&amp; opkg install kmod-nft-tproxy &amp;&amp; opkg install https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/luci-app-ssclash_3.3.2-r1_all_final.ipk</code></pre>
+<pre class="language-bash"><code>opkg update &amp;&amp; opkg install luci-i18n-base-ru &amp;&amp; opkg install kmod-nft-tproxy &amp;&amp; opkg install https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/luci-app-ssclash_3.3.2-r1_all_final.ipk</code></pre>
 <p>{{/lock}}</p>
 <hr>
 <p> </p>
