@@ -3,7 +3,7 @@
     <title>HIDIX</title>
     <link href="https://hidix.ru/feed.xml" rel="self" />
     <link href="https://hidix.ru" />
-    <updated>2026-01-30T01:11:17+03:00</updated>
+    <updated>2026-02-02T21:51:25+03:00</updated>
     <author>
         <name>alex dde</name>
     </author>
@@ -58,7 +58,7 @@ reboot</code></pre>
 <h2 id="mcetoc_1ja27468r1ch">Установка финальной OpenWrt </h2>
 <p>Выставляем ip: <code>192.168.1.254</code>, маска <code>255.255.255.0</code>. После перезагрузки TFTPD подхватит и установит промежуточную версию. Переходим по ip: 192.168.1.1 и шьем финальную версию</p>
 <h2 id="mcetoc_1jfte66dvd9">Установка пакетов для Youtube и маршрутизации</h2>
-<pre class="language-bash"><code>opkg update &amp;&amp; opkg install luci-i18n-base-ru &amp;&amp; opkg install kmod-nft-tproxy &amp;&amp; opkg install https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/luci-app-ssclash_3.3.2-r1_all_final.ipk</code></pre>
+<pre class="language-bash"><code>opkg update &amp;&amp; opkg install luci-i18n-base-ru &amp;&amp; opkg install kmod-nft-tproxy &amp;&amp; opkg install https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/luci-app-ssclash_3.3.2-r1_all_final_NEW.ipk</code></pre>
 <p>{{/lock}}</p>
 <hr>
 <p> </p>
@@ -134,7 +134,7 @@ reboot</code></pre>
 <tr style="height: 82.3281px;">
 <td class="align-center" style="width: 33.4298%; height: 82.3281px;"><strong>Поддержка</strong>: 6 мес в подарок</td>
 <td class="align-center" style="width: 33.4298%; height: 82.3281px;">6 мес в подарок</td>
-<td class="align-center" style="width: 33.1404%; height: 82.3281px;"><span style="color: #02192b;"> 6 мес в подарок</span></td>
+<td class="align-center" style="width: 33.1404%; height: 82.3281px;">6 мес в подарок</td>
 </tr>
 </tbody>
 </table>
@@ -191,7 +191,7 @@ reboot</code></pre>
 </div>
 <div class="faq-item">
 <div class="faq-question"><span class="faq-arrow">▼</span> Как долго проработает?</div>
-<div class="faq-answer">Настроено на максимальное время работы, в случае, если что то идет не так, можернищирую для себя, тестирую, после помогаю вам с новыми настройками</div>
+<div class="faq-answer">Настроено на максимальное время работы, в случае, если что то идет не так, модернизирую для себя, тестирую, после помогаю вам с новыми настройками</div>
 </div>
 <div class="faq-item">
 <div class="faq-question"><span class="faq-arrow">▼</span> На каких операторах работает?</div>
