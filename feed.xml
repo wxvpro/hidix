@@ -3,93 +3,12 @@
     <title>HIDIX</title>
     <link href="https://hidix.ru/feed.xml" rel="self" />
     <link href="https://hidix.ru" />
-    <updated>2026-02-09T00:13:40+03:00</updated>
+    <updated>2026-02-02T21:51:25+03:00</updated>
     <author>
         <name>alex dde</name>
     </author>
     <id>https://hidix.ru</id>
 
-    <entry>
-        <title>Прошивка модема T99W175</title>
-        <author>
-            <name>alex dde</name>
-        </author>
-        <link href="https://hidix.ru/post/proshivka-modema-t99w175/"/>
-        <id>https://hidix.ru/post/proshivka-modema-t99w175/</id>
-            <category term="Инструкции для роутеров"/>
-
-        <updated>2026-02-08T23:34:41+03:00</updated>
-            <summary>
-                <![CDATA[
-                    Данная статья написана для себя, поэтому под паролем {{#lock pw="172533"}} Открываем терминал выполняем команды AT^CUSTOMER=1 AT+USBSWITCH=90D5 Запускаем Firmware Selector Tool Выбираем Generic T99W175.F0.6.0.0.6.GC.004 AT^PCIEMODE=0 Перевод&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <p>Данная статья написана для себя, поэтому под паролем</p>
-<div class="post__toc">
-<h3>Оглавление</h3>
-<ul>
-<li><a href="#mcetoc_1jgvh2jcqj1">Подготовка модема</a></li>
-<li><a href="#mcetoc_1jgvh2jcqj2">Обновление + Прошивка</a></li>
-<li><a href="#mcetoc_1jgvh2jcqj3">Выставление параметров</a></li>
-<li><a href="#mcetoc_1jgvh2jcqj4">Донастройки</a></li>
-<li><a href="#mcetoc_1jgvh2jcqj5">Удаление ненужного</a></li>
-<li><a href="#mcetoc_1jgvh2jcqj6">Скрипт</a></li>
-<li><a href="#mcetoc_1jgvh2jcqj7">Лучший вариант для МТС</a></li>
-</ul>
-</div>
-<p>{{#lock pw="172533"}}</p>
-<h3 id="mcetoc_1jgvh2jcqj1">Подготовка модема</h3>
-<figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/45//IMAGE-2026-02-08-221641.jpg" alt="" width="750" height="654" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/45//responsive/IMAGE-2026-02-08-221641-xs.webp 300w ,https://hidix.ru/media/posts/45//responsive/IMAGE-2026-02-08-221641-sm.webp 480w ,https://hidix.ru/media/posts/45//responsive/IMAGE-2026-02-08-221641-md.webp 768w"></figure>
-<h3 id="mcetoc_1jgvh2jcqj2">Обновление + Прошивка</h3>
-<p>Открываем терминал выполняем команды</p>
-<pre class="language-bash"><code>AT^CUSTOMER=1</code></pre>
-<pre class="language-bash"><code> AT+USBSWITCH=90D5</code></pre>
-<p>Запускаем <strong>Firmware Selector Tool</strong><br>Выбираем Generic <strong>T99W175.F0.6.0.0.6.GC.004</strong></p>
-<figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/45//mQ608KENtE90KFW1m7iGz0mjodxpDeaaz0xFMfquoFwAy.png" alt="" width="701" height="377" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/45//responsive/mQ608KENtE90KFW1m7iGz0mjodxpDeaaz0xFMfquoFwAy-xs.webp 300w ,https://hidix.ru/media/posts/45//responsive/mQ608KENtE90KFW1m7iGz0mjodxpDeaaz0xFMfquoFwAy-sm.webp 480w ,https://hidix.ru/media/posts/45//responsive/mQ608KENtE90KFW1m7iGz0mjodxpDeaaz0xFMfquoFwAy-md.webp 768w"></figure>
-<h3 id="mcetoc_1jgvh2jcqj3">Выставление параметров</h3>
-<pre class="language-bash"><code>AT^PCIEMODE=0</code></pre>
-<p>Перевод в режим Thales и Qualcomm, в новых версиях софта AT^CUSTOMER=16</p>
-<pre class="language-bash"><code>AT^CUSTOMER=14</code></pre>
-<pre class="language-bash"><code>AT+USBSWITCH=90d5</code></pre>
-<p>вставляем цифры <a href="https://fakedetail.app/imei-number-generator" target="_blank"  class="extlink extlink-icon-4"  rel="nofollow noopener noreferrer">с сайта</a> в софт, затираем текущие показатели</p>
-<pre class="language-bash"><code>at^nv=550,"0"</code></pre>
-<p>вставляем команду с софта</p>
-<p>Проверка командой <code>ati</code></p>
-<h3 id="mcetoc_1jgvh2jcqj4">Донастройки</h3>
-<pre class="language-bash"><code>at^efs="/nv/item_files/modem/lte/rrc/efs/lte_feature_enable",32,"00,00,00,00,04,00,70,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00"</code></pre>
-<pre class="language-bash"><code>at^efs="/nv/item_files/modem/lte/rrc/efs/lte_feature_enable_Subscription01",32,"00,00,00,00,04,00,70,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00"</code></pre>
-<p>Проверка</p>
-<pre class="language-bash"><code>at^efs="/nv/item_files/modem/lte/rrc/efs/lte_feature_enable"</code></pre>
-<pre class="language-bash"><code>at^efs="/nv/item_files/modem/lte/rrc/efs/lte_feature_enable_Subscription01"</code></pre>
-<h3 id="mcetoc_1jgvh2jcqj5"><strong>Удаление ненужного</strong></h3>
-<pre class="language-bash"><code>at^efs="/policyman/carrier_policy.xml",0</code></pre>
-<pre class="language-bash"><code>at^efs="/policyman/policies.xml",0</code></pre>
-<pre class="language-bash"><code>at^efs="/policyman/lte_feature_restrictions.xml",0</code></pre>
-<pre class="language-bash"><code>at^efs="/policyman/us_fcc_band_restrictions.xml",0</code></pre>
-<pre class="language-bash"><code>at^efs="/nv/item_files/modem/lte/rrc/lte_feature_ca.xml",0</code></pre>
-<pre class="language-bash"><code>at^efs="/nv/item_files/modem/lte/rrc/PC2_WHITELIST.xml",0</code></pre>
-<pre class="language-bash"><code> at^efs="/nv/item_files/modem/lte/rrc/PC2_WHITELIST.xml_Subscription01",0</code></pre>
-<pre class="language-bash"><code>at^efs="/nv/item_files/modem/lte/rrc/cap/disable_gap_less_meas",0</code></pre>
-<pre class="language-bash"><code>at^efs="/nv/item_files/modem/lte/common/ca_disable",0</code></pre>
-<p>Отключение ненужного в пользу T99W175</p>
-<pre class="language-bash"><code>AT+GPS=0</code></pre>
-<pre class="language-bash"><code>AT^SBFS=0</code></pre>
-<pre class="language-bash"><code>AT+FOTA_SWITCH=0</code></pre>
-<pre class="language-bash"><code>AT+CFUN=1,1</code></pre>
-<h3 id="mcetoc_1jgvh2jcqj6">Скрипт</h3>
-<p>Из разряда "Очумелые ручки"...<br>Дошли руки до прошивки T99W175.F0.6.0.0.6.GC.004 047.<br>В ней как оказалось нет композиции 00B3 и 00B7.<br>Зашел по adb, добавил, работает.</p>
-<p>В архиве файлы композиции и скрипты для установки по adb:<br><a href="https://4pda.to/forum/dl/post/30733005/compositions.zip" attach_id="30733005" s="0"   data- rev="width:728px;height:628px;scrolling:no;"  target="_blank" rel="noopener" class="ipb-attach attach-file extlink extlink-icon-4" title="Скачать compositions.zip" rel="lyteframe">compositions.zip</a> ( 5.39 МБ )<br><br>00B3 - MBIM + DUN + GNSS + NMEA + DIAG<br>00B7 - QMI_RMNET + DUN + NMEA + DIAG<br>90D5 - DIAG + ADB + MBIM + GNSS + DUN <br>9025 - DIAG + ADB + MODEM + NMEA + QMI_RMNET + Mass Storage (Android)<br><br>Добавил варианты - <br>00B3 - MBIM + DUN + GNSS + NMEA + DIAG + ADB<br>00B7 - QMI_RMNET + DUN + NMEA + DIAG + ADB</p>
-<h3 id="mcetoc_1jgvh2jcqj7">Лучший вариант для МТС</h3>
-<p>Кому надо комбо <strong><u>1+3+7+38</u></strong> на МТС, не забываем удалять помимо <i>carrier_policy.xml</i>, еще и <u><strong>обязательно</strong></u> <i>policies.xml</i>.<br><i>carrier_policy.xml</i> восстанавливается при смене сим и переключении кастомеров, <i>policies.xml</i> восстанавливается при перепрошивках. <br><br>Если этого не сделать то модем будет собирать только три несущих (касаемо моего случая с МТС) в разном порядке с сохранением только бэнда b38 (1+3+38 или 1+7+38 или 3+7+38). На других операторах надо тестить, возможно увидите что-то новое, чего до этого не собирали. <br><br>Работает как и в режиме <strong>CUSTOMER=1 (DELL)</strong> (переводим для кинетика в QMI at+usbswitch=00b7), так и в режиме <strong>CUSTOMER=14 (Thales)</strong> (переводим для кинетика в QMI AT^SETCONFIG=1)</p>
-<pre class="language-bash"><code>AT^EFS="/policyman/carrier_policy.xml",0</code></pre>
-<pre class="language-bash"><code>AT^EFS="/policyman/policies.xml",0</code></pre>
-<p>{{/lock}}</p>
-<p> </p>
-            ]]>
-        </content>
-    </entry>
     <entry>
         <title>Прошивка роутера Netis NX31 на OpenWrt с последующей настройкой Youtube и установкой VPN </title>
         <author>
@@ -1501,6 +1420,54 @@ sudo systemctl status 3xui-module.service</code></pre>
 <p data-anchor="SRSb">Следующая статья будет о том, как выводить / обменивать монеты с самым выгодным курсом</p>
 <p data-anchor="SRSb">Мой ник в телеграм <span class="link"><a href="https://t.me/alex_dde" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">@Alex_dde</a></span>, прошу понять и простить, бесплатных консультаций не даю, нет столько времени, асики это просто хобби, если вам необходима помощь, опишите техническое задание и будьте добры предложить оплату. Спасибо.</p>
 <p data-anchor="SRSb"> </p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Сброс (Reset) телевизора Xiaomi</title>
+        <author>
+            <name>alex dde</name>
+        </author>
+        <link href="https://hidix.ru/post/sbros-reset-televizora-xiaomi/"/>
+        <id>https://hidix.ru/post/sbros-reset-televizora-xiaomi/</id>
+            <category term="Телевизоры Xiaomi"/>
+
+        <updated>2025-06-18T05:08:20+03:00</updated>
+            <summary>
+                <![CDATA[
+                    После некоторых манипуляций иногда бывает полезно сделать сброс телевизору. Существует несколько видов сброса, из меню телевизора и пультом, если ТВ не загружается, рассмотрим их все&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>После некоторых манипуляций иногда бывает полезно сделать сброс телевизору. Существует несколько видов сброса, из меню телевизора и пультом, если ТВ не загружается, рассмотрим их все</p>
+<h3>Cброс с сохранением приложений </h3>
+<p><strong>В моделях до 2025 года:</strong><br>Настройки (шестеренка)  &gt; ‌Settings &gt; General Settings &gt; Reset<br>‌Выберите <strong>Keep</strong> &gt; Reset &gt; Confirm<br>‌<br>‌<strong>В новых моделях (HyperOS):</strong> <br>‌Настройки (шестеренка) &gt; ‌Settings &gt; General Settings &gt; Restore<br>‌Выберите Retain &gt; Restore Now &gt; Confirm</p>
+<div class="post__iframe"><iframe loading="lazy" width="720" height="405" src="https://rutube.ru/play/embed/41b5a8a5bbc106b656c16552cc9bbf62" frameborder="0" allow="clipboard-write; " webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe></div>
+<h3>Сброс без сохранения приложений (полный сброс)</h3>
+<p><strong>В моделях до 2025 года:</strong><br>Настройки (шестеренка)  &gt; ‌Settings &gt; General Settings &gt; Reset<br>‌Выберите Delete &gt; Reset &gt; Confirm<br>‌<br><strong>‌В новых моделях (HyperOS):</strong><br>‌Настройки (шестеренка) &gt; ‌Settings &gt; General Settings &gt; Restore<br>‌Выберите Don’t Retain &gt; Restore Now &gt; Confirm</p>
+<div class="post__iframe"><iframe loading="lazy" width="720" height="405" src="https://rutube.ru/play/embed/4a057949761da65d4fc6b5d4cc498c93" frameborder="0" allow="clipboard-write; " webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe></div>
+<h3>Сброс с пульта (Hard Reset)</h3>
+<table style="border-collapse: collapse; width: 100%;" border="1">
+<tbody>
+<tr>
+<td style="width: 24.1155%;"><figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/18/old.png" alt="" width="434" height="782" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/18/responsive/old-xs.webp 300w ,https://hidix.ru/media/posts/18/responsive/old-sm.webp 480w ,https://hidix.ru/media/posts/18/responsive/old-md.webp 768w"></figure></td>
+<td style="width: 75.8845%;"><strong>В моделях старых ревизий:<br></strong>Выключить физически телевизор из розетки. Зажать на пульте кнопки <strong>HOME</strong> и <strong>MENU</strong> (далее все делаем держа кнопки). Включить телевизор в розетку, нажать физическую кнопку включения на тв на пару секунд. Не отпуская кнопки пульта  дождаться загрузки режима восстановления, отпустить кнопки, далее выбрать "<strong>WIPE ALL DATA</strong>"</td>
+</tr>
+<tr>
+<td style="width: 24.1155%;"><figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/18/new.png" alt="" width="428" height="772" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/18/responsive/new-xs.webp 300w ,https://hidix.ru/media/posts/18/responsive/new-sm.webp 480w ,https://hidix.ru/media/posts/18/responsive/new-md.webp 768w"></figure></td>
+<td style="width: 75.8845%;"><strong>В моделях от 2022 года:<br></strong>Выключить физически телевизор из розетки. Зажать на пульте кнопки <strong>OK</strong> и <strong>BACK</strong> (назад), (далее все делаем держа кнопки). Включить телевизор в розетку, нажать физическую кнопку включения на тв на пару секунд. Не отпуская кнопки пульта дождаться загрузки режима восстановления, отпустить кнопки, далее выбрать "<strong>WIPE ALL DATA</strong>"</td>
+</tr>
+</tbody>
+</table>
+<table style="border-collapse: collapse; width: 100%;" border="1">
+<tbody>
+<tr>
+<td style="width: 43.5127%;">Режим восстановления выглядит так. В этом меню выбираем последний пункт</td>
+<td style="width: 56.4873%;"><figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/18/Untitled-2-2.png" alt="" width="2722" height="2378" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/18/responsive/Untitled-2-2-xs.webp 300w ,https://hidix.ru/media/posts/18/responsive/Untitled-2-2-sm.webp 480w ,https://hidix.ru/media/posts/18/responsive/Untitled-2-2-md.webp 768w"></figure></td>
+</tr>
+</tbody>
+</table>
             ]]>
         </content>
     </entry>
