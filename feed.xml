@@ -3,7 +3,7 @@
     <title>HIDIX</title>
     <link href="https://hidix.ru/feed.xml" rel="self" />
     <link href="https://hidix.ru" />
-    <updated>2026-03-01T05:09:17+03:00</updated>
+    <updated>2026-03-01T05:10:00+03:00</updated>
     <author>
         <name>alex dde</name>
     </author>
@@ -16,6 +16,7 @@
         </author>
         <link href="https://hidix.ru/post/pomoshchnik-po-nastroyke-routera/"/>
         <id>https://hidix.ru/post/pomoshchnik-po-nastroyke-routera/</id>
+            <category term="Инструкции для роутеров"/>
 
         <updated>2026-03-01T02:22:29+03:00</updated>
             <summary>
