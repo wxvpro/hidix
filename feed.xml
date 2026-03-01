@@ -3,527 +3,12 @@
     <title>HIDIX</title>
     <link href="https://hidix.ru/feed.xml" rel="self" />
     <link href="https://hidix.ru" />
-    <updated>2026-03-01T05:10:00+03:00</updated>
+    <updated>2026-02-02T21:51:25+03:00</updated>
     <author>
         <name>alex dde</name>
     </author>
     <id>https://hidix.ru</id>
 
-    <entry>
-        <title>Помощник по настройке роутера</title>
-        <author>
-            <name>alex dde</name>
-        </author>
-        <link href="https://hidix.ru/post/pomoshchnik-po-nastroyke-routera/"/>
-        <id>https://hidix.ru/post/pomoshchnik-po-nastroyke-routera/</id>
-            <category term="Инструкции для роутеров"/>
-
-        <updated>2026-03-01T02:22:29+03:00</updated>
-            <summary>
-                <![CDATA[
-                    вы можете в любой момент вернуться на шаг назад Назад Начать заново
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <div class="wrap">
-<div id="breadcrumbs" class="breadcrumbs" style="margin-top: 1rem;"></div>
-<span style="font-size: 86%;">вы можете в любой момент вернуться на шаг назад</span></div>
-<div class="wrap">
-<div class="card">
-<div id="step" style="margin-top: 2rem;"></div>
-<div> </div>
-<div class="actions"><button id="btnBack" class="secondary" type="button">Назад</button> <button id="btnReset" class="secondary" type="button"> Начать заново </button></div>
-</div>
-</div>
-<p>
-<script>
-		// --------- ДАННЫЕ ШАГОВ (сценарий) ----------
-		// Каждый шаг: id, title (для крошек), question, options, (опционально) content, next(answer)-> nextStepId
-		const STEPS = {
-			router: {
-				id: "router",
-				title: "Выбор роутера",
-				question: "Какой у вас роутер?",
-				options: [{
-						label: "Cudy TR3000",
-						value: "tr3000"
-					},
-					{
-						label: "Cudy WR3000S",
-						value: "wr3000s"
-					},
-					{
-						label: "Netis NX31",
-						value: "nx31"
-					},
-					{
-						label: "Xiaomi AX3000T",
-						value: "ax3000t"
-					},
-					{
-						label: "Все настроено — хочу сменить название сети и пароль",
-						value: "rename",
-					},
-				],
-				next: (v) => (v === "rename" ? "rename" : "line"),
-			},
-
-			// ВАЖНО: на схеме с картинки вопрос "кабель или терминал" задаётся для ЛЮБОГО роутера
-			line: {
-				id: "line",
-				title: "Тип линии",
-				question: "У вас просто кабель провайдера или оптический терминал/роутер провайдера?",
-				options: [{
-						label: "Просто кабель",
-						value: "cable"
-					},
-					{
-						label: "Оптический терминал/роутер провайдера",
-						value: "terminal"
-					},
-				],
-				next: (v) => (v === "terminal" ? "terminal_instr" : "cable_instr"),
-			},
-
-			cable_instr: {
-				id: "cable_instr",
-				title: "Подключение (кабель)",
-				question: "Инструкция по подключению:",
-				content: `
-        
-          <li>1. Присоедините кабель интернета (кабель провайдера) к гнезду <b>WAN</b> согласно картинке</li>
-            <figure class="post__image"><figure class="is-loaded"><img loading="lazy" loading="lazy" src="https://hidix.ru/media/posts/15/router-1.jpg" alt="" width="710" height="443" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/15/responsive/router-1-xs.webp 300w, https://hidix.ru/media/posts/15/responsive/router-1-sm.webp 480w, https://hidix.ru/media/posts/15/responsive/router-1-md.webp 768w"  sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/15/responsive/router-1-xs.webp 300w ,https://hidix.ru/media/posts/15/responsive/router-1-sm.webp 480w ,https://hidix.ru/media/posts/15/responsive/router-1-md.webp 768w"></figure></figure>
-          <li>2. Подсоедините кабель питания</li>
-          <li>3. Присоединитесь к сети с названием <b>Cudy или OpenWrt</b> (в сети <b>OpenWrt</b> чаще всего пароль <b>12345678</b>, либо без пароля, в сети <b>Cudy</b> пароль указан на обратной стороне роутера</li>
-          <li>4. На мобильном устройстве отключите VPN/прокси/DNS и любые сетевые программы (если они есть)</li>
-          <li>5. Полностью закройте браузер и откройте снова</li>
-          <li>6. Перейдите на 2–3 российских сайта (например: новости, поиск, продажа авто)</li>
-
-        
-      `,
-				options: [{
-						label: "Интернет есть, сайты загружаются",
-						value: "yes"
-					},
-					{
-						label: "Интернета нет",
-						value: "no"
-					},
-				],
-				next: (v) => (v === "yes" ? "yt_reopen" : "call_provider"),
-			},
-
-			terminal_instr: {
-				id: "terminal_instr",
-				title: "Подключение (терминал)",
-				question: "Если у вас от провайдера оптический терминал/роутер — подключите согласно схеме",
-				content: `
-        
-        <figure class="post__image"><figure class="is-loaded"><img loading="lazy" loading="lazy" src="https://hidix.ru/media/posts/15/2routers.png" alt="" width="1180" height="400" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/15/responsive/2routers-xs.webp 300w, https://hidix.ru/media/posts/15/responsive/2routers-sm.webp 480w, https://hidix.ru/media/posts/15/responsive/2routers-md.webp 768w"  sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/15/responsive/2routers-xs.webp 300w ,https://hidix.ru/media/posts/15/responsive/2routers-sm.webp 480w ,https://hidix.ru/media/posts/15/responsive/2routers-md.webp 768w"></figure></figure>
-          <li>1. Соедините кабелем <b>LAN</b> порт разъёма терминала/роутера с <b>WAN</b> разъёмом купленного роутера</li>
-          <li>2. Включите роутер</li>
-          <li>3. Перейдите на 2–3 российских сайта (например: новости, поиск, продажа авто)</li>
-        
-      `,
-				options: [{
-						label: "Интернет появился, сайты грузятся",
-						value: "yes"
-					},
-					{
-						label: "Интернета нет",
-						value: "no"
-					},
-				],
-				next: (v) => (v === "yes" ? "yt_reopen" : "terminal_no_inet"),
-			},
-
-			// ✅ НОВЫЙ ШАГ: если в терминальном подключении интернета нет
-			terminal_no_inet: {
-				id: "terminal_no_inet",
-				title: "Интернета нет (терминал)",
-				question: "Если интернета нет — сделайте следующее:",
-				content: `
-					
-						<li>1. Перезагрузите <b>оба роутера</b></li>
-						<li>2. Подождите <b>30 секунд</b></li>
-						<li>3. Проверьте, есть ли интернет на вашем роутере, открываются ли обычные сайты</li>
-						<li>4. Проверьте правильность подключения кабеля</li>
-					
-					<div class="muted">
-						Если после этого интернета нет — обратитесь в поддержку: 
-						<a href="https://t.me/alex_dde" target="_blank" class="extlink extlink-icon-4"  >@ALEX_DDE</a>
-					</div>
-				`,
-				options: [{
-					label: "Начать заново",
-					value: "reset"
-				}],
-				next: () => "router",
-			},
-
-			inet_question: {
-				// Этот шаг оставлен на случай расширения, но логика с картинки уже встроена в cable/terminal.
-				id: "inet_question",
-				title: "Интернет",
-				question: "Есть интернет?",
-				options: [{
-						label: "Да",
-						value: "yes"
-					},
-					{
-						label: "Нет",
-						value: "no"
-					},
-				],
-				next: (v) => (v === "yes" ? "yt_reopen" : "call_provider"),
-			},
-
-			yt_reopen: {
-				id: "yt_reopen",
-				title: "YouTube",
-				question: "Полностью закройте и откройте приложение YouTube, проверьте его работу. Работает?",
-				options: [{
-						label: "Да",
-						value: "yes"
-					},
-					{
-						label: "Нет",
-						value: "no"
-					},
-				],
-				next: (v) => (v === "yes" ? "finish_ok" : "yt_not_working"),
-			},
-
-			yt_not_working: {
-				id: "yt_not_working",
-				title: "YouTube не работает",
-				question: "Если YouTube не работает, сделайте так:",
-				content: `
-      
-          <li>1. Перезагрузите роутер и подорждите 30 секунд</li>
-          <li>2. Проверьте на <b>двух разных устройствах</b>, чтобы исключить само устройство (например, на ноутбуке и телефоне)</li>
-            <li>3. Проверьте, работают ли другие сайты<li>
-          <li>4. Если ничего не изменится — напишите в поддержку: <a href="https://t.me/alex_dde" target="_blank" class="extlink extlink-icon-4"  >@Alex_dde</a>, в сообщении укажите, какие пункты вы выполнили</li>
-        
-      `,
-				options: [{
-					label: "Начать заново",
-					value: "reset"
-				}],
-				next: () => "router",
-			},
-
-			call_provider: {
-				id: "call_provider",
-				title: "Нет интернета",
-				question: "Если после предыдущих шагов нет интернета, возможно у вас есть авторизация у провайдера",
-				content: `
-        <div class="muted">
-            <br>
-          Наберите провайдеру и задайте такой вопрос:<br>
-          <b>«Я купил новый роутер, какой у меня тип подключения (тип авторизации)?? подскажите, как настроить?»</b>
-            <p>Часто у провайдеров руки чешутся заставить вас сбросить роутер - <code>РОУТЕР СБРАСЫВВАТЬ НЕЛЬЗЯ </code>. Скажите им, что все давно сброшено, пусть сообщат вам тип подключения и настройки, если есть. Запишите их.</p>
-            <p>Выберите ниже, какой тип подключения они вам назвали</p>
-        </div>
-      `,
-				options: [{
-						label: "PPPoE авторизация",
-						value: "pppoe"
-					},
-					{
-						label: "По MAC адресу",
-						value: "mac"
-					},
-					{
-						label: "Динамический DHCP",
-						value: "dhcp"
-					},
-					{
-						label: "Динамический DHCP с привязкой по MAC адресу",
-						value: "dhcp_mac"
-					},
-				],
-
-				next: (v) =>
-					v === "pppoe" ?
-					"pppoe_help" : (v === "mac" || v === "dhcp_mac") ?
-					"mac_help" : "dhcp_help",
-			},
-
-			pppoe_help: {
-				id: "pppoe_help",
-				title: "PPPoE",
-				question: "Инструкция настройки при авторизации PPOE",
-				content: `
-
-
-            
-            
-                <li>Подключаем кабель провайдера в первое гнездо роутера, которое около кабеля питания</li>
-                <li>В браузере вводим <code>192.168.10.1</code></li>
-                <li>Логин: root</li>
-                <li>Пароль: без пароля (если вы не ставили)</li>
-                <li>Попадаем в админку роутера, здесь сверху в меню выбираем<br><strong>Сеть</strong> &gt; <strong>Интерфейсы</strong></li>
-                    <li><figure class="post__image"><figure class="is-loaded"><img loading="lazy" loading="lazy" src="https://hidix.ru/media/posts/12/444.png" alt="" width="1940" height="548" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/444-xs.webp 300w, https://hidix.ru/media/posts/12/responsive/444-sm.webp 480w, https://hidix.ru/media/posts/12/responsive/444-md.webp 768w"  sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/444-xs.webp 300w ,https://hidix.ru/media/posts/12/responsive/444-sm.webp 480w ,https://hidix.ru/media/posts/12/responsive/444-md.webp 768w"></figure></figure></li>
-                        <li>Напротив<strong> WAN </strong>&gt;<strong> Изменить<br></strong></li><li><figure class="post__image"><figure class="is-loaded"><img loading="lazy" loading="lazy" src="https://hidix.ru/media/posts/12/Untitled45enr.png" alt="" width="1996" height="1100" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled45enr-xs.webp 300w, https://hidix.ru/media/posts/12/responsive/Untitled45enr-sm.webp 480w, https://hidix.ru/media/posts/12/responsive/Untitled45enr-md.webp 768w"  sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled45enr-xs.webp 300w ,https://hidix.ru/media/posts/12/responsive/Untitled45enr-sm.webp 480w ,https://hidix.ru/media/posts/12/responsive/Untitled45enr-md.webp 768w"></figure></figure></li>
-                            <li>Протокол: меняем на <strong>PPOE</strong>, ниже появляется кнопка <strong>Изменить протокол</strong>, нажимаем ее, ниже появляются дополнительные поля, в поле "<strong>Имя пользователя PAP/CHAP</strong>" вписываем имя пользователя, что вам выдал <strong>провайдер</strong>, в поле "<strong>Пароль PAP/CHAP</strong>" - пароль, что вам выдал <strong>провайдер</strong>. Нажимаем <strong>Сохранить</strong>, после - <strong>Применить</strong></li>
-                            <li><figure class="post__image"><figure class="is-loaded"><img loading="lazy" loading="lazy" src="https://hidix.ru/media/posts/12/Untitled-464.png" alt="" width="2028" height="1048" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled-464-xs.webp 300w, https://hidix.ru/media/posts/12/responsive/Untitled-464-sm.webp 480w, https://hidix.ru/media/posts/12/responsive/Untitled-464-md.webp 768w"  sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled-464-xs.webp 300w ,https://hidix.ru/media/posts/12/responsive/Untitled-464-sm.webp 480w ,https://hidix.ru/media/posts/12/responsive/Untitled-464-md.webp 768w"></figure></figure></li>
-                                <li>впишите имя пользователя и пароль, выданные вашим провайдером (данные обычно бывают либо на карточке, либо в договоре, если не нашли - звоните провайдеру</li>
-                                
-                                <li><figure class="post__image"><figure class="is-loaded"><img loading="lazy" loading="lazy" src="https://hidix.ru/media/posts/12/Untitled-46f.png" alt="" width="1890" height="1426" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled-46f-xs.webp 300w, https://hidix.ru/media/posts/12/responsive/Untitled-46f-sm.webp 480w, https://hidix.ru/media/posts/12/responsive/Untitled-46f-md.webp 768w"  sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled-46f-xs.webp 300w ,https://hidix.ru/media/posts/12/responsive/Untitled-46f-sm.webp 480w ,https://hidix.ru/media/posts/12/responsive/Untitled-46f-md.webp 768w"></figure></figure></li>
-                                    
-               
-                               
-    
-   <p>Если вы <b>повторно</b> на этой странице и интернет <b>не</b> появился, напишите в поддержку: <a href="https://t.me/alex_dde" target="_blank" class="extlink extlink-icon-4"  >@Alex_dde</a></p>
-      `,
-				options: [{
-						label: "Интернет есть",
-						value: "yes"
-					},
-					{
-						label: "Интернета нет",
-						value: "no"
-					},
-				],
-				next: (v) => (v === "yes" ? "yt_reopen" : "call_provider"),
-				//next: (v) => (v === 'reset' ? 'router' : 'next_block')
-			},
-
-			mac_help: {
-				id: "mac_help",
-				title: "MAC",
-				question: "Если у вас авторизация по МАК адресу:",
-				content: `
-        <div class="muted">
-            <br>
-          Вам необходимо набрать в техподдержку вашего провайдера и сообщить,что вы подключили новый роутер. Провайдер должен прописать ваш MAC-адрес и у вас все заработает. Наберите провайдеру, через 2-3 минуты после того, как провайдер сделает все манипуляции, интернет у вас появится. Перезагрузите роутер.<br>
-          
-        </div>
-      `,
-				options: [{
-						label: "Интернет есть",
-						value: "yes"
-					},
-					{
-						label: "Интернета нет",
-						value: "no"
-					},
-				],
-				next: (v) => (v === "yes" ? "yt_reopen" : "call_provider"),
-			},
-
-			dhcp_help: {
-				id: "dhcp_help",
-				title: "DHCP",
-				question: "Если “Динамический DHCP”:",
-				content: `
-        <div class="muted">
-          Проверьте, верно ли вы соединили кабель. 
-          Перезагрузите роутер
-          У вас всё должно работать.
-        </div>
-      `,
-				options: [{
-						label: "Интернет появился, сайты грузятся",
-						value: "yes"
-					},
-					{
-						label: "Интернета нет",
-						value: "no"
-					},
-				],
-				next: (v) => (v === "yes" ? "yt_reopen" : "call_provider"),
-			},
-
-			// На картинке это красный узел "… Далее" — точка, куда сходятся ветки
-			next_block: {
-				id: "next_block",
-				title: "Далее",
-				question: "Дальше по схеме",
-				content: `
-        <div class="muted">
-          Вы дошли до точки <b>«Далее»</b> — это переход к следующему блоку схемы (в этой версии мастера он не добавлен).
-          Если нужно — напишите в поддержку, я продолжу схему под ваш случай.
-        </div>
-      `,
-				options: [{
-					label: "Начать заново",
-					value: "reset"
-				}],
-				next: () => "router",
-			},
-
-			rename: {
-				id: "rename",
-				title: "Сменить имя/пароль Wi-Fi",
-				question: "Смена названия сети и пароля",
-				content: `
-        <div class="muted">
-          Откройте инструкцию: <b>hidix.ru</b> → раздел «настройка» → «главное меню».
-        </div>
-      `,
-				options: [{
-					label: "Начать заново",
-					value: "reset"
-				}],
-				next: () => "router",
-			},
-
-			finish_ok: {
-				id: "finish_ok",
-				title: "Готово",
-				question: "🎉 Поздравляю, всё отлично!",
-				content: `<div class="muted">Если позже что-то “отвалится” — чаще всего помогает перезагрузка роутера и телефона + проверка, что VPN/прокси/DNS на телефоне выключены.</div>`,
-				options: [{
-					label: "Начать заново",
-					value: "reset"
-				}],
-				next: () => "router",
-			},
-		};
-
-		// --------- СОСТОЯНИЕ (история для крошек и назад) ----------
-		let history = []; // [{stepId, answerLabel, answerValue}]
-		let currentStepId = "router";
-
-		const $step = document.getElementById("step");
-		const $breadcrumbs = document.getElementById("breadcrumbs");
-		const $btnBack = document.getElementById("btnBack");
-		const $btnReset = document.getElementById("btnReset");
-
-		function renderBreadcrumbs() {
-			// Главная крошка всегда “Старт”
-			let html = `<span class="crumb"><a href="#" data-jump="router">Старт</a></span>`;
-			for (let i = 0; i < history.length; i++) {
-				const h = history[i];
-				const step = STEPS[h.stepId];
-				const text = step?.title || h.stepId;
-				html += `<span class="sep"> › </span>
-               <span class="crumb"><a href="#" data-index="${i}" > ${text}</a></span>`;
-			}
-			// текущий шаг как текст (без ссылки)
-			const curTitle = STEPS[currentStepId]?.title || "Шаг";
-			html += `<span class="sep"> › </span><span class="crumb">${curTitle}</span>`;
-			$breadcrumbs.innerHTML = html;
-
-			// клики по крошкам (прыжок назад)
-			$breadcrumbs.querySelectorAll("a[data-index]").forEach((a) => {
-				a.addEventListener("click", (e) => {
-					e.preventDefault();
-					const idx = Number(a.dataset.index);
-					currentStepId = history[idx].stepId;
-					history = history.slice(0, idx);
-					render();
-				});
-			});
-
-			$breadcrumbs.querySelectorAll('a[data-jump="router"]').forEach((a) => {
-				a.addEventListener("click", (e) => {
-					e.preventDefault();
-					reset();
-				});
-			});
-		}
-
-		function render() {
-			const step = STEPS[currentStepId];
-			renderBreadcrumbs();
-
-			// кнопка "Назад"
-			$btnBack.disabled = history.length === 0;
-			$btnBack.style.opacity = $btnBack.disabled ? 0.5 : 1;
-
-			let html = `<div class="q">${step.question}</div>`;
-			if (step.content) html += step.content;
-
-			html += `<div class="opts">`;
-			for (const opt of step.options) {
-				html += `
-        <div class="opt but" role="button" tabindex="0"
-             data-value="${opt.value}"
-             data-label="${opt.label.replaceAll('"', "&quot;")}">
-          ${opt.label}
-        </div>`;
-			}
-			html += `</div>`;
-
-			$step.innerHTML = html;
-
-			// Пнуть lazy-картинки, вставленные динамически
-			$step.querySelectorAll('img[loading="lazy"]').forEach(img => {
-				img.decoding = "async";
-				img.fetchPriority = "auto";
-				img.src = img.src;
-			});
-
-			// обработчики выбора
-			$step.querySelectorAll(".opt").forEach((el) => {
-				el.addEventListener("click", () =>
-					selectOption(el.dataset.value, el.dataset.label),
-				);
-				el.addEventListener("keydown", (e) => {
-					if (e.key === "Enter" || e.key === " ")
-						selectOption(el.dataset.value, el.dataset.label);
-				});
-			});
-		}
-
-		function selectOption(value, label) {
-			const step = STEPS[currentStepId];
-
-			// записываем ответ в историю (для крошек/назад)
-			history.push({
-				stepId: currentStepId,
-				answerLabel: label,
-				answerValue: value,
-			});
-
-			// вычисляем следующий шаг
-			const nextId = step.next(value);
-
-			// если “reset” (в конце) — чистим
-			if (value === "reset") return reset();
-
-			currentStepId = nextId;
-			render();
-			window.scrollTo({
-				top: 0,
-				behavior: "smooth"
-			});
-		}
-
-		function back() {
-			if (history.length === 0) return;
-			const last = history.pop();
-			currentStepId = last.stepId;
-			render();
-			window.scrollTo({
-				top: 0,
-				behavior: "smooth"
-			});
-		}
-
-		function reset() {
-			history = [];
-			currentStepId = "router";
-			render();
-			window.scrollTo({
-				top: 0,
-				behavior: "smooth"
-			});
-		}
-
-		$btnBack.addEventListener("click", back);
-		$btnReset.addEventListener("click", reset);
-
-		render();
-	</script>
-</p>
-            ]]>
-        </content>
-    </entry>
     <entry>
         <title>Прошивка роутера Netis NX31 на OpenWrt с последующей настройкой Youtube и установкой VPN </title>
         <author>
@@ -1935,6 +1420,54 @@ sudo systemctl status 3xui-module.service</code></pre>
 <p data-anchor="SRSb">Следующая статья будет о том, как выводить / обменивать монеты с самым выгодным курсом</p>
 <p data-anchor="SRSb">Мой ник в телеграм <span class="link"><a href="https://t.me/alex_dde" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">@Alex_dde</a></span>, прошу понять и простить, бесплатных консультаций не даю, нет столько времени, асики это просто хобби, если вам необходима помощь, опишите техническое задание и будьте добры предложить оплату. Спасибо.</p>
 <p data-anchor="SRSb"> </p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Сброс (Reset) телевизора Xiaomi</title>
+        <author>
+            <name>alex dde</name>
+        </author>
+        <link href="https://hidix.ru/post/sbros-reset-televizora-xiaomi/"/>
+        <id>https://hidix.ru/post/sbros-reset-televizora-xiaomi/</id>
+            <category term="Телевизоры Xiaomi"/>
+
+        <updated>2025-06-18T05:08:20+03:00</updated>
+            <summary>
+                <![CDATA[
+                    После некоторых манипуляций иногда бывает полезно сделать сброс телевизору. Существует несколько видов сброса, из меню телевизора и пультом, если ТВ не загружается, рассмотрим их все&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>После некоторых манипуляций иногда бывает полезно сделать сброс телевизору. Существует несколько видов сброса, из меню телевизора и пультом, если ТВ не загружается, рассмотрим их все</p>
+<h3>Cброс с сохранением приложений </h3>
+<p><strong>В моделях до 2025 года:</strong><br>Настройки (шестеренка)  &gt; ‌Settings &gt; General Settings &gt; Reset<br>‌Выберите <strong>Keep</strong> &gt; Reset &gt; Confirm<br>‌<br>‌<strong>В новых моделях (HyperOS):</strong> <br>‌Настройки (шестеренка) &gt; ‌Settings &gt; General Settings &gt; Restore<br>‌Выберите Retain &gt; Restore Now &gt; Confirm</p>
+<div class="post__iframe"><iframe loading="lazy" width="720" height="405" src="https://rutube.ru/play/embed/41b5a8a5bbc106b656c16552cc9bbf62" frameborder="0" allow="clipboard-write; " webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe></div>
+<h3>Сброс без сохранения приложений (полный сброс)</h3>
+<p><strong>В моделях до 2025 года:</strong><br>Настройки (шестеренка)  &gt; ‌Settings &gt; General Settings &gt; Reset<br>‌Выберите Delete &gt; Reset &gt; Confirm<br>‌<br><strong>‌В новых моделях (HyperOS):</strong><br>‌Настройки (шестеренка) &gt; ‌Settings &gt; General Settings &gt; Restore<br>‌Выберите Don’t Retain &gt; Restore Now &gt; Confirm</p>
+<div class="post__iframe"><iframe loading="lazy" width="720" height="405" src="https://rutube.ru/play/embed/4a057949761da65d4fc6b5d4cc498c93" frameborder="0" allow="clipboard-write; " webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe></div>
+<h3>Сброс с пульта (Hard Reset)</h3>
+<table style="border-collapse: collapse; width: 100%;" border="1">
+<tbody>
+<tr>
+<td style="width: 24.1155%;"><figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/18/old.png" alt="" width="434" height="782" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/18/responsive/old-xs.webp 300w ,https://hidix.ru/media/posts/18/responsive/old-sm.webp 480w ,https://hidix.ru/media/posts/18/responsive/old-md.webp 768w"></figure></td>
+<td style="width: 75.8845%;"><strong>В моделях старых ревизий:<br></strong>Выключить физически телевизор из розетки. Зажать на пульте кнопки <strong>HOME</strong> и <strong>MENU</strong> (далее все делаем держа кнопки). Включить телевизор в розетку, нажать физическую кнопку включения на тв на пару секунд. Не отпуская кнопки пульта  дождаться загрузки режима восстановления, отпустить кнопки, далее выбрать "<strong>WIPE ALL DATA</strong>"</td>
+</tr>
+<tr>
+<td style="width: 24.1155%;"><figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/18/new.png" alt="" width="428" height="772" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/18/responsive/new-xs.webp 300w ,https://hidix.ru/media/posts/18/responsive/new-sm.webp 480w ,https://hidix.ru/media/posts/18/responsive/new-md.webp 768w"></figure></td>
+<td style="width: 75.8845%;"><strong>В моделях от 2022 года:<br></strong>Выключить физически телевизор из розетки. Зажать на пульте кнопки <strong>OK</strong> и <strong>BACK</strong> (назад), (далее все делаем держа кнопки). Включить телевизор в розетку, нажать физическую кнопку включения на тв на пару секунд. Не отпуская кнопки пульта дождаться загрузки режима восстановления, отпустить кнопки, далее выбрать "<strong>WIPE ALL DATA</strong>"</td>
+</tr>
+</tbody>
+</table>
+<table style="border-collapse: collapse; width: 100%;" border="1">
+<tbody>
+<tr>
+<td style="width: 43.5127%;">Режим восстановления выглядит так. В этом меню выбираем последний пункт</td>
+<td style="width: 56.4873%;"><figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/18/Untitled-2-2.png" alt="" width="2722" height="2378" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/18/responsive/Untitled-2-2-xs.webp 300w ,https://hidix.ru/media/posts/18/responsive/Untitled-2-2-sm.webp 480w ,https://hidix.ru/media/posts/18/responsive/Untitled-2-2-md.webp 768w"></figure></td>
+</tr>
+</tbody>
+</table>
             ]]>
         </content>
     </entry>
