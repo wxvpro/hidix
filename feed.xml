@@ -3,7 +3,7 @@
     <title>HIDIX</title>
     <link href="https://hidix.ru/feed.xml" rel="self" />
     <link href="https://hidix.ru" />
-    <updated>2026-03-01T03:12:25+03:00</updated>
+    <updated>2026-03-01T03:17:36+03:00</updated>
     <author>
         <name>alex dde</name>
     </author>
@@ -34,61 +34,60 @@
 <div class="actions"><button id="btnBack" class="secondary" type="button">Назад</button> <button id="btnReset" class="secondary" type="button"> Начать заново </button></div>
 </div>
 </div>
-<p>
 <script>
-		// --------- ДАННЫЕ ШАГОВ (сценарий) ----------
-		// Каждый шаг: id, title (для крошек), question, options, (опционально) content, next(answer)-> nextStepId
-		const STEPS = {
-			router: {
-				id: "router",
-				title: "Роутер",
-				question: "Какой у вас роутер?",
-				options: [{
-						label: "Cudy TR3000",
-						value: "tr3000"
-					},
-					{
-						label: "Cudy WR3000S",
-						value: "wr3000s"
-					},
-					{
-						label: "Netis NX31",
-						value: "nx31"
-					},
-					{
-						label: "Xiaomi AX3000T",
-						value: "ax3000t"
-					},
-					{
-						label: "Все настроено — хочу сменить название сети и пароль",
-						value: "rename",
-					},
-				],
-				next: (v) => (v === "rename" ? "rename" : "line"),
-			},
+	// --------- ДАННЫЕ ШАГОВ (сценарий) ----------
+	// Каждый шаг: id, title (для крошек), question, options, (опционально) content, next(answer)-> nextStepId
+	const STEPS = {
+		router: {
+			id: "router",
+			title: "Роутер",
+			question: "Какой у вас роутер?",
+			options: [{
+					label: "Cudy TR3000",
+					value: "tr3000"
+				},
+				{
+					label: "Cudy WR3000S",
+					value: "wr3000s"
+				},
+				{
+					label: "Netis NX31",
+					value: "nx31"
+				},
+				{
+					label: "Xiaomi AX3000T",
+					value: "ax3000t"
+				},
+				{
+					label: "Все настроено — хочу сменить название сети и пароль",
+					value: "rename",
+				},
+			],
+			next: (v) => (v === "rename" ? "rename" : "line"),
+		},
 
-			// ВАЖНО: на схеме с картинки вопрос "кабель или терминал" задаётся для ЛЮБОГО роутера
-			line: {
-				id: "line",
-				title: "Тип линии",
-				question: "У вас просто кабель провайдера или терминал/роутер провайдера?",
-				options: [{
-						label: "Просто кабель",
-						value: "cable"
-					},
-					{
-						label: "Терминал/роутер провайдера",
-						value: "terminal"
-					},
-				],
-				next: (v) => (v === "terminal" ? "terminal_instr" : "cable_instr"),
-			},
+		// ВАЖНО: на схеме с картинки вопрос "кабель или терминал" задаётся для ЛЮБОГО роутера
+		line: {
+			id: "line",
+			title: "Тип линии",
+			question: "У вас просто кабель провайдера или терминал/роутер провайдера?",
+			options: [{
+					label: "Просто кабель",
+					value: "cable"
+				},
+				{
+					label: "Терминал/роутер провайдера",
+					value: "terminal"
+				},
+			],
+			next: (v) => (v === "terminal" ? "terminal_instr" : "cable_instr"),
+		},
 
-			cable_instr: {
-				id: "cable_instr",
-				title: "Подключение (кабель)",
-				question: "Сделайте так (как на схеме):",
-				content: `
+		cable_instr: {
+			id: "cable_instr",
+			title: "Подключение (кабель)",
+			question: "Сделайте так (как на схеме):",
+			content: `
         <ol>
           <li>Присоедините кабель провайдера к гнезду <b>WAN</b>.</li>
           <li>Подсоедините кабель питания и нажмите кнопку включения.</li>
@@ -98,23 +97,23 @@
           <li>Перейдите на 2–3 российских сайта (например: новости, поиск, продажа авто).</li>
         </ol>
       `,
-				options: [{
-						label: "Интернет есть",
-						value: "yes"
-					},
-					{
-						label: "Интернета нет",
-						value: "no"
-					},
-				],
-				next: (v) => (v === "yes" ? "yt_reopen" : "call_provider"),
-			},
+			options: [{
+					label: "Интернет есть",
+					value: "yes"
+				},
+				{
+					label: "Интернета нет",
+					value: "no"
+				},
+			],
+			next: (v) => (v === "yes" ? "yt_reopen" : "call_provider"),
+		},
 
-			terminal_instr: {
-				id: "terminal_instr",
-				title: "Подключение (терминал)",
-				question: "Если у провайдера есть терминал/роутер — подключите так:",
-				content: `
+		terminal_instr: {
+			id: "terminal_instr",
+			title: "Подключение (терминал)",
+			question: "Если у провайдера есть терминал/роутер — подключите так:",
+			content: `
         <div class="muted">Картинка</div>
         <ol>
           <li>Подключите согласно схеме.</li>
@@ -123,103 +122,103 @@
           <li>Перейдите на 2–3 российских сайта (например: новости, поиск, продажа авто).</li>
         </ol>
       `,
-				options: [{
-						label: "Интернет есть",
-						value: "yes"
-					},
-					{
-						label: "Интернета нет",
-						value: "no"
-					},
-				],
-				next: (v) => (v === "yes" ? "yt_reopen" : "call_provider"),
-			},
+			options: [{
+					label: "Интернет есть",
+					value: "yes"
+				},
+				{
+					label: "Интернета нет",
+					value: "no"
+				},
+			],
+			next: (v) => (v === "yes" ? "yt_reopen" : "call_provider"),
+		},
 
-			inet_question: {
-				// Этот шаг оставлен на случай расширения, но логика с картинки уже встроена в cable/terminal.
-				id: "inet_question",
-				title: "Интернет",
-				question: "Есть интернет?",
-				options: [{
-						label: "Да",
-						value: "yes"
-					},
-					{
-						label: "Нет",
-						value: "no"
-					},
-				],
-				next: (v) => (v === "yes" ? "yt_reopen" : "call_provider"),
-			},
+		inet_question: {
+			// Этот шаг оставлен на случай расширения, но логика с картинки уже встроена в cable/terminal.
+			id: "inet_question",
+			title: "Интернет",
+			question: "Есть интернет?",
+			options: [{
+					label: "Да",
+					value: "yes"
+				},
+				{
+					label: "Нет",
+					value: "no"
+				},
+			],
+			next: (v) => (v === "yes" ? "yt_reopen" : "call_provider"),
+		},
 
-			yt_reopen: {
-				id: "yt_reopen",
-				title: "YouTube",
-				question: "Полностью закройте и откройте приложение YouTube, проверьте его работу. Работает?",
-				options: [{
-						label: "Да",
-						value: "yes"
-					},
-					{
-						label: "Нет",
-						value: "no"
-					},
-				],
-				next: (v) => (v === "yes" ? "finish_ok" : "yt_not_working"),
-			},
+		yt_reopen: {
+			id: "yt_reopen",
+			title: "YouTube",
+			question: "Полностью закройте и откройте приложение YouTube, проверьте его работу. Работает?",
+			options: [{
+					label: "Да",
+					value: "yes"
+				},
+				{
+					label: "Нет",
+					value: "no"
+				},
+			],
+			next: (v) => (v === "yes" ? "finish_ok" : "yt_not_working"),
+		},
 
-			yt_not_working: {
-				id: "yt_not_working",
-				title: "YouTube не работает",
-				question: "Если YouTube не работает, сделайте так:",
-				content: `
+		yt_not_working: {
+			id: "yt_not_working",
+			title: "YouTube не работает",
+			question: "Если YouTube не работает, сделайте так:",
+			content: `
         <ol>
           <li>Перезагрузите роутер.</li>
           <li>Проверьте на <b>двух разных устройствах</b>.</li>
           <li>Если ничего не изменится — напишите в поддержку: <b>@Alex_dde</b></li>
         </ol>
       `,
-				options: [{
-					label: "Начать заново",
-					value: "reset"
-				}],
-				next: () => "router",
-			},
+			options: [{
+				label: "Начать заново",
+				value: "reset"
+			}],
+			next: () => "router",
+		},
 
-			call_provider: {
-				id: "call_provider",
-				title: "Нет интернета",
-				question: "Интернета нет — сделайте так:",
-				content: `
+		call_provider: {
+			id: "call_provider",
+			title: "Нет интернета",
+			question: "Интернета нет — сделайте так:",
+			content: `
         <div class="muted">
           Наберите провайдеру и задайте такой вопрос:<br>
           <b>«Я купил новый роутер, какой тип подключения (тип авторизации)?»</b>
         </div>
       `,
-				options: [{
-						label: "PPPoE авторизация",
-						value: "pppoe"
-					},
-					{
-						label: "По MAC адресу",
-						value: "mac"
-					},
-					{
-						label: "Динамический DHCP",
-						value: "dhcp"
-					},
-				],
-				next: (v) =>
-					v === "pppoe" ?
-					"pppoe_help" : v === "mac" ?
-					"mac_help" : "dhcp_help",
-			},
+			options: [{
+					label: "PPPoE авторизация",
+					value: "pppoe"
+				},
+				{
+					label: "По MAC адресу",
+					value: "mac"
+				},
+				{
+					label: "Динамический DHCP",
+					value: "dhcp"
+				},
+			],
+			next: (v) =>
+				v === "pppoe" ?
+				"pppoe_help" : v === "mac" ?
+				"mac_help" : "dhcp_help",
+		},
 
-			pppoe_help: {
-				id: "pppoe_help",
-				title: "PPPoE",
-				question: "Если “PPPoE авторизация”:",
-				content: `
+		pppoe_help: {
+			id: "pppoe_help",
+			title: "PPPoE",
+			question: "Если “PPPoE авторизация”:",
+			content: `
         <div class="muted">
           Вот ссылка на подробную инструкцию с картинками:<br>
           <a href="https://hidix.ru/post/nastroyka-routera-2/">https://hidix.ru/post/nastroyka-routera-2/</a>
@@ -229,256 +228,258 @@
 <blockquote>
 	<p>Если у вас установлен <strong>GPON</strong> терминал от провайдера с оптоволокном, <strong><span style="color: #e03e2d;">никакие данные</span></strong> в роутер вносить не надо! Необходимо комплектным кабелем соединить собой два роутера. Подключите кабель к любому порту LAN роутера провайдера, другую сторону кабеля подключите к купленному роутеру в первый порт около кабеля питания. Все автоматически заработает, инструкция ниже для вас будет более не актуальна.</p>
 </blockquote>
-<ul><li>Подключаем кабель провайдера в первое гнездо роутера, которое около кабеля питания</li><li>В браузере вводим <code>192.168.1.1</code></li><li>Логин: root</li><li>Пароль: без пароля (если вы не ставили)</li><li>Попадаем в админку роутера, здесь сверху в меню выбираем<br><strong>Сеть</strong> &gt; <strong>Интерфейсы</strong></li><li><figure class="post__image"><figure class="is-loaded"><img loading="lazy" src="https://hidix.ru/media/posts/12/444.png" alt="" width="1940" height="548" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/444-xs.webp 300w, https://hidix.ru/media/posts/12/responsive/444-sm.webp 480w, https://hidix.ru/media/posts/12/responsive/444-md.webp 768w"  sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/444-xs.webp 300w ,https://hidix.ru/media/posts/12/responsive/444-sm.webp 480w ,https://hidix.ru/media/posts/12/responsive/444-md.webp 768w"></figure></figure></li><li>Напротив<strong> WAN </strong>&gt;<strong> Изменить<br></strong></li><li><figure class="post__image"><figure class="is-loaded"><img loading="lazy" loading="lazy" src="https://hidix.ru/media/posts/12/Untitled45enr.png" alt="" width="1996" height="1100" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled45enr-xs.webp 300w, https://hidix.ru/media/posts/12/responsive/Untitled45enr-sm.webp 480w, https://hidix.ru/media/posts/12/responsive/Untitled45enr-md.webp 768w"  sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled45enr-xs.webp 300w ,https://hidix.ru/media/posts/12/responsive/Untitled45enr-sm.webp 480w ,https://hidix.ru/media/posts/12/responsive/Untitled45enr-md.webp 768w"></figure></figure></li><li>Протокол: меняем на <strong>PPOE</strong>, ниже появляется кнопка <strong>Изменить протокол</strong>, нажимаем ее, ниже появляются дополнительные поля, в поле "<strong>Имя пользователя PAP/CHAP</strong>" вписываем имя пользователя, что вам выдал <strong>провайдер</strong>, в поле "<strong>Пароль PAP/CHAP</strong>" - пароль, что вам выдал <strong>провайдер</strong>. Нажимаем <strong>Сохранить</strong>, после - <strong>Применить</strong></li><li><figure class="post__image"><figure class="is-loaded"><img loading="lazy" src="https://hidix.ru/media/posts/12/Untitled-464.png" alt="" width="2028" height="1048" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled-464-xs.webp 300w, https://hidix.ru/media/posts/12/responsive/Untitled-464-sm.webp 480w, https://hidix.ru/media/posts/12/responsive/Untitled-464-md.webp 768w"  sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled-464-xs.webp 300w ,https://hidix.ru/media/posts/12/responsive/Untitled-464-sm.webp 480w ,https://hidix.ru/media/posts/12/responsive/Untitled-464-md.webp 768w"></figure></figure></li><li><figure class="post__image"><figure class="is-loaded"><img loading="lazy" loading="lazy" src="https://hidix.ru/media/posts/12/Untitled-46f.png" alt="" width="1890" height="1426" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled-46f-xs.webp 300w, https://hidix.ru/media/posts/12/responsive/Untitled-46f-sm.webp 480w, https://hidix.ru/media/posts/12/responsive/Untitled-46f-md.webp 768w"  sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled-46f-xs.webp 300w ,https://hidix.ru/media/posts/12/responsive/Untitled-46f-sm.webp 480w ,https://hidix.ru/media/posts/12/responsive/Untitled-46f-md.webp 768w"></figure></figure></li><li><strong>Готово</strong></li></ul>
+<ul><li>Подключаем кабель провайдера в первое гнездо роутера, которое около кабеля питания</li><li>В браузере вводим <code>192.168.1.1</code></li><li>Логин: root</li><li>Пароль: без пароля (если вы не ставили)</li><li>Попадаем в админку роутера, здесь сверху в меню выбираем<br><strong>Сеть</strong> &gt; <strong>Интерфейсы</strong></li><li><figure class="post__image">
+    <figure class="is-loaded"><img loading="lazy" loading="eager" src="https://hidix.ru/media/posts/12/444.png" alt="" width="1940" height="548" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/444-xs.webp 300w, https://hidix.ru/media/posts/12/responsive/444-sm.webp 480w, https://hidix.ru/media/posts/12/responsive/444-md.webp 768w"  sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/444-xs.webp 300w ,https://hidix.ru/media/posts/12/responsive/444-sm.webp 480w ,https://hidix.ru/media/posts/12/responsive/444-md.webp 768w"></figure></figure></li>
+    <li>Напротив<strong> WAN </strong>&gt;<strong> Изменить<br></strong></li>
+        <li><figure class="post__image"><figure class="is-loaded"><img loading="eager" src="https://hidix.ru/media/posts/12/Untitled45enr.png" alt="" width="1996" height="1100" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled45enr-xs.webp 300w, https://hidix.ru/media/posts/12/responsive/Untitled45enr-sm.webp 480w, https://hidix.ru/media/posts/12/responsive/Untitled45enr-md.webp 768w"  sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled45enr-xs.webp 300w ,https://hidix.ru/media/posts/12/responsive/Untitled45enr-sm.webp 480w ,https://hidix.ru/media/posts/12/responsive/Untitled45enr-md.webp 768w"></figure></figure></li><li>Протокол: меняем на <strong>PPOE</strong>, ниже появляется кнопка <strong>Изменить протокол</strong>, нажимаем ее, ниже появляются дополнительные поля, в поле "<strong>Имя пользователя PAP/CHAP</strong>" вписываем имя пользователя, что вам выдал <strong>провайдер</strong>, в поле "<strong>Пароль PAP/CHAP</strong>" - пароль, что вам выдал <strong>провайдер</strong>. Нажимаем <strong>Сохранить</strong>, после - <strong>Применить</strong></li><li><figure class="post__image"><figure class="is-loaded"><img loading="lazy" loading="eager" src="https://hidix.ru/media/posts/12/Untitled-464.png" alt="" width="2028" height="1048" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled-464-xs.webp 300w, https://hidix.ru/media/posts/12/responsive/Untitled-464-sm.webp 480w, https://hidix.ru/media/posts/12/responsive/Untitled-464-md.webp 768w"  sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled-464-xs.webp 300w ,https://hidix.ru/media/posts/12/responsive/Untitled-464-sm.webp 480w ,https://hidix.ru/media/posts/12/responsive/Untitled-464-md.webp 768w"></figure></figure></li><li><figure class="post__image"><figure class="is-loaded"><img loading="lazy" loading="eager" src="https://hidix.ru/media/posts/12/Untitled-46f.png" alt="" width="1890" height="1426" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled-46f-xs.webp 300w, https://hidix.ru/media/posts/12/responsive/Untitled-46f-sm.webp 480w, https://hidix.ru/media/posts/12/responsive/Untitled-46f-md.webp 768w"  sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/12/responsive/Untitled-46f-xs.webp 300w ,https://hidix.ru/media/posts/12/responsive/Untitled-46f-sm.webp 480w ,https://hidix.ru/media/posts/12/responsive/Untitled-46f-md.webp 768w"></figure></figure></li><li><strong>Готово</strong></li></ul>
 <p> </p>
             <li><strong>Готово</strong></li>
       </ul>
         <p>Если вы повторно на этой странице и интернет не появился — напишите в поддержку: <b>@Alex_dde</b></p>
       `,
-				options: [{
-						label: "Интернет есть",
-						value: "yes"
-					},
-					{
-						label: "Интернета нет",
-						value: "no"
-					},
-				],
-				next: (v) => (v === "yes" ? "yt_reopen" : "call_provider"),
-				//next: (v) => (v === 'reset' ? 'router' : 'next_block')
-			},
+			options: [{
+					label: "Интернет есть",
+					value: "yes"
+				},
+				{
+					label: "Интернета нет",
+					value: "no"
+				},
+			],
+			next: (v) => (v === "yes" ? "yt_reopen" : "call_provider"),
+			//next: (v) => (v === 'reset' ? 'router' : 'next_block')
+		},
 
-			mac_help: {
-				id: "mac_help",
-				title: "MAC",
-				question: "Если “по MAC адресу”:",
-				content: `
+		mac_help: {
+			id: "mac_help",
+			title: "MAC",
+			question: "Если “по MAC адресу”:",
+			content: `
         <div class="muted">
           Провайдер должен прописать ваш MAC‑адрес — он вам это сообщит сам и, как правило, через 2 минуты интернет появится.<br>
           Рекомендуем <b>перезагрузить роутер</b> после этого.
         </div>
       `,
-				options: [{
-						label: "Интернет есть",
-						value: "yes"
-					},
-					{
-						label: "Интернета нет",
-						value: "no"
-					},
-				],
-				next: (v) => (v === "yes" ? "yt_reopen" : "call_provider"),
-			},
+			options: [{
+					label: "Интернет есть",
+					value: "yes"
+				},
+				{
+					label: "Интернета нет",
+					value: "no"
+				},
+			],
+			next: (v) => (v === "yes" ? "yt_reopen" : "call_provider"),
+		},
 
-			dhcp_help: {
-				id: "dhcp_help",
-				title: "DHCP",
-				question: "Если “Динамический DHCP”:",
-				content: `
+		dhcp_help: {
+			id: "dhcp_help",
+			title: "DHCP",
+			question: "Если “Динамический DHCP”:",
+			content: `
         <div class="muted">
           Проверьте, верно ли вы соединили кабель. 
           Перезагрузите роутер
           У вас всё должно работать.
         </div>
       `,
-				options: [{
-						label: "Интернет появился?",
-						value: "yes"
-					},
-					{
-						label: "Интернета нет",
-						value: "no"
-					},
-				],
-				next: (v) => (v === "yes" ? "yt_reopen" : "call_provider"),
-			},
+			options: [{
+					label: "Интернет появился?",
+					value: "yes"
+				},
+				{
+					label: "Интернета нет",
+					value: "no"
+				},
+			],
+			next: (v) => (v === "yes" ? "yt_reopen" : "call_provider"),
+		},
 
-			// На картинке это красный узел "… Далее" — точка, куда сходятся ветки
-			next_block: {
-				id: "next_block",
-				title: "Далее",
-				question: "Дальше по схеме",
-				content: `
+		// На картинке это красный узел "… Далее" — точка, куда сходятся ветки
+		next_block: {
+			id: "next_block",
+			title: "Далее",
+			question: "Дальше по схеме",
+			content: `
         <div class="muted">
           Вы дошли до точки <b>«Далее»</b> — это переход к следующему блоку схемы (в этой версии мастера он не добавлен).
           Если нужно — напишите в поддержку, я продолжу схему под ваш случай.
         </div>
       `,
-				options: [{
-					label: "Начать заново",
-					value: "reset"
-				}],
-				next: () => "router",
-			},
+			options: [{
+				label: "Начать заново",
+				value: "reset"
+			}],
+			next: () => "router",
+		},
 
-			rename: {
-				id: "rename",
-				title: "Сменить имя/пароль Wi‑Fi",
-				question: "Смена названия сети и пароля",
-				content: `
+		rename: {
+			id: "rename",
+			title: "Сменить имя/пароль Wi‑Fi",
+			question: "Смена названия сети и пароля",
+			content: `
         <div class="muted">
           Откройте инструкцию: <b>hidix.ru</b> → раздел «настройка» → «главное меню».
         </div>
       `,
-				options: [{
-					label: "Начать заново",
-					value: "reset"
-				}],
-				next: () => "router",
-			},
+			options: [{
+				label: "Начать заново",
+				value: "reset"
+			}],
+			next: () => "router",
+		},
 
-			finish_ok: {
-				id: "finish_ok",
-				title: "Готово",
-				question: "🎉 Поздравляю, всё отлично!",
-				content: `<div class="muted">Если позже что-то “отвалится” — чаще всего помогает перезагрузка роутера и телефона + проверка, что VPN/прокси/DNS на телефоне выключены.</div>`,
-				options: [{
-					label: "Начать заново",
-					value: "reset"
-				}],
-				next: () => "router",
-			},
-		};
+		finish_ok: {
+			id: "finish_ok",
+			title: "Готово",
+			question: "🎉 Поздравляю, всё отлично!",
+			content: `<div class="muted">Если позже что-то “отвалится” — чаще всего помогает перезагрузка роутера и телефона + проверка, что VPN/прокси/DNS на телефоне выключены.</div>`,
+			options: [{
+				label: "Начать заново",
+				value: "reset"
+			}],
+			next: () => "router",
+		},
+	};
 
-		// --------- СОСТОЯНИЕ (история для крошек и назад) ----------
-		let history = []; // [{stepId, answerLabel, answerValue}]
-		let currentStepId = "router";
+	// --------- СОСТОЯНИЕ (история для крошек и назад) ----------
+	let history = []; // [{stepId, answerLabel, answerValue}]
+	let currentStepId = "router";
 
-		const $step = document.getElementById("step");
-		const $breadcrumbs = document.getElementById("breadcrumbs");
-		const $btnBack = document.getElementById("btnBack");
-		const $btnReset = document.getElementById("btnReset");
+	const $step = document.getElementById("step");
+	const $breadcrumbs = document.getElementById("breadcrumbs");
+	const $btnBack = document.getElementById("btnBack");
+	const $btnReset = document.getElementById("btnReset");
 
-		function renderBreadcrumbs() {
-			// Главная крошка всегда “Старт”
-			let html = `<span class="crumb"><a href="#" data-jump="router">Старт</a></span>`;
-			for (let i = 0; i < history.length; i++) {
-				const h = history[i];
-				const step = STEPS[h.stepId];
-				const text = step?.title || h.stepId;
-				html += `<span class="sep">›</span>
+	function renderBreadcrumbs() {
+		// Главная крошка всегда “Старт”
+		let html = `<span class="crumb"><a href="#" data-jump="router">Старт</a></span>`;
+		for (let i = 0; i < history.length; i++) {
+			const h = history[i];
+			const step = STEPS[h.stepId];
+			const text = step?.title || h.stepId;
+			html += `<span class="sep">›</span>
                <span class="crumb"><a href="#" data-index="${i}" > ${text}</a></span>`;
-			}
-			// текущий шаг как текст (без ссылки)
-			const curTitle = STEPS[currentStepId]?.title || "Шаг";
-			html += `<span class="sep"> › </span><span class="crumb">${curTitle}</span>`;
-			$breadcrumbs.innerHTML = html;
-
-			// клики по крошкам (прыжок назад)
-			$breadcrumbs.querySelectorAll("a[data-index]").forEach((a) => {
-				a.addEventListener("click", (e) => {
-					e.preventDefault();
-					const idx = Number(a.dataset.index);
-					// Откатываемся: текущий шаг = следующий после этого элемента истории
-					// Т.е. оставляем историю до idx включительно и рендерим шаг, на котором был сделан ответ
-					// Но проще: сделаем "вернуться к шагу" = шаг из истории[idx].stepId
-					currentStepId = history[idx].stepId;
-					history = history.slice(0, idx); // обрезаем ДО шага, чтобы снова отвечать на него
-					render();
-				});
-			});
-
-			$breadcrumbs.querySelectorAll('a[data-jump="router"]').forEach((a) => {
-				a.addEventListener("click", (e) => {
-					e.preventDefault();
-					reset();
-				});
-			});
 		}
+		// текущий шаг как текст (без ссылки)
+		const curTitle = STEPS[currentStepId]?.title || "Шаг";
+		html += `<span class="sep"> › </span><span class="crumb">${curTitle}</span>`;
+		$breadcrumbs.innerHTML = html;
 
-		function render() {
-			const step = STEPS[currentStepId];
-			renderBreadcrumbs();
+		// клики по крошкам (прыжок назад)
+		$breadcrumbs.querySelectorAll("a[data-index]").forEach((a) => {
+			a.addEventListener("click", (e) => {
+				e.preventDefault();
+				const idx = Number(a.dataset.index);
+				// Откатываемся: текущий шаг = следующий после этого элемента истории
+				// Т.е. оставляем историю до idx включительно и рендерим шаг, на котором был сделан ответ
+				// Но проще: сделаем "вернуться к шагу" = шаг из истории[idx].stepId
+				currentStepId = history[idx].stepId;
+				history = history.slice(0, idx); // обрезаем ДО шага, чтобы снова отвечать на него
+				render();
+			});
+		});
 
-			// кнопка "Назад"
-			$btnBack.disabled = history.length === 0;
-			$btnBack.style.opacity = $btnBack.disabled ? 0.5 : 1;
+		$breadcrumbs.querySelectorAll('a[data-jump="router"]').forEach((a) => {
+			a.addEventListener("click", (e) => {
+				e.preventDefault();
+				reset();
+			});
+		});
+	}
 
-			let html = `<div class="q">${step.question}</div>`;
-			if (step.content) html += step.content;
+	function render() {
+		const step = STEPS[currentStepId];
+		renderBreadcrumbs();
 
-			html += `<div class="opts">`;
-			for (const opt of step.options) {
-				html += `
+		// кнопка "Назад"
+		$btnBack.disabled = history.length === 0;
+		$btnBack.style.opacity = $btnBack.disabled ? 0.5 : 1;
+
+		let html = `<div class="q">${step.question}</div>`;
+		if (step.content) html += step.content;
+
+		html += `<div class="opts">`;
+		for (const opt of step.options) {
+			html += `
         <div class="opt but" role="button" tabindex="0"
              data-value="${opt.value}"
              data-label="${opt.label.replaceAll('"', "&quot;")}">
           ${opt.label}
         </div>`;
-			}
-			html += `</div>`;
-
-			$step.innerHTML = html;
-			// Пнуть lazy-картинки, вставленные динамически
-			$step.querySelectorAll('img[loading="lazy"]').forEach(img => {
-				// заставляем браузер пересчитать и начать загрузку
-				img.decoding = "async";
-				img.fetchPriority = "auto";
-				img.src = img.src;
-			});
-
-			// обработчики выбора
-			$step.querySelectorAll(".opt").forEach((el) => {
-				el.addEventListener("click", () =>
-					selectOption(el.dataset.value, el.dataset.label),
-				);
-				el.addEventListener("keydown", (e) => {
-					if (e.key === "Enter" || e.key === " ")
-						selectOption(el.dataset.value, el.dataset.label);
-				});
-			});
 		}
+		html += `</div>`;
 
-		function selectOption(value, label) {
-			const step = STEPS[currentStepId];
-			// записываем ответ в историю (для крошек/назад)
-			history.push({
-				stepId: currentStepId,
-				answerLabel: label,
-				answerValue: value,
+		$step.innerHTML = html;
+		// Пнуть lazy-картинки, вставленные динамически
+		$step.querySelectorAll('img[loading="lazy"]').forEach(img => {
+			// заставляем браузер пересчитать и начать загрузку
+			img.decoding = "async";
+			img.fetchPriority = "auto";
+			img.src = img.src;
+		});
+
+		// обработчики выбора
+		$step.querySelectorAll(".opt").forEach((el) => {
+			el.addEventListener("click", () =>
+				selectOption(el.dataset.value, el.dataset.label),
+			);
+			el.addEventListener("keydown", (e) => {
+				if (e.key === "Enter" || e.key === " ")
+					selectOption(el.dataset.value, el.dataset.label);
 			});
+		});
+	}
 
-			// вычисляем следующий шаг
-			const nextId = step.next(value);
+	function selectOption(value, label) {
+		const step = STEPS[currentStepId];
+		// записываем ответ в историю (для крошек/назад)
+		history.push({
+			stepId: currentStepId,
+			answerLabel: label,
+			answerValue: value,
+		});
 
-			// если “reset” (в конце) — чистим
-			if (value === "reset") return reset();
+		// вычисляем следующий шаг
+		const nextId = step.next(value);
 
-			currentStepId = nextId;
-			render();
-			window.scrollTo({
-				top: 0,
-				behavior: "smooth"
-			});
-		}
+		// если “reset” (в конце) — чистим
+		if (value === "reset") return reset();
 
-		function back() {
-			if (history.length === 0) return;
-			const last = history.pop(); // убрали последний ответ
-			currentStepId = last.stepId; // вернулись на вопрос, где этот ответ выбирали
-			render();
-			window.scrollTo({
-				top: 0,
-				behavior: "smooth"
-			});
-		}
-
-		function reset() {
-			history = [];
-			currentStepId = "router";
-			render();
-			window.scrollTo({
-				top: 0,
-				behavior: "smooth"
-			});
-		}
-
-		$btnBack.addEventListener("click", back);
-		$btnReset.addEventListener("click", reset);
-
+		currentStepId = nextId;
 		render();
-	</script>
-</p>
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth"
+		});
+	}
+
+	function back() {
+		if (history.length === 0) return;
+		const last = history.pop(); // убрали последний ответ
+		currentStepId = last.stepId; // вернулись на вопрос, где этот ответ выбирали
+		render();
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth"
+		});
+	}
+
+	function reset() {
+		history = [];
+		currentStepId = "router";
+		render();
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth"
+		});
+	}
+
+	$btnBack.addEventListener("click", back);
+	$btnReset.addEventListener("click", reset);
+
+	render();
+</script>
             ]]>
         </content>
     </entry>
