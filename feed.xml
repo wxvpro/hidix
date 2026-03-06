@@ -3,7 +3,7 @@
     <title>HIDIX</title>
     <link href="https://hidix.ru/feed.xml" rel="self" />
     <link href="https://hidix.ru" />
-    <updated>2026-02-02T21:51:25+03:00</updated>
+    <updated>2026-03-06T16:20:11+03:00</updated>
     <author>
         <name>alex dde</name>
     </author>
@@ -86,10 +86,10 @@ reboot</code></pre>
 <tbody>
 <tr style="height: 288.797px;">
 <td class="align-center" style="width: 33.4298%; height: 288.797px;">
-<figure class="post__image"><img loading="lazy"  style="color: var(--text-primary-color); font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);" src="https://hidix.ru/media/posts/41/ax3000.png" alt="" width="234" height="250" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/41/responsive/ax3000-xs.webp 300w ,https://hidix.ru/media/posts/41/responsive/ax3000-sm.webp 480w ,https://hidix.ru/media/posts/41/responsive/ax3000-md.webp 768w"></figure>
+<figure class="post__image idark"><img loading="lazy"  style="color: var(--text-primary-color); font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);" src="https://hidix.ru/media/posts/41/ax3000.png" alt="" width="234" height="250" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/41/responsive/ax3000-xs.webp 300w ,https://hidix.ru/media/posts/41/responsive/ax3000-sm.webp 480w ,https://hidix.ru/media/posts/41/responsive/ax3000-md.webp 768w"></figure>
 </td>
-<td class="align-center" style="width: 33.4298%; height: 288.797px;"><figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/41/tr3000.png" alt="" width="239" height="250" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/41/responsive/tr3000-xs.webp 300w ,https://hidix.ru/media/posts/41/responsive/tr3000-sm.webp 480w ,https://hidix.ru/media/posts/41/responsive/tr3000-md.webp 768w"></figure></td>
-<td class="align-center" style="width: 33.1404%; height: 288.797px;"><figure class="post__image"><img loading="lazy"  src="https://hidix.ru/media/posts/41/nx31.png" alt="" width="296" height="250" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/41/responsive/nx31-xs.webp 300w ,https://hidix.ru/media/posts/41/responsive/nx31-sm.webp 480w ,https://hidix.ru/media/posts/41/responsive/nx31-md.webp 768w"></figure></td>
+<td class="align-center" style="width: 33.4298%; height: 288.797px;"><figure class="post__image idark"><img loading="lazy"  src="https://hidix.ru/media/posts/41/tr3000.png" alt="" width="239" height="250" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/41/responsive/tr3000-xs.webp 300w ,https://hidix.ru/media/posts/41/responsive/tr3000-sm.webp 480w ,https://hidix.ru/media/posts/41/responsive/tr3000-md.webp 768w"></figure></td>
+<td class="align-center" style="width: 33.1404%; height: 288.797px;"><figure class="post__image idark"><img loading="lazy"  src="https://hidix.ru/media/posts/41/nx31.png" alt="" width="296" height="250" sizes="(max-width: 768px) 100vw, 768px" srcset="https://hidix.ru/media/posts/41/responsive/nx31-xs.webp 300w ,https://hidix.ru/media/posts/41/responsive/nx31-sm.webp 480w ,https://hidix.ru/media/posts/41/responsive/nx31-md.webp 768w"></figure></td>
 </tr>
 <tr style="height: 52.8828px;">
 <td class="align-center" style="width: 33.4298%; height: 52.8828px;"><strong>Xiaomi AX3000T</strong></td>
@@ -205,13 +205,13 @@ reboot</code></pre>
 </div>
 <p>
 <script>
-	// Делегирование событий: работает и для FAQ в зашифрованном блоке после расшифровки
-	document.addEventListener('click', function(e) {
-		const item = e.target.closest('.faq-item');
-		if (!item) return;
-		item.classList.toggle('active');
-	});
-</script>
+		// Делегирование событий: работает и для FAQ в зашифрованном блоке после расшифровки
+		document.addEventListener('click', function(e) {
+			const item = e.target.closest('.faq-item');
+			if (!item) return;
+			item.classList.toggle('active');
+		});
+	</script>
 </p>
             ]]>
         </content>
