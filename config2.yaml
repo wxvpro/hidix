@@ -1,0 +1,303 @@
+mode: rule
+ipv6: false
+log-level: error
+allow-lan: false
+tproxy-port: 7894
+unified-delay: true
+tcp-concurrent: true
+external-controller: 0.0.0.0:9090
+secret: "__SECRET__"
+external-ui: ./ui
+external-ui-url: "https://github.com/Zephyruso/zashboard/releases/latest/download/dist-cdn-fonts.zip"
+global-client-fingerprint: chrome
+global-ua: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+geo-auto-update: true
+geo-update-interval: 24
+
+hosts:
+  ntc.party: 130.255.77.28
+
+dns:
+  enable: true
+  listen: 0.0.0.0:7874
+  ipv6: false
+  respect-rules: true
+
+  default-nameserver:
+    - 1.1.1.1
+    - 8.8.8.8
+
+  nameserver:
+    - 1.1.1.1
+    - 8.8.8.8
+    - https://1.1.1.1/dns-query
+    - https://dns.google/dns-query
+
+  proxy-server-nameserver:
+    - https://1.1.1.1/dns-query
+    - https://dns.google/dns-query
+
+  nameserver-policy:
+    "+.lan": system
+    "msftconnecttest.com": system
+    "msftncsi.com": system
+    "+.manus.im": https://dns.quad9.net/dns-query
+    "+.manus.ai": https://dns.quad9.net/dns-query
+    "+.anydesk.com": system
+    "+.youtube.com,+.googlevideo.com,+.ytimg.com,+.ggpht.com": https://1.1.1.1/dns-query
+    "+.telegram.org,+.t.me,+.telegram.me,+.cdn-telegram.org": https://1.1.1.1/dns-query
+    "+.openai.com,+.chatgpt.com,+.oaistatic.com,+.oaiusercontent.com": https://1.1.1.1/dns-query
+    "+.anthropic.com,+.claude.ai,+.claude.com": https://1.1.1.1/dns-query
+    "+.twitter.com,+.x.com,+.twimg.com": https://1.1.1.1/dns-query
+    "+.discord.com,+.discordapp.com,+.discord.gg": https://1.1.1.1/dns-query
+    "+.facebook.com,+.fbcdn.net,+.instagram.com,+.whatsapp.net": https://1.1.1.1/dns-query
+    "+.tiktok.com,+.tiktokcdn.com,+.tiktokv.com,+.musical.ly": https://1.1.1.1/dns-query
+
+  cache:
+    enabled: true
+    ttl: 60
+
+keep-alive-idle: 15
+keep-alive-interval: 15
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+routing-mark: 2
+
+sniffer:
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  sniff:
+    HTTP:
+      ports:
+        - 80
+        - 8080-8880
+      override-destination: true
+    TLS:
+      ports:
+        - 443
+        - 8443
+      override-destination: true
+  skip-domain:
+    - "Mijia Cloud"
+    - +.lan
+    - +.msftconnecttest.com
+    - +.msftncsi.com
+    - +.3gppnetwork.org
+    - +.openwrt.org
+    - +.vsean.net
+    - cudy.net
+    - +.manus.im
+    - +.manus.ai
+    - +.telegram.org
+    - +.t.me
+    - +.yandex.ru
+    - +.yandex.net
+    - +.yandex.com
+    - +.synology.com
+    - +.quickconnect.to
+    - +.syno.com
+    - +.dscloud.me
+
+proxy-providers:
+  local:
+    type: file
+    path: ./proxy_providers/local.yaml
+    format: yaml
+
+proxy-groups:
+  - name: PROXY
+    type: fallback
+    url: http://gstatic.com/generate_204
+    expected-status: 204
+    interval: 300
+    lazy: true
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/WiFi.png
+    use:
+      - local
+
+rule-providers:
+  russia-inside:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/russia-inside.yaml"
+    interval: 86400
+    path: ./ruleset/russia-inside.yaml
+
+  block:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/block.yaml"
+    interval: 86400
+    path: ./ruleset/block.yaml
+
+  geoblock:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/geoblock.yaml"
+    interval: 86400
+    path: ./ruleset/geoblock.yaml
+
+  discord:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/discord.yaml"
+    interval: 86400
+    path: ./ruleset/discord.yaml
+
+  meta:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/meta.yaml"
+    interval: 86400
+    path: ./ruleset/meta.yaml
+
+  openai:
+    behavior: classical
+    type: http
+    format: yaml
+    url: "https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/openai.yaml"
+    interval: 86400
+    path: ./ruleset/openai.yaml
+
+  porn:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/porn.yaml"
+    interval: 86400
+    path: ./ruleset/porn.yaml
+
+  roblox:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/roblox.yaml"
+    interval: 86400
+    path: ./ruleset/roblox.yaml
+
+  spotify:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/spotify.yaml"
+    interval: 86400
+    path: ./ruleset/spotify.yaml
+
+  telegram:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/telegram.yaml"
+    interval: 86400
+    path: ./ruleset/telegram.yaml
+
+  tik-tok:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/tiktok.yaml"
+    interval: 86400
+    path: ./ruleset/tik-tok.yaml
+
+  tv:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/tv.yaml"
+    interval: 86400
+    path: ./ruleset/tv.yaml
+
+  twitter:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/twitter.yaml"
+    interval: 86400
+    path: ./ruleset/twitter.yaml
+
+  vimeo:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/vimeo.yaml"
+    interval: 86400
+    path: ./ruleset/vimeo.yaml
+
+  whatsapp:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/whatsapp.yaml"
+    interval: 86400
+    path: ./ruleset/whatsapp.yaml
+
+  youtube:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/youtube.yaml"
+    interval: 86400
+    path: ./ruleset/youtube.yaml
+
+  custom-proxy:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/wxvpro/lists/main/custom-proxy.yaml"
+    interval: 86400
+    path: ./ruleset/custom-proxy.yaml
+
+  reserve-proxy:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/wxvpro/lists/main/reserve-proxy.yaml"
+    interval: 86400
+    path: ./ruleset/reserve-proxy.yaml
+
+  manus:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/manus.yaml"
+    interval: 86400
+    path: ./ruleset/manus.yaml
+
+  telegram-direct:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/telegram-direct.yaml"
+    interval: 86400
+    path: ./ruleset/telegram-direct.yaml
+
+  gemini:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/wxvpro/lists/refs/heads/main/gemini.yaml"
+    interval: 86400
+    path: ./ruleset/gemini.yaml
+
+rules:
+#--------------------------------------------
+  - RULE-SET,telegram,PROXY,no-resolve
+  - IP-CIDR,91.108.0.0/16,PROXY,no-resolve
+  - IP-CIDR,149.154.160.0/20,PROXY,no-resolve
+  - DOMAIN-SUFFIX,send.tg,PROXY 
+#--------------------------------------------
+  - DOMAIN-SUFFIX,amazonaws.com,PROXY 
+  - DOMAIN-SUFFIX,mobatek.net,PROXY   
+  - DOMAIN-SUFFIX,51.38.99.138,PROXY 
+#--------------------------------------------
+  - RULE-SET,openai,PROXY
+  - RULE-SET,manus,PROXY
+  - RULE-SET,gemini,PROXY
+  - RULE-SET,twitter,PROXY
+  - RULE-SET,tv,PROXY
+  - RULE-SET,tik-tok,PROXY
+  - RULE-SET,discord,PROXY
+  - RULE-SET,roblox,PROXY
+  - RULE-SET,meta,PROXY
+  - RULE-SET,roblox,REJECT
+#--------------------------------------------
+  - RULE-SET,custom-proxy,PROXY
+  - RULE-SET,reserve-proxy,PROXY
+#--------------------------------------------
+#  - RULE-SET,porn,PROXY
+#  - RULE-SET,russia-inside,PROXY
+#  - RULE-SET,spotify,PROXY
+#  - RULE-SET,vimeo,PROXY
+#  - RULE-SET,geoblock,PROXY
+#  - RULE-SET,block,PROXY
+#--------------------------------------------
+  - MATCH,DIRECT
