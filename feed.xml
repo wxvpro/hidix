@@ -19,7 +19,7 @@
             <category term="Netis NX31"/>
 
         <updated>2026-01-26T18:18:58+03:00</updated>
-            <summary>
+            <summary type="html">
                 <![CDATA[
                     Инструкция с нуля и до результата, на примере OpenWrt, пишу в основном для себя {{#lock pw="172533"}} Нам понадобятся: Подключаем роутер, переходим по 192.168.1.1 &gt; проходим&hellip;
                 ]]>
@@ -41,7 +41,7 @@
 <h2>Подготовка</h2>
 <p>Нам понадобятся:</p>
 <ul>
-<li>программа <a href="https://winscp.net/eng/download.php" target="_blank"   class="extlink extlink-icon-4"  rel="noopener noreferrer">WinCP</a></li>
+<li>программа <a href="https://winscp.net/eng/download.php" target="_blank" class="extlink extlink-icon-4" rel="noopener noreferrer">WinCP</a></li>
 <li>программа <strong>Tftpd64</strong></li>
 <li>ноутбук на Windows</li>
 </ul>
@@ -74,7 +74,7 @@ reboot</code></pre>
         <id>https://hidix.ru/post/router-s-vpn-dlya-doma-i-smart-tv-bez-tancev-s-bubnom/</id>
 
         <updated>2025-12-16T18:00:11+03:00</updated>
-            <summary>
+            <summary type="html">
                 <![CDATA[
                     В продаже готовые и настроенные Всемогущие роутеры на OpenWrt Xiaomi AX3000T Cudy TR3000 Netis NX31 Назначение: Для дома и дачи Для дома и путешествий Для&hellip;
                 ]]>
@@ -157,7 +157,7 @@ reboot</code></pre>
 </tbody>
 </table>
 <p>🎁 6 месяцев сервиса в подарок к любому роутеру</p>
-<p><a href="https://t.me/alex_dde" target="_blank"   class="btn btn--green extlink extlink-icon-4"  rel="noopener noreferrer">Приобрести / Задать вопрос</a></p>
+<p><a href="https://t.me/alex_dde" target="_blank" class="btn btn--green extlink extlink-icon-4" rel="noopener noreferrer">Приобрести / Задать вопрос</a></p>
 <h3>Преимущества покупки роутера</h3>
 <table style="border-collapse: collapse; width: 100%; height: 296.812px; margin-bottom: 0px;" border="1">
 <tbody>
@@ -201,7 +201,7 @@ reboot</code></pre>
 <div class="faq-question"><span class="faq-arrow">▼</span> Работает ли с белыми списками?</div>
 <div class="faq-answer">Нет. Ввиду того, что это все индивидуально под каждый регион, не представляется возможным настроить</div>
 </div>
-<p><a href="https://t.me/alex_dde" target="_blank"   class="btn btn--green extlink extlink-icon-4"  rel="noopener noreferrer">Приобрести / Задать вопрос</a></p>
+<p><a href="https://t.me/alex_dde" target="_blank" class="btn btn--green extlink extlink-icon-4" rel="noopener noreferrer">Приобрести / Задать вопрос</a></p>
 </div>
 <p>
 <script>
@@ -226,7 +226,7 @@ reboot</code></pre>
             <category term="Cudy TR3000"/>
 
         <updated>2025-11-30T16:39:10+03:00</updated>
-            <summary>
+            <summary type="html">
                 <![CDATA[
                     Инструкция с нуля и до результата, на примере OpenWrt 24.10.4, пишу в основном для себя {{#lock pw="172533"}} Нам понадобятся: Подключаем роутер, переходим по 192.168.10.1 &gt;&hellip;
                 ]]>
@@ -251,8 +251,8 @@ reboot</code></pre>
 <h2 id="mcetoc_1jbe0ledm3l">Подготовка</h2>
 <p>Нам понадобятся:</p>
 <ul>
-<li>программа <a href="https://winscp.net/eng/download.php" target="_blank"   class="extlink extlink-icon-4"  rel="noopener noreferrer">WinCP</a></li>
-<li>программа <a href="https://putty.org.ru/download" target="_blank"   class="extlink extlink-icon-4"  rel="noopener noreferrer">Putty</a></li>
+<li>программа <a href="https://winscp.net/eng/download.php" target="_blank" class="extlink extlink-icon-4" rel="noopener noreferrer">WinCP</a></li>
+<li>программа <a href="https://putty.org.ru/download" target="_blank" class="extlink extlink-icon-4" rel="noopener noreferrer">Putty</a></li>
 <li>программа tfpd (есть в архиве)</li>
 <li>ноутбук на Windows</li>
 <li>скачиваем архив, папки пронумерованы по шагам</li>
@@ -292,7 +292,7 @@ reboot</code></pre>
 <h2 id="mcetoc_1jbe0ledm3m">Прошивка с поддержкой модемов</h2>
 <p>Система &gt; Восстановление и обновление &gt; Загрузка образа &gt; Прошиваем файл с папки "<strong>5. Прошивка с поддержкой модемов</strong>"</p>
 <h2 id="mcetoc_1jbe0r15q4o">Настройка конфигурации под Youtube</h2>
-<p>Генерируем конфиг WARP для Clash этом <a href="https://generator-warp-config.vercel.app" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">https://generator-warp-config.vercel.app</a></p>
+<p>Генерируем конфиг WARP для Clash этом <a href="https://generator-warp-config.vercel.app" target="_blank" rel="noopener noreferrer">https://generator-warp-config.vercel.app</a></p>
 <p>Открываем Службы &gt; Clash, вставляем конфигурацию</p>
 <pre class="language-bash"><code>mode: rule
 ipv6: false
@@ -621,7 +621,7 @@ rules:
             <category term="Cudy WR3000S v1"/>
 
         <updated>2025-11-15T00:44:39+03:00</updated>
-            <summary>
+            <summary type="html">
                 <![CDATA[
                     Инструкция с нуля и до результата, на примере OpenWrt 24.10.4, пишу в основном для себя {{#lock pw="172533"}} Нам понадобятся: Подключаем роутер, переходим по 192.168.10.1 &gt;&hellip;
                 ]]>
@@ -645,8 +645,8 @@ rules:
 <h2>Подготовка</h2>
 <p>Нам понадобятся:</p>
 <ul>
-<li>программа <a href="https://winscp.net/eng/download.php" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">WinCP</a></li>
-<li>программа <a href="https://putty.org.ru/download" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">Putty</a></li>
+<li>программа <a href="https://winscp.net/eng/download.php" target="_blank" rel="noopener noreferrer">WinCP</a></li>
+<li>программа <a href="https://putty.org.ru/download" target="_blank" rel="noopener noreferrer">Putty</a></li>
 <li>ноутбук на Windows</li>
 <li>скачиваем <a href="https://hidix.ru/WR3000S_v1.zip">архив</a>, папки пронумерованы по шагам</li>
 </ul>
@@ -698,7 +698,7 @@ mtd -e FIP write /tmp/FIP_web.bin FIP</code></pre>
             <category term="Cudy TR3000"/>
 
         <updated>2025-11-06T04:07:03+03:00</updated>
-            <summary>
+            <summary type="html">
                 <![CDATA[
                     Инструкция для настройки работы YoutubeUnblock в случае, если трафик идет через USB-модем {{#lock pw="172533"}} # посмотри имена своих интерфейсов (qmi-*, wwan0 и т.п.) ip -br&hellip;
                 ]]>
@@ -738,7 +738,7 @@ logread -e youtubeUnblock</code></pre>
             <category term="Умный дом"/>
 
         <updated>2025-11-05T18:33:05+03:00</updated>
-            <summary>
+            <summary type="html">
                 <![CDATA[
                     Поддерживаемые устройства Aqara E1 (SRTS-A01) - ID: lumi.airrtc.agl001 SONOFF TRVZB - ID: TRVZB Danfoss 014G2463 - ID: eTRV0101 Логический сценарий Настраивает термостат и привязывает к&hellip;
                 ]]>
@@ -770,7 +770,7 @@ logread -e youtubeUnblock</code></pre>
 <li>Только<strong> после выбора датчика </strong>переключаем тумблер в положение "<strong>Активно</strong>"</li>
 <li>При успешном запуске появится сообщение "Подключен внешний датчик"</li>
 </ol>
-<p>Статья взята с <a href="https://github.com/KirillAshikhmin/Sprut.Hub_Tools/tree/main/ExternalTempSensor" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">ГитХаб</a></p>
+<p>Статья взята с <a href="https://github.com/KirillAshikhmin/Sprut.Hub_Tools/tree/main/ExternalTempSensor" target="_blank" rel="noopener noreferrer">ГитХаб</a></p>
             ]]>
         </content>
     </entry>
@@ -784,7 +784,7 @@ logread -e youtubeUnblock</code></pre>
             <category term="Телевизоры Xiaomi"/>
 
         <updated>2025-10-22T22:29:47+03:00</updated>
-            <summary>
+            <summary type="html">
                 <![CDATA[
                     Полноценный ТВ на русском языке с приложениями за 5 минут Локаль RU🇷🇺 Максимальная русификация интерфейса Работает из коробки Установка в один клик Без терминала и&hellip;
                 ]]>
@@ -831,7 +831,7 @@ logread -e youtubeUnblock</code></pre>
 <p>Прокачает ваш ТВ за 5 минут</p>
 </div>
 </div>
-<p data-start="203" data-end="467"><a href="https://t.me/alex_dde" target="_blank"   class="btn btn--green extlink extlink-icon-4"  rel="noopener noreferrer">Приобрести / Задать вопрос</a></p>
+<p data-start="203" data-end="467"><a href="https://t.me/alex_dde" target="_blank" rel="noopener noreferrer" class="btn btn--green">Приобрести / Задать вопрос</a></p>
 <h3>Возможности программы</h3>
 <ul>
 <li>Русификация всех моделей начиная от 2022 года</li>
@@ -928,7 +928,7 @@ logread -e youtubeUnblock</code></pre>
 </div>
 <div class="faq-item">
 <div class="faq-question"><span class="faq-arrow">▼</span> Будет ли полностью все на русском, останется ли Китайский?</div>
-<div class="faq-answer">Весь китайский будет вычищен, но, к сожалению, <strong>основные настройки (Settings)</strong> останутся на английском языке, а вот <strong>все остальное</strong> будет на русском, включая настройки приложений, внешнего вида, голосовой поиск и сами приложения. Пример можно посмотреть по <a href="https://rutube.ru/video/bffc2a7e3eb076503260f8e97ce620bf/" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">этой ссылке</a>.</div>
+<div class="faq-answer">Весь китайский будет вычищен, но, к сожалению, <strong>основные настройки (Settings)</strong> останутся на английском языке, а вот <strong>все остальное</strong> будет на русском, включая настройки приложений, внешнего вида, голосовой поиск и сами приложения. Пример можно посмотреть по <a href="https://rutube.ru/video/bffc2a7e3eb076503260f8e97ce620bf/" target="_blank" rel="noopener noreferrer">этой ссылке</a>.</div>
 </div>
 <div class="faq-item">
 <div class="faq-question"><span class="faq-arrow">▼</span> Для каких моделей подходит?</div>
@@ -974,7 +974,7 @@ logread -e youtubeUnblock</code></pre>
 </div>
 </div>
 <p>Программа платная, оплачивая программу вы поддерживаете развитие проекта и помогаете многим людям.</p>
-<p data-start="203" data-end="467"><a href="https://t.me/alex_dde" target="_blank"   class="btn btn--green extlink extlink-icon-4"  rel="noopener noreferrer">Приобрести программу / Задать вопрос</a></p>
+<p data-start="203" data-end="467"><a href="https://t.me/alex_dde" target="_blank" rel="noopener noreferrer" class="btn btn--green">Приобрести программу / Задать вопрос</a></p>
 </div>
 </div>
 {{/lock}}</div>
@@ -1002,7 +1002,7 @@ logread -e youtubeUnblock</code></pre>
             <category term="VPN сервис"/>
 
         <updated>2025-10-19T11:21:42+03:00</updated>
-            <summary>
+            <summary type="html">
                 <![CDATA[
                     Обзор функционала веб панели и телеграм бота Функции веб панели, широчайший функционал: Модерация пользователей Реферальная программа Возможность добавить несколько серверов (Нод) и тарифов к ним&hellip;
                 ]]>
@@ -1034,9 +1034,9 @@ logread -e youtubeUnblock</code></pre>
 <li data-anchor="ZevT">Выдача ключей через бота телеграм</li>
 <li data-anchor="ZevT">Новости / Контакты (произвольная ссылка на ваш канал / профиль)</li>
 </ul>
-<p data-anchor="ZevT"><strong>Пример бота</strong>: <a href="https://hidix_bot" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">@hidix_bot</a> </p>
+<p data-anchor="ZevT"><strong>Пример бота</strong>: <a href="https://hidix_bot" target="_blank" rel="noopener noreferrer">@hidix_bot</a> </p>
 <p data-anchor="ZevT"><strong>Стоимость файлов бота и админ панели</strong>: 35.000р (установка не входит в стоимость), торг аргументированный возможен</p>
-<p data-anchor="ZevT">По вопросам приобретения <strong>пишите в телеграм</strong> <a href="https://t.me/alex_dde" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">@ALEX_DDE</a></p>
+<p data-anchor="ZevT">По вопросам приобретения <strong>пишите в телеграм</strong> <a href="https://t.me/alex_dde" target="_blank" rel="noopener noreferrer">@ALEX_DDE</a></p>
 <hr>
 <h3 data-anchor="ZevT">Настройка веб-панели и телеграм бота</h3>
 <p class="p1">{{#lock pw="172533"}}<br>Подготовка:</p>
@@ -1058,7 +1058,7 @@ sudo apt update
 sudo apt install -y python3.12
 
 apt install python3.12-venv</code></pre>
-<p data-anchor="WRvN">Открываем <a href="https://sqlitebrowser.org/dl/"  target="_blank"  class="extlink extlink-icon-4" title="Скачать DB Browser" rel="nofollow noopener noreferrer"><strong>DB Browser (SQLite)</strong></a> и открываем базу данных которая находится на сервере в <strong>bot/instance</strong>, во вкладке <strong>Browse Data</strong> в <strong>Table</strong> выбираем <strong>bot_settings</strong>, вносим телеграм <strong>токен бота</strong> и <strong>admin_id</strong> и сохраняем (<strong>apply</strong>, <strong>write changes</strong>)</p>
+<p data-anchor="WRvN">Открываем <a href="https://sqlitebrowser.org/dl/" title="Скачать DB Browser" target="_blank" rel="nofollow noopener noreferrer"><strong>DB Browser (SQLite)</strong></a> и открываем базу данных которая находится на сервере в <strong>bot/instance</strong>, во вкладке <strong>Browse Data</strong> в <strong>Table</strong> выбираем <strong>bot_settings</strong>, вносим телеграм <strong>токен бота</strong> и <strong>admin_id</strong> и сохраняем (<strong>apply</strong>, <strong>write changes</strong>)</p>
 <figure class="w-figure m_column"  data-anchor="3z2B">
 <div class="w-figure_wrap"><figure class="w-figure_image"><img loading="lazy"  src="https://img2.teletype.in/files/13/5d/135d413c-c548-47cf-8d02-8730f7efce88.png" width="" data-is-external-image="true"></figure>
 <div class="w-figure_loading"> </div>
@@ -1256,7 +1256,7 @@ sudo systemctl status 3xui-module.service</code></pre>
 <h3>Дополнительно</h3>
 <p>В панели 3x-ui устанавливаем BBR, Fail2Ban, в файле  etc/fail2ban/jail.d/3x-ipl.conf выставляем </p>
 <p>findtime<span class="s1">=</span><strong>10</strong><span class="s1"><strong>m</strong><br></span>bantime<span class="s1">=</span><strong>1<span class="s1">h</span></strong></p>
-<p data-anchor="FJHu"><span class="link">Установка панели 3x ui и защита есть в ролике по <a href="https://www.youtube.com/watch?v=zt4oxHeUbdk&amp;t=2946s" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">ссылке</a></span></p>
+<p data-anchor="FJHu"><span class="link">Установка панели 3x ui и защита есть в ролике по <a href="https://www.youtube.com/watch?v=zt4oxHeUbdk&amp;t=2946s" target="_blank" rel="noopener noreferrer">ссылке</a></span></p>
 <p data-anchor="FJHu">{{/lock}}</p>
 <p data-anchor="FJHu"> </p>
 </section>
@@ -1273,17 +1273,17 @@ sudo systemctl status 3xui-module.service</code></pre>
             <category term="Майнинг"/>
 
         <updated>2025-07-22T14:40:32+03:00</updated>
-            <summary>
+            <summary type="html">
                 <![CDATA[
                     В этой статье я опишу, как подключиться к одному из лучших пулов и безопасно разогнать асик Antminer L7 9050 до 11.2Гх с максимальным КПД и&hellip;
                 ]]>
             </summary>
         <content type="html">
             <![CDATA[
-                <p data-anchor="a260">В этой статье я опишу, как подключиться к одному из <strong>лучших</strong> пулов и безопасно разогнать асик Antminer L7 9050 до 11.2Гх с максимальным КПД и адаптивной прошивкой от <span class="link"><a href="https://pitbit.systems/reg/d99bfe9d458c6653c0b583f5e6814cf8" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">PitBit</a></span></p>
+                <p data-anchor="a260">В этой статье я опишу, как подключиться к одному из <strong>лучших</strong> пулов и безопасно разогнать асик Antminer L7 9050 до 11.2Гх с максимальным КПД и адаптивной прошивкой от <span class="link"><a href="https://pitbit.systems/reg/d99bfe9d458c6653c0b583f5e6814cf8" target="_blank" rel="noopener noreferrer">PitBit</a></span></p>
 <p data-anchor="3Hec">Инструкция по разгону подойдет для всех моделей Antminer L7, начиная от 9050 и до 9500, при этом, энергопотребление в разгоне будет <strong>одинаковым</strong>. Следовательно - если вы еще не приобрели аппараты, нет смысла переплачивать за 9500! </p>
 <h3 data-anchor="jMOZ"><span class="underline bold">Этап 1 </span><span class="underline">(Регистрация на пуле Litecoinpool)</span></h3>
-<p data-anchor="7eVz">Регистрация очень простая, как и интерфейс пула, переходим по <span class="link"><a href="https://www.litecoinpool.org/register" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">ссылке</a></span></p>
+<p data-anchor="7eVz">Регистрация очень простая, как и интерфейс пула, переходим по <span class="link"><a href="https://www.litecoinpool.org/register" target="_blank" rel="noopener noreferrer">ссылке</a></span></p>
 <p data-anchor="3QQq">Заполняем данные, регистрируемся, для простоты работы я рекомендую username сделать такое же, как на пуле, будет легче добавлять асики</p>
 <figure class="w-figure m_column"  data-anchor="fQE7">
 <div class="w-figure_wrap"><figure class="w-figure_image"><img loading="lazy"  src="https://img2.teletype.in/files/5f/58/5f587a43-3581-4e9a-9809-b2bc7e4c5e98.png" width="" data-is-external-image="true"></figure>
@@ -1302,10 +1302,10 @@ sudo systemctl status 3xui-module.service</code></pre>
 <p data-anchor="we45">Добавляем имя воркера, имя воркера на пуле должно совпадать с введенным здесь</p>
 <p data-anchor="0n8C">Выбираем таймзону, вписываем кошелек LTC и DOGE и сохраняем.</p>
 <h3 data-anchor="7vIM"><span class="underline bold">Этап 2</span><span class="underline"> (Создание записей о пуле в Pitbit онлайн)</span></h3>
-<p>Регистрируемся в PitBit, <a href="https://pitbit.systems/reg/d99bfe9d458c6653c0b583f5e6814cf8" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">ссылка</a> на регистрацию</p>
-<p>Существует <a href="https://pitbit.systems/reg/d99bfe9d458c6653c0b583f5e6814cf8" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">базовый сайт для прошивки</a> и сайт <a href="https://pitbit.online" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">мониторинга</a><br>В базовом сайте есть все инструкции как прошить, как купить лицензию и тп</p>
-<p>Antminer L7 прошивается легко, скачиваем файлы на флешку и вставляем.  После в веб-морде асика прописываем ваш токен, который указан в нижней части страницы мониторинга. После этого вы увидите свой асик и все его показатели в <a href="https://pitbit.online" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">панели</a> мониторинга.</p>
-<p data-anchor="wgkE">Соответственно, я буду показывать все на примере <a href="https://pitbit.online" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">панели</a> мониторинга <span class="link">PitBit</span>, которую я рекомендую и считаю ее лучшей, <span class="bold">Пулы </span>&gt; <span class="bold">Пулы</span> - <span class="bold">добавить пул</span></p>
+<p>Регистрируемся в PitBit, <a href="https://pitbit.systems/reg/d99bfe9d458c6653c0b583f5e6814cf8" target="_blank" rel="noopener noreferrer">ссылка</a> на регистрацию</p>
+<p>Существует <a href="https://pitbit.systems/reg/d99bfe9d458c6653c0b583f5e6814cf8" target="_blank" rel="noopener noreferrer">базовый сайт для прошивки</a> и сайт <a href="https://pitbit.online" target="_blank" rel="noopener noreferrer">мониторинга</a><br>В базовом сайте есть все инструкции как прошить, как купить лицензию и тп</p>
+<p>Antminer L7 прошивается легко, скачиваем файлы на флешку и вставляем.  После в веб-морде асика прописываем ваш токен, который указан в нижней части страницы мониторинга. После этого вы увидите свой асик и все его показатели в <a href="https://pitbit.online" target="_blank" rel="noopener noreferrer">панели</a> мониторинга.</p>
+<p data-anchor="wgkE">Соответственно, я буду показывать все на примере <a href="https://pitbit.online" target="_blank" rel="noopener noreferrer">панели</a> мониторинга <span class="link">PitBit</span>, которую я рекомендую и считаю ее лучшей, <span class="bold">Пулы </span>&gt; <span class="bold">Пулы</span> - <span class="bold">добавить пул</span></p>
 <figure class="w-figure m_column"  data-anchor="D1Gf">
 <div class="w-figure_wrap"><figure class="w-figure_image"><img loading="lazy"  src="https://img3.teletype.in/files/61/0b/610b4290-7845-4b83-9725-f61ff384ba93.png" width="" data-is-external-image="true"></figure>
 <div class="w-figure_loading"> </div>
@@ -1337,7 +1337,7 @@ sudo systemctl status 3xui-module.service</code></pre>
 </figcaption>
 </figure>
 <p data-anchor="CpN6">Выделяем номер асика, выбираем ниже пул, нажимаем переключить</p>
-<p data-anchor="KEnE">Проверяем, если все верно, на <a href="https://www.litecoinpool.org/account" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer"><span class="link">странице</span> пула</a> litecoinpool появятся показатели хеша и строка с названием воркера станет зеленой</p>
+<p data-anchor="KEnE">Проверяем, если все верно, на <a href="https://www.litecoinpool.org/account" target="_blank" rel="noopener noreferrer"><span class="link">странице</span> пула</a> litecoinpool появятся показатели хеша и строка с названием воркера станет зеленой</p>
 <h3 data-anchor="KJYJ"><span class="underline bold">Этап 4. </span>Разгон Асиков Bitmain Antminer L7 и настройка</h3>
 <blockquote>
 <p data-anchor="3Hec">Внимание</p>
@@ -1350,7 +1350,7 @@ sudo systemctl status 3xui-module.service</code></pre>
 <li data-anchor="Us2R">Покупка лицензии и работа <strong>без DEV FEE</strong> (без процентов разработчикам, <strong>все</strong> намайненные монеты идут вам)</li>
 <li data-anchor="tV79">Работа с Fee 2.75%, в этом случае с вас будет сниматься комиссия разработчикам, но вы сможете пользоваться всеми преимуществами, а их - очень много</li>
 </ol>
-<p data-anchor="awVU">Ранее несколько аппаратов были прошиты другой прошивкой, всеми известной, в которой до 5% отдавалось разработчикам и их партнерам, после перехода на <span class="link"><a href="https://pitbit.systems/reg/d99bfe9d458c6653c0b583f5e6814cf8" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">PitBit</a></span> могу сказать смело, это самое лучшее решение, не имеющее аналогов. Удобная система мониторинга, адаптивная прошивка, почиповый тюнинг, поддержка всегда онлайн. Вот <a href="https://pitbit.systems/reg/d99bfe9d458c6653c0b583f5e6814cf8" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer"><span class="link">ссылка</span> на регистрацию</a>, в личном кабинете есть обучающие ролики, стоковые и тюненные прошивки и программы для всего этого.</p>
+<p data-anchor="awVU">Ранее несколько аппаратов были прошиты другой прошивкой, всеми известной, в которой до 5% отдавалось разработчикам и их партнерам, после перехода на <span class="link"><a href="https://pitbit.systems/reg/d99bfe9d458c6653c0b583f5e6814cf8" target="_blank" rel="noopener noreferrer">PitBit</a></span> могу сказать смело, это самое лучшее решение, не имеющее аналогов. Удобная система мониторинга, адаптивная прошивка, почиповый тюнинг, поддержка всегда онлайн. Вот <a href="https://pitbit.systems/reg/d99bfe9d458c6653c0b583f5e6814cf8" target="_blank" rel="noopener noreferrer"><span class="link">ссылка</span> на регистрацию</a>, в личном кабинете есть обучающие ролики, стоковые и тюненные прошивки и программы для всего этого.</p>
 <p data-anchor="iD8a">В сравнительной таблице более приятно наблюдать за показателями хеша / потребления и заработка, учите, показатели приблизительные </p>
 <figure class="w-figure m_column"  data-anchor="m4Wi">
 <div class="w-figure_wrap"><figure class="w-figure_image"><img loading="lazy"  src="https://img1.teletype.in/files/cf/0f/cf0ff1d5-0088-4b1f-9b6b-b51c54a4cbb1.png" width="" data-is-external-image="true"></figure>
@@ -1418,7 +1418,7 @@ sudo systemctl status 3xui-module.service</code></pre>
 <p data-anchor="fYZn">При разгоне асика Bitmain Antminer L7, в моем случае это модель L7 9050, мы получаем оптимальный разгон без вреда аппарату с повышением мощности на 22%, что дает колоссальный результат, уменьшая окупаемость на четверть времени</p>
 <p data-anchor="43Od">На этом все. Асик у нас будет потреблять до 4750Вт, и будет регулироваться автоматически, выдавая лучшие показатели с регулировкой тепла и с защитой от перегрева. Большим бонусом идет система онлайн мониторинга с уведомлениями в телеграм. Система мониторинга <span class="link">PitBit</span> регулярно обновляется, прошивки на аппаратах так же обновляются по воздуху, в мониторинге можно одной кнопкой менять пул, разгон, потребление, частоту, смотреть сравнения хеша пула и хеша асика (какие пулы и сколько "воруют"), смотреть потребление, доход в рублях (в настройках впишите стоимость за Квт ч), состояние плат, чипов, графики хешрейта, статистика пулов и многое другое</p>
 <p data-anchor="SRSb">Следующая статья будет о том, как выводить / обменивать монеты с самым выгодным курсом</p>
-<p data-anchor="SRSb">Мой ник в телеграм <span class="link"><a href="https://t.me/alex_dde" target="_blank"  class="extlink extlink-icon-4"  rel="noopener noreferrer">@Alex_dde</a></span>, прошу понять и простить, бесплатных консультаций не даю, нет столько времени, асики это просто хобби, если вам необходима помощь, опишите техническое задание и будьте добры предложить оплату. Спасибо.</p>
+<p data-anchor="SRSb">Мой ник в телеграм <span class="link"><a href="https://t.me/alex_dde" target="_blank" rel="noopener noreferrer">@Alex_dde</a></span>, прошу понять и простить, бесплатных консультаций не даю, нет столько времени, асики это просто хобби, если вам необходима помощь, опишите техническое задание и будьте добры предложить оплату. Спасибо.</p>
 <p data-anchor="SRSb"> </p>
             ]]>
         </content>
@@ -1433,7 +1433,7 @@ sudo systemctl status 3xui-module.service</code></pre>
             <category term="Телевизоры Xiaomi"/>
 
         <updated>2025-06-18T05:08:20+03:00</updated>
-            <summary>
+            <summary type="html">
                 <![CDATA[
                     После некоторых манипуляций иногда бывает полезно сделать сброс телевизору. Существует несколько видов сброса, из меню телевизора и пультом, если ТВ не загружается, рассмотрим их все&hellip;
                 ]]>
